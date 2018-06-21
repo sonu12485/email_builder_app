@@ -1,0 +1,31 @@
+{
+  "name": "email_builder",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "create-file": "^1.0.1",
+    "draft-js": "^0.10.5",
+    "draftjs-to-html": "^0.8.4",
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.10",
+    "react": "^16.4.1",
+    "react-deep-force-update": "^2.1.1",
+    "react-dnd": "^5.0.0",
+    "react-dnd-html5-backend": "^5.0.0",
+    "react-dom": "^16.4.1",
+    "react-draft-wysiwyg": "^1.12.13",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "react-splitter-layout": "^3.0.0",
+    "react-to-print": "^1.0.19",
+    "reactstrap": "^6.1.0",
+    "redux": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
