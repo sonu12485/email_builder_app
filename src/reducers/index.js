@@ -6,6 +6,7 @@ import Edit_h3 from './reducer_edit_h3';
 import Update from './reducer_update';
 import Edit_hr from './reducer_edit_hr';
 import Edit_p from './reducer_edit_p';
+import Edit_img from './reducer_edit_img';
 
 const rootReducer = combineReducers({
     items: Items,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     h3_edit: Edit_h3,
     update: Update,
     hr_edit: Edit_hr,
-    p_edit: Edit_p
+    p_edit: Edit_p,
+    img_edit: Edit_img
 });
 
 export default rootReducer;

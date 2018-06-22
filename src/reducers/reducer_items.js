@@ -70,6 +70,17 @@ export default function( state=[], action )
 
             return state;
 
+        case "EDIT_IMG_SRC":
+
+            state.forEach( item => {
+                if(item.id === action.payload.id)
+                {
+                    item.src = action.payload.src; 
+                }
+            });
+
+            return state;
+
         case "DELETE":
             const id = action.payload.id;
 

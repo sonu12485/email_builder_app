@@ -49,6 +49,29 @@
     border-width: 4px;
 }
 
+.image_drop_conatiner {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.image_drop {
+    width: 90%;
+    height: 200px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: #bbb;
+    border-width: 2px;
+}
+
+.img_input_conatiner {
+    margin: 10px;
+    margin-top: 40px;
+}
+
 .item_h1:hover {
     border-style: solid;
     border-width: 2px;
@@ -73,10 +96,9 @@
     border-width: 2px;
     border-color: #6666FF;
 }
-/*
-.item_img{
-    display: flex;
-    justify-content: center;
-    margin: 10px;
+
+.item_img:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
 }
-*/

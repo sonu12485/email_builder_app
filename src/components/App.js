@@ -12,6 +12,7 @@ import Edit_h1 from './edit_components/Edit_h1';
 import Edit_h3 from './edit_components/Edit_h3';
 import Edit_hr from './edit_components/Edit_hr';
 import Edit_p from './edit_components/Edit_p';
+import Edit_img from './edit_components/Edit_img';
 
 import { update as update_action } from '../actions/index';
 
@@ -48,6 +49,12 @@ class App extends Component
         this.update()
       } } />
     }
+    else if(this.props.is_img_edit)
+    {
+      return <Edit_img update ={ () => {
+        this.update()
+      } } />
+    }
     else
     {
       return <Items />
@@ -81,7 +88,8 @@ function mapStateToProps(state)
     is_h1_edit: state.h1_edit.val,
     is_h3_edit: state.h3_edit.val,
     is_hr_edit: state.hr_edit.val,
-    is_p_edit: state.p_edit.val
+    is_p_edit: state.p_edit.val,
+    is_img_edit: state.img_edit.val
   }
 }
 

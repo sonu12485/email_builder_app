@@ -10,7 +10,7 @@ import ReactDOMServer from 'react-dom/server';
 import { DropTarget } from 'react-dnd';
 
 import { 
-    edit_h1, edit_h3, edit_hr, edit_p 
+    edit_h1, edit_h3, edit_hr, edit_p, edit_img 
 } from '../actions/edit_actions';
 import { update as update_action } from '../actions/index';
 
@@ -89,8 +89,14 @@ class Preview extends Component
             else if(item.type === 'img')
             {
                 return (
-                    <div style={styles.item_img} key={item.id} >
-                        <img src={item.src} />
+                    <div key={item.id} 
+                        style={styles.item_img_container}
+                        className="item_img"
+                        onClick={ () => {
+                            this.props.edit_img(item.id)
+                        }}
+                    >
+                        <img src={item.src} style={styles.item_img} />
                     </div>
                 );
             }
@@ -179,10 +185,16 @@ const styles = {
         fontSize: 16,
     },
     
-    item_img: {
+    item_img_container: {
         display: "flex",
         justifyContent: "center",
-        margin: 10,
+        marginTop:10,
+        marginBottom:10,
+        width: "100%",
+    },
+
+    item_img: {
+        width: "100%",
         objectFit: "contain"
     }
 }
@@ -200,5 +212,6 @@ export default connect(mapStateToProps, {
     edit_h3,
     edit_hr,
     edit_p,
+    edit_img,
     update_action
 })(DropTarget('item', {}, collect)(FullPreview));

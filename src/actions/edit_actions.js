@@ -81,3 +81,24 @@ export function edit_p_data(id, data)
     }
 }
 
+export function edit_img(id)
+{
+    return {
+        type: "EDIT_IMG",
+        payload: {
+            id
+        }
+    }
+}
+
+
+export function edit_img_src(id, src)
+{
+    return {
+        type: "EDIT_IMG_SRC",
+        payload: {
+            id,
+            src
+        }
+    }
+}

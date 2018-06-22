@@ -17,7 +17,7 @@ const spec = {
         {
             console.log("ED");
             //call a action 
-            props.addImage("http://via.placeholder.com/700x250");
+            props.addImage("http://via.placeholder.com/500x250");
         }
         else
         {
