@@ -49,3 +49,35 @@ export function delete_item(id)
         }
     }
 }
+
+export function edit_hr(id)
+{
+    return {
+        type: "EDIT_HR",
+        payload: {
+            id
+        }
+    }
+}
+
+export function edit_p(id)
+{
+    return {
+        type: "EDIT_P",
+        payload: {
+            id
+        }
+    }
+}
+
+export function edit_p_data(id, data)
+{
+    return {
+        type: "EDIT_P_DATA",
+        payload: {
+            id,
+            data
+        }
+    }
+}
+

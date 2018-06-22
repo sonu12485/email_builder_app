@@ -59,6 +59,17 @@ export default function( state=[], action )
 
             return state;
 
+        case "EDIT_P_DATA":
+            
+            state.forEach( item => {
+                if(item.id === action.payload.id)
+                {
+                    item.data = action.payload.data; 
+                }
+            });
+
+            return state;
+
         case "DELETE":
             const id = action.payload.id;
 

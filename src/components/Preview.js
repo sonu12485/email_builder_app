@@ -9,7 +9,9 @@ import ReactDOMServer from 'react-dom/server';
 
 import { DropTarget } from 'react-dnd';
 
-import { edit_h1, edit_h3 } from '../actions/edit_actions';
+import { 
+    edit_h1, edit_h3, edit_hr, edit_p 
+} from '../actions/edit_actions';
 import { update as update_action } from '../actions/index';
 
 function collect(connect, monitor)
@@ -58,14 +60,29 @@ class Preview extends Component
             else if(item.type === 'hr')
             {
                 return (
-                    <hr key={item.id} />
+                    <div key={item.id} 
+                        className="item_hr"
+                        onClick={ () => {
+                            this.props.edit_hr(item.id)
+                        }}
+                    >
+                    <hr />
+                    </div>
                 );
             }
             else if(item.type === 'p')
             {
                 return (
-                    <div key={item.id} style={styles.item_p} >
-                        <p>{ item.data }</p>
+                    <div key={item.id} 
+                        style={styles.item_p} 
+                        className="item_p"
+                        onClick={ () => {
+                            this.props.edit_p(item.id)
+                        }}
+                    >
+                        <p
+                            dangerouslySetInnerHTML={{__html: item.data}}
+                        ></p>
                     </div>
                 );
             }
@@ -181,5 +198,7 @@ function mapStateToProps(state)
 export default connect(mapStateToProps, {
     edit_h1,
     edit_h3,
+    edit_hr,
+    edit_p,
     update_action
 })(DropTarget('item', {}, collect)(FullPreview));

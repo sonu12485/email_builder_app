@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { edit_h3, edit_h3_data, delete_item } from '../../actions/edit_actions';
+import { edit_p, delete_item, edit_p_data } from '../../actions/edit_actions';
 
 import { EditorState, convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -12,7 +12,7 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-class Edit_h3 extends Component 
+class Edit_p extends Component 
 {
     constructor(props)
     {
@@ -45,7 +45,7 @@ class Edit_h3 extends Component
         
         this.props.delete_item(id);
         this.props.update();
-        this.props.edit_h3();
+        this.props.edit_p();
     }
 
     render() 
@@ -54,16 +54,16 @@ class Edit_h3 extends Component
 
         return (
             <div>
-
+                
                 <div className="btn_container" >
                     <Button color="primary" 
-                        onClick={ () => this.props.edit_h3() }
+                        onClick={ () => this.props.edit_p() }
                     >DONE</Button>
                     <Button color="danger" 
                         onClick={ () => this.deleteElement() }
                     >DELETE</Button>
                 </div>
-                
+
                 <div className="editor" >
                     <Editor
                         defaultEditorState={editorState}
@@ -71,14 +71,14 @@ class Edit_h3 extends Component
                         wrapperClassName="demo-wrapper"
                         editorClassName="demo-editor"
                         toolbar={{
-                            options: ['inline', 'colorPicker',
+                            options: ['inline', 'colorPicker', 'fontSize',
                                 'fontFamily', 'link', 
                                 'textAlign', 'history'],
-                            inline: { inDropdown: true }      
+                            inline: { inDropdown: true } 
                         }}
                         onEditorStateChange={(editorState) => {
                             this.onEditorStateChange(editorState);
-                            this.props.edit_h3_data(
+                            this.props.edit_p_data(
                                 this.props.data.id,
                                 draftToHtml(convertToRaw(editorState.getCurrentContent()))
                             );
@@ -95,13 +95,13 @@ class Edit_h3 extends Component
 function mapStateToProps(state)
 {
     return {
-        data: state.h3_edit,
+        data: state.p_edit,
         items: state.items
     }
 }
 
 export default connect(mapStateToProps, {
-    edit_h3,
-    edit_h3_data,
-    delete_item
-})(Edit_h3);
+    edit_p,
+    delete_item,
+    edit_p_data,
+})(Edit_p);

@@ -60,13 +60,20 @@
     border-width: 2px;
     border-color: #6666FF;
 }
-/*
-.item_p{
-    padding-left: 30px;
-    padding-right: 30px;
-    font-size: 16px;
+
+.item_hr:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
 }
 
+
+.item_p:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
+}
+/*
 .item_img{
     display: flex;
     justify-content: center;
