@@ -1,7 +1,8 @@
 .box{
     border-style: solid;
-    border-color: #bbb;
     border-width: 2px;
+    border-color: #345F90;
+    border-radius: 35px;
     width: 90%;
     margin: 10px;
     text-align: center;    
@@ -11,6 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .preview{
@@ -21,6 +23,7 @@
 .header{
     background-color: #CCCCCC;
     width: 100%;
+    height: 70px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -70,6 +73,52 @@
 .img_input_conatiner {
     margin: 10px;
     margin-top: 40px;
+}
+
+.tabs_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs {
+    width: 85%;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #345F90;
+    border-radius: 35px;
+}
+
+.tab {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab div {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.active {
+    background-color: #345F90;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #345F90;
+    border-radius: 35px;
+    color: white;
+}
+
+.inactive {
+    color: #345F90;
 }
 
 .item_h1:hover {

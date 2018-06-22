@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 
 import { edit_h1, edit_h1_data, delete_item } from '../../actions/edit_actions';
 
-import { EditorState, convertToRaw, ContentState, convertFromHTML } from 'draft-js';
+import { 
+    EditorState, convertToRaw, ContentState, convertFromHTML
+} from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
@@ -22,7 +24,7 @@ class Edit_h1 extends Component
             return item.id === this.props.data.id
         });
 
-        const initContent = convertFromHTML("<p>"+selectedItem.data+"</p>");
+        const initContent = convertFromHTML("<div>"+selectedItem.data+"</div>");
 
         const initEditorContent = ContentState.createFromBlockArray(initContent);
 

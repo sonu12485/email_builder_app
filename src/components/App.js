@@ -7,6 +7,7 @@ import { DragDropContext } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import Items from './Items';
+import Layouts from './Layouts';
 import Preview from './Preview';
 import Edit_h1 from './edit_components/Edit_h1';
 import Edit_h3 from './edit_components/Edit_h3';
@@ -18,6 +19,15 @@ import { update as update_action } from '../actions/index';
 
 class App extends Component 
 {
+  constructor(props)
+  {
+    super(props);
+
+    this.state={
+      tabs_flag: true
+    }
+  }
+
   update = () =>
   {
     this.props.update_action();
@@ -57,7 +67,71 @@ class App extends Component
     }
     else
     {
+      return this.renderMenu()
+    }
+  }
+
+  renderItemsOrLayouts = () => 
+  {
+    if(this.state.tabs_flag)
+    {
       return <Items />
+    }
+    else
+    {
+      return <Layouts />
+    }
+  }
+
+  renderMenu = () =>
+  {
+    if(this.state.tabs_flag)
+    {
+      return (
+        <div>
+        <div className="tabs_container" >
+        <div className="tabs" >
+          <div className="tab active" >
+            <div>Components</div>
+          </div>
+          <div className="tab inactive" 
+            onClick = { () => {
+              this.setState({
+                tabs_flag: false
+              })
+            }}
+          >
+            <div>Layouts</div>
+          </div>
+        </div>
+        </div>
+          {this.renderItemsOrLayouts()}
+        </div>
+      );
+    }
+    else
+    {
+      return (
+        <div>
+        <div className="tabs_container" >
+        <div className="tabs" >
+          <div className="tab inactive" 
+            onClick = { () => {
+              this.setState({
+                tabs_flag: true
+              })
+            }}
+          >
+            <div>Components</div>
+          </div>
+          <div className="tab active" >
+            <div>Layouts</div>
+          </div>
+        </div>
+        </div>
+          {this.renderItemsOrLayouts()}
+        </div>
+      );  
     }
   }
 
