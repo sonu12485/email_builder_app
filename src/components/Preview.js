@@ -94,17 +94,26 @@ class Preview extends Component
             }
             else if(item.type === 'p')
             {
+                let style = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            style[key.toString()] = value;
+                        }
+                    }
+                );
+
                 return (
                     <div key={item.id} 
-                        style={styles.item_p} 
+                        style={style} 
                         className="item_p"
                         onClick={ () => {
                             this.props.edit_p(item.id)
                         }}
                     >
-                        <p
-                            dangerouslySetInnerHTML={{__html: item.data}}
-                        ></p>
+                        <p>{item.data}</p>
                     </div>
                 );
             }
@@ -193,12 +202,6 @@ class FullPreview extends Component
 }
 
 const styles = {
-    
-    item_p: {
-        paddingLeft: 30,
-        paddingRight: 30,
-        fontSize: 16,
-    },
     
     item_img_container: {
         display: "flex",

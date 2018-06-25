@@ -49,15 +49,6 @@ class Edit_img extends Component
         return (
             <div>
                 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_img() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
-                </div>
-
                 <div>
                     <div className="img_input_conatiner" >
                     <InputGroup>
@@ -81,6 +72,18 @@ class Edit_img extends Component
                 <div className="image_drop" >
                     <h5>Drop an Image Here.</h5>
                 </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => this.props.edit_img() }
+                    >DONE</Button>
+                    <Button color="danger" 
+                        onClick={ () => this.deleteElement() }
+                    >DELETE</Button>
                 </div>
 
             </div>

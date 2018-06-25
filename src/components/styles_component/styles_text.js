@@ -29,7 +29,10 @@ class styles_h1 extends Component
     {
         let val;
 
-        if(key === 'fontSize')
+        if(
+            key === 'fontSize' || key === 'paddingTop' || key === 'paddingBottom' ||
+            key === 'paddingLeft' || key === 'paddingRight'
+        )
         {
             val = Number(event.target.value);
         }
@@ -250,6 +253,34 @@ class styles_h1 extends Component
                         <option value={'right'} >Right</option>
                         
                     </Input>
+                </div>
+                <div>
+                    <br />
+
+                    <Label>Select Top Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingTop} 
+                        onChange = { (event) => this.onChangeInput("paddingTop",event) }
+                    />
+
+                    <Label>Select Bottom Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingBottom} 
+                        onChange = { (event) => this.onChangeInput("paddingBottom",event) }
+                    />
+
+                    <Label>Select Left Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingLeft} 
+                        onChange = { (event) => this.onChangeInput("paddingLeft",event) }
+                    />
+
+                    <Label>Select Right Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingRight} 
+                        onChange = { (event) => this.onChangeInput("paddingRight",event) }
+                    />
+
                 </div>
             </div>
         );
