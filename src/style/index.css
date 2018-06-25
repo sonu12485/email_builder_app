@@ -5,7 +5,7 @@
     border-radius: 35px;
     width: 90%;
     margin: 10px;
-    text-align: center;    
+    text-align: center;
 }
 
 .item_container{
@@ -46,7 +46,7 @@
 
 .editor{
     margin: 10px;
-    height: 80vh;
+    padding:20px;
     border-style: solid;
     border-color: #eee;
     border-width: 4px;
@@ -119,6 +119,12 @@
 
 .inactive {
     color: #345F90;
+}
+
+.style_inputs{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
 }
 
 .item_h1:hover {

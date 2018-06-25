@@ -31,22 +31,33 @@ class Preview extends Component
         return this.props.items.map( item => {
             if(item.type === 'h1')
             {
+                let style = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            style[key.toString()] = value;
+                        }
+                    }
+                );
+
                 return (
-                    <h1 style={styles.item_h1} 
+                    <h1 style={style} 
                         className="item_h1"
                         key={item.id} 
                         onClick={ () => {
                             this.props.edit_h1(item.id)
                         }}
-                        dangerouslySetInnerHTML={{__html: item.data}}
                     >
+                        {item.data}
                     </h1>
                 );
             }
             else if(item.type === 'h3')
             {
                 return (
-                    <h3 style={styles.item_h1} 
+                    <h3 style={styles.item_h3} 
                         key={item.id} 
                         className="item_h3"
                         onClick={ () => {
@@ -107,7 +118,7 @@ class Preview extends Component
     {
         if(this.props.flag_update)
         {
-            console.log("hello");
+            console.log("update");
             this.forceUpdate();
             this.props.update_action();
         }
@@ -171,9 +182,6 @@ class FullPreview extends Component
 }
 
 const styles = {
-    item_h1: {
-        textAlign: "center"
-    },
     
     item_h3: {
         textAlign: "center"

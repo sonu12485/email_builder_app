@@ -102,3 +102,14 @@ export function edit_img_src(id, src)
         }
     }
 }
+
+export function edit_styles(id, styles)
+{
+    return {
+        type: "EDIT_STYLES",
+        payload: {
+            id,
+            styles
+        }
+    }
+}

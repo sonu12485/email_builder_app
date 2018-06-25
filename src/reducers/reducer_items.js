@@ -1,3 +1,18 @@
+const initStyle = {
+    fontSize: '',
+    color: '',
+    backgroundColor: '',
+    fontFamily: 'sans-serif',
+    fontWeight: '',
+    fontStyle: '',
+    textDecoration: '',
+    textAlign: 'center',
+    paddingTop: '',
+    paddingBottom: '',
+    paddingLeft: '',
+    paddingRight: ''
+};
+
 export default function( state=[], action )
 {
     console.log(action);
@@ -7,6 +22,7 @@ export default function( state=[], action )
             return state.concat([{
                 type:"h1", 
                 data: action.payload.data, 
+                styles: initStyle,
                 id: action.payload.id 
             }]);
 
@@ -14,19 +30,22 @@ export default function( state=[], action )
             return state.concat([{
                 type:"h3", 
                 data: action.payload.data, 
+                styles: initStyle,
                 id: action.payload.id 
             }]);
 
         case "HR_ADDED":
             return state.concat([{
                 type:"hr", 
-                id: action.payload.id 
+                id: action.payload.id, 
+                styles: [],
             }]);
 
         case "PARAGRAPH_ADDED":
             return state.concat([{
                 type:"p", 
                 data: action.payload.data, 
+                styles: initStyle,
                 id: action.payload.id 
             }]);
 
@@ -34,6 +53,7 @@ export default function( state=[], action )
             return state.concat([{
                 type:"img", 
                 src: action.payload.src, 
+                styles: [],
                 id: action.payload.id 
             }]);
 
@@ -82,13 +102,23 @@ export default function( state=[], action )
             return state;
 
         case "DELETE":
-            const id = action.payload.id;
 
             const filtredItems = state.filter( item => {
-                return id !== item.id
+                return action.payload.id !== item.id
             });
 
             return filtredItems;
+
+        case "EDIT_STYLES":
+
+            state.forEach( item => {
+                if(item.id === action.payload.id)
+                {
+                    item.styles = action.payload.styles;
+                }
+            });
+
+            return state;
     
         default:
             return state;
