@@ -113,3 +113,23 @@ export function edit_styles(id, styles)
         }
     }
 }
+
+export function slide_item_up(id)
+{
+    return {
+        type: "SLIDE_ITEM_UP",
+        payload: {
+            id
+        }
+    }
+}
+
+export function slide_item_down(id)
+{
+    return {
+        type: "SLIDE_ITEM_DOWN",
+        payload: {
+            id
+        }
+    }
+}

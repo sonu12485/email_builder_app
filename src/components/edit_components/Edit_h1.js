@@ -4,9 +4,12 @@ import { Button, Input } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { edit_h1, edit_h1_data, delete_item } from '../../actions/edit_actions';
+import { 
+    edit_h1, edit_h1_data, delete_item
+} from '../../actions/edit_actions';
 
 import StyleEditor from '../styles_component/styles_text';
+import MoveManager from '../move_components/move_handler';
 
 class Edit_h1 extends Component 
 {
@@ -51,10 +54,13 @@ class Edit_h1 extends Component
 
     render() 
     {
-        const { editorState } = this.state;
-
         return (
             <div>
+
+                <MoveManager 
+                    id={this.props.data.id} 
+                    update={this.props.update}
+                />
 
                 <div className="editor" >
                     <Input type="textarea" 

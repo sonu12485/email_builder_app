@@ -119,6 +119,30 @@ export default function( state=[], action )
             });
 
             return state;
+
+        case "SLIDE_ITEM_UP":
+            
+            const selectedItemIndex = state.findIndex( (item) => {
+                return item.id === action.payload.id
+            });
+
+            const removedItem = state.splice(selectedItemIndex,1)[0];
+
+            state.splice(selectedItemIndex-1,0,removedItem);
+
+            return state;
+
+        case "SLIDE_ITEM_DOWN":
+
+            const selectedItemIndex1 = state.findIndex( (item) => {
+                return item.id === action.payload.id
+            });
+
+            const removedItem1 = state.splice(selectedItemIndex1,1)[0];
+
+            state.splice(selectedItemIndex1+1,0,removedItem1);
+
+            return state;
     
         default:
             return state;
