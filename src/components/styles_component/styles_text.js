@@ -181,6 +181,19 @@ class styles_h1 extends Component
         )
     }
 
+    renderOptions = () =>
+    {
+        let i;
+        const num=[];
+        for(i=10;i<=80;i+=2)
+        {
+            num.push(i);
+        }
+        return num.map( i => (
+            <option value={i} >{i}</option>
+        ));
+    }
+
     render() 
     {
         return (
@@ -192,14 +205,7 @@ class styles_h1 extends Component
                         onChange = { (event) => {this.onChangeInput("fontSize",event)} }
                     >
                         <option value={''} > </option>
-                        <option value={30} >30</option>
-                        <option value={34} >34</option>
-                        <option value={38} >38</option>
-                        <option value={42} >42</option>
-                        <option value={48} >48</option>
-                        <option value={64} >64</option>
-                        <option value={72} >72</option>
-                        <option value={80} >80</option>
+                        {this.renderOptions()}
                     </Input>
                 </div>
                 <div>

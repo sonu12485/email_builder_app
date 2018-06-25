@@ -56,15 +56,26 @@ class Preview extends Component
             }
             else if(item.type === 'h3')
             {
+                let style = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            style[key.toString()] = value;
+                        }
+                    }
+                );
+
                 return (
-                    <h3 style={styles.item_h3} 
+                    <h3 style={style} 
                         key={item.id} 
                         className="item_h3"
                         onClick={ () => {
                             this.props.edit_h3(item.id)
                         }}
-                        dangerouslySetInnerHTML={{__html: item.data}}
                     >
+                        {item.data}
                     </h3>
                 );
             }
@@ -182,10 +193,6 @@ class FullPreview extends Component
 }
 
 const styles = {
-    
-    item_h3: {
-        textAlign: "center"
-    },
     
     item_p: {
         paddingLeft: 30,
