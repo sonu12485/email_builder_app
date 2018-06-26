@@ -193,7 +193,7 @@ class styles_h1 extends Component
             num.push(i);
         }
         return num.map( i => (
-            <option value={i} >{i}</option>
+            <option value={i} key={i} >{i}</option>
         ));
     }
 

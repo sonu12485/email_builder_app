@@ -28,6 +28,7 @@ class Preview extends Component
 
     renderItems = () => 
     {
+        console.log(this.props.items);
         return this.props.items.map( item => {
             if(item.type === 'h1')
             {

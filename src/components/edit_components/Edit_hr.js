@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 import { edit_hr, delete_item } from '../../actions/edit_actions';
 
+import MoveManager from '../move_components/move_handler';
+
 class Edit_hr extends Component 
 {
     deleteElement = () =>
@@ -21,6 +23,11 @@ class Edit_hr extends Component
     {
         return (
             <div>
+
+                <MoveManager 
+                    id={this.props.data.id} 
+                    update={this.props.update}
+                />
 
                 <div className="btn_container" >
                     <Button color="primary" 

@@ -126,11 +126,18 @@ export default function( state=[], action )
                 return item.id === action.payload.id
             });
 
-            const removedItem = state.splice(selectedItemIndex,1)[0];
+            if(selectedItemIndex === 0)
+            {
+                return state;
+            }
+            else
+            {
+                const removedItem = state.splice(selectedItemIndex,1)[0];
 
-            state.splice(selectedItemIndex-1,0,removedItem);
+                state.splice(selectedItemIndex-1,0,removedItem);
 
-            return state;
+                return state;
+            }
 
         case "SLIDE_ITEM_DOWN":
 
