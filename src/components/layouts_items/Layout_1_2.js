@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addhr } from '../actions';
+import { addLayout } from '../../actions/index';
 
 const spec = {
     beginDrag(props) 
@@ -16,14 +16,11 @@ const spec = {
         if(monitor.didDrop())
         {
             console.log("ED");
-            //call a action 
-            if(monitor.getDropResult().layout_id)
-            {
 
-            }
-            else
+            //call a action 
+            if(!monitor.getDropResult().layout_id)
             {
-                props.addhr("Heading");
+                props.addLayout(1);
             }
         }
         else
@@ -42,16 +39,19 @@ function collect(connect, monitor)
     }
 }
 
-class HorizontalRule extends Component {
+class Layout_1_2 extends Component {
     render() {
         const { connectDragSource, connectDragPreview, isDragging } = this.props;
 
         return connectDragSource(
-            <div className="box" >
-                <h4>Horizontal Rule</h4>
+            <div className="layout_items" >
+                <div className="layout_inside_blocks" ></div>
+                <div className="layout_inside_blocks" ></div>
             </div>
         );
     }
 }
 
-export default connect(null, { addhr })(DragSource('item', spec, collect)(HorizontalRule));
+export default connect(null, { 
+    addLayout 
+})(DragSource('item', spec, collect)(Layout_1_2));

@@ -150,6 +150,19 @@ export default function( state=[], action )
             state.splice(selectedItemIndex1+1,0,removedItem1);
 
             return state;
+
+        case "LAYOUT_ADDED":
+            
+            if(action.payload.layout_type === 1)
+            {
+                return state.concat([{
+                    type:"layout", 
+                    layout_type: action.payload.layout_type,
+                    id: action.payload.id ,
+                    left: [],
+                    rigth: []
+                }]);
+            }
     
         default:
             return state;

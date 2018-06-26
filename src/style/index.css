@@ -127,6 +127,43 @@
     padding-bottom: 20px;
 }
 
+.layout_items{
+    margin-left: 30px;
+    margin-right: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.layout_inside_blocks{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6666FF;
+    width:50%;
+    height: 70px;
+    background-color: #E3F4FA;
+}
+
+.layout_table{
+    width: 90%;
+    margin: 10px;
+    margin-left: 5%;
+    margin-right: 5%; 
+}
+
+.layout_table_cells{
+    height: 100px;
+    background-color: #E3F4FA;
+    text-align: center;
+    border: 1px solid #6666FF;
+}
+
 .item_h1:hover {
     border-style: solid;
     border-width: 2px;

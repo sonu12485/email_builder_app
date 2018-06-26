@@ -14,6 +14,8 @@ import {
 } from '../actions/edit_actions';
 import { update as update_action } from '../actions/index';
 
+import LayoutCell from './LayoutCell';
+
 function collect(connect, monitor)
 {
     return {
@@ -28,7 +30,7 @@ class Preview extends Component
 
     renderItems = () => 
     {
-        console.log(this.props.items);
+        //console.log(this.props.items);
         return this.props.items.map( item => {
             if(item.type === 'h1')
             {
@@ -131,6 +133,28 @@ class Preview extends Component
                         <img src={item.src} style={styles.item_img} />
                     </div>
                 );
+            }
+            else if(item.type === 'layout')
+            {
+                if(item.layout_type === 1)
+                {
+                    return (
+                        <table className="layout_table" key={item.id} >
+                        <tbody>
+                            <tr>
+                                <LayoutCell 
+                                    layout_id={item.id} 
+                                    location="left"
+                                />
+                                <LayoutCell 
+                                    layout_id={item.id} 
+                                    location="right"
+                                />
+                            </tr>
+                        </tbody>
+                        </table>
+                    );
+                }
             }
         });
     }

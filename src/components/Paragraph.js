@@ -28,7 +28,14 @@ const spec = {
             consequat voluptate. Culpa nulla sit nisi adipisicing nostrud ipsum. 
             Anim irure cupidatat id proident ut ex aute est nisi.`;
             //call a action 
-            props.addParagraph(data);
+            if(monitor.getDropResult().layout_id)
+            {
+
+            }
+            else
+            {
+                props.addParagraph(data);
+            }
         }
         else
         {

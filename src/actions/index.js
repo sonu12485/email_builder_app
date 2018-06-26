@@ -54,6 +54,17 @@ export function addImage(src)
     }
 }
 
+export function addLayout(layout_type)
+{
+    return {
+        type: 'LAYOUT_ADDED',
+        payload: {
+            layout_type,
+            id: _.round(Math.random()*10000000000)
+        }
+    }
+}
+
 export function update()
 {
     return {

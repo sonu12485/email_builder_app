@@ -17,7 +17,14 @@ const spec = {
         {
             console.log("ED");
             //call a action 
-            props.addImage("http://via.placeholder.com/500x250");
+            if(monitor.getDropResult().layout_id)
+            {
+
+            }
+            else
+            {
+                props.addImage("http://via.placeholder.com/500x250");
+            }
         }
         else
         {

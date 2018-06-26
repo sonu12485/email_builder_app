@@ -17,7 +17,14 @@ const spec = {
         {
             console.log("ED");
             //call a action 
-            props.addHeading("Heading");
+            if(monitor.getDropResult().layout_id)
+            {
+
+            }
+            else
+            {
+                props.addHeading("Heading");
+            }
         }
         else
         {
