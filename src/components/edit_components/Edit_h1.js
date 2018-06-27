@@ -15,7 +15,6 @@ class Edit_h1 extends Component
     constructor(props)
     {
         super(props);
-        console.log(this.props.data);
 
         let x;
         const selectedItemArray = this.props.items.map( item => {

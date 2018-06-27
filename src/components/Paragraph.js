@@ -19,14 +19,7 @@ const spec = {
             const data = `Ullamco dolore commodo ad do ea
             mollit fugiat aliquip sit Lorem. Do fugiat in laborum enim 
             duis veniam reprehenderit. Nulla velit quis excepteur proiden
-            t exercitation. Consectetur dolore minim ipsum et esse officia 
-            sit non do ullamco Lorem minim nostrud culpa
-            Excepteur tempor enim nostrud exercitation mollit nulla voluptate
-            incididunt eiusmod. Labore commodo adipisicing sunt aute nulla 
-            officia velit ad proident nisi. Elit eiusmod cillum quis aliquip.
-            Laborum voluptate reprehenderit quis dolore occaecat proident labore 
-            consequat voluptate. Culpa nulla sit nisi adipisicing nostrud ipsum. 
-            Anim irure cupidatat id proident ut ex aute est nisi.`;
+            t exercitation.`;
             //call a action 
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {

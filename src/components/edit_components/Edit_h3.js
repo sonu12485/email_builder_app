@@ -14,8 +14,36 @@ class Edit_h3 extends Component
     {
         super(props);
 
-        const selectedItem = this.props.items.find( item => {
-            return item.id === this.props.data.id
+        let x;
+        const selectedItemArray = this.props.items.map( item => {
+            if(item.id === this.props.data.layout_id)
+            {
+                if(this.props.data.position === 'left')
+                {
+                    x = item.left.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+                else if(this.props.data.position === 'right')
+                {
+                    x = item.right.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+                else if(this.props.data.position === 'center')
+                {
+                    x = item.center.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+            }
+        });
+
+        const selectedItem = selectedItemArray.find( item => {
+            return item
         });
 
         const data = selectedItem.data;
@@ -27,22 +55,26 @@ class Edit_h3 extends Component
 
     deleteElement = () =>
     {
-        const id = this.props.data.id;
+        const { id, layout_id, position } = this.props.data;
         
-        this.props.delete_item(id);
+        this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_h3();
     }
 
     onInputChange = (event) => 
     {
+        const { id, layout_id, position } = this.props.data;
+
         this.setState({
             data: event.target.value
         },
         () => {
             this.props.edit_h3_data(
-                this.props.data.id,
-                this.state.data
+                id,
+                this.state.data,
+                layout_id,
+                position
             );
             this.props.update();
         }
@@ -64,6 +96,8 @@ class Edit_h3 extends Component
                 <div>
                     <StyleEditor 
                         id={this.props.data.id} 
+                        layout_id={this.props.data.layout_id}
+                        position={this.props.data.position}
                         update={this.props.update}
                     />
                 </div>

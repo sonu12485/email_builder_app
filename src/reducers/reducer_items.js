@@ -110,9 +110,35 @@ export default function( state=[], action )
         case "EDIT_H3_DATA":
             
             state.forEach( item => {
-                if(item.id === action.payload.id)
+                if(item.id === action.payload.layout_id)
                 {
-                    item.data = action.payload.data; 
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
                 }
             });
 
@@ -121,9 +147,35 @@ export default function( state=[], action )
         case "EDIT_P_DATA":
             
             state.forEach( item => {
-                if(item.id === action.payload.id)
+                if(item.id === action.payload.layout_id)
                 {
-                    item.data = action.payload.data; 
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
                 }
             });
 
@@ -132,9 +184,35 @@ export default function( state=[], action )
         case "EDIT_IMG_SRC":
 
             state.forEach( item => {
-                if(item.id === action.payload.id)
+                if(item.id === action.payload.layout_id)
                 {
-                    item.src = action.payload.src; 
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.src = action.payload.src; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.src = action.payload.src; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.src = action.payload.src; 
+                            }
+                        });
+                    }
                 }
             });
 

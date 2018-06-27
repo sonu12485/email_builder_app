@@ -10,7 +10,9 @@ export default function(state=initState, action)
         case "EDIT_HR":
             return {
                 val: !state.val,
-                id: action.payload.id
+                id: action.payload.id,
+                layout_id: action.payload.layout_id,
+                position: action.payload.position
             };
     
         default:

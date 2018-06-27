@@ -23,23 +23,27 @@ export function edit_h1_data(id, data, layout_id, position)
     }
 }
 
-export function edit_h3(id)
+export function edit_h3(id, layout_id, position)
 {
     return {
         type: "EDIT_H3",
         payload: {
-            id
+            id,
+            layout_id,
+            position
         }
     }
 }
 
-export function edit_h3_data(id, data)
+export function edit_h3_data(id, data, layout_id, position)
 {
     return {
         type: "EDIT_H3_DATA",
         payload: {
             id,
-            data
+            data,
+            layout_id,
+            position
         }
     }
 }
@@ -56,55 +60,65 @@ export function delete_item(id,layout_id,position)
     }
 }
 
-export function edit_hr(id)
+export function edit_hr(id, layout_id, position)
 {
     return {
         type: "EDIT_HR",
         payload: {
-            id
+            id,
+            layout_id,
+            position
         }
     }
 }
 
-export function edit_p(id)
+export function edit_p(id, layout_id, position)
 {
     return {
         type: "EDIT_P",
         payload: {
-            id
+            id,
+            layout_id,
+            position
         }
     }
 }
 
-export function edit_p_data(id, data)
+export function edit_p_data(id, data, layout_id, position)
 {
     return {
         type: "EDIT_P_DATA",
         payload: {
             id,
-            data
+            data,
+            layout_id,
+            position
         }
     }
 }
 
-export function edit_img(id)
+export function edit_img(id, layout_id, position)
 {
     return {
         type: "EDIT_IMG",
         payload: {
-            id
+            id,
+            layout_id,
+            position
         }
     }
 }
 
 
-export function edit_img_src(id, src)
+export function edit_img_src(id, src, layout_id, position)
 {
     return {
         type: "EDIT_IMG_SRC",
         payload: {
             id,
-            src
+            src,
+            layout_id,
+            position
         }
     }
 }

@@ -10,9 +10,9 @@ class Edit_hr extends Component
 {
     deleteElement = () =>
     {
-        const id = this.props.data.id;
+        const { id, layout_id, position } = this.props.data;
         
-        this.props.delete_item(id);
+        this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_hr();
     }

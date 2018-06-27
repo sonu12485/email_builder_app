@@ -14,8 +14,43 @@ class Edit_img extends Component
     {
         super(props);
 
+        let x;
+        const selectedItemArray = this.props.items.map( item => {
+            if(item.id === this.props.data.layout_id)
+            {
+                if(this.props.data.position === 'left')
+                {
+                    x = item.left.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+                else if(this.props.data.position === 'right')
+                {
+                    x = item.right.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+                else if(this.props.data.position === 'center')
+                {
+                    x = item.center.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+            }
+        });
+
+        const selectedItem = selectedItemArray.find( item => {
+            return item
+        });
+
+        const data = selectedItem.data;
+
         this.state={
-            img_src: null
+            img_src: null,
+            data
         }
     }
 
@@ -28,18 +63,22 @@ class Edit_img extends Component
 
     deleteElement = () =>
     {
-        const id = this.props.data.id;
+        const { id, layout_id, position } = this.props.data;
         
-        this.props.delete_item(id);
+        this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_img();
     }
 
     submitImgSrc = () =>
     {
+        const { id, layout_id, position } = this.props.data;
+
         this.props.edit_img_src(
-            this.props.data.id,
-            this.state.img_src
+            id,
+            this.state.img_src,
+            layout_id,
+            position
         );
         this.props.update();
     }
@@ -94,7 +133,8 @@ class Edit_img extends Component
 function mapStateToProps(state)
 {
     return {
-        data: state.img_edit
+        data: state.img_edit,
+        items: state.items
     }
 }
 
