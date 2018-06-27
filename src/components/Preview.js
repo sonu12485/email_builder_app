@@ -10,8 +10,9 @@ import ReactDOMServer from 'react-dom/server';
 import { DropTarget } from 'react-dnd';
 
 import { 
-    edit_h1, edit_h3, edit_hr, edit_p, edit_img 
+    edit_h1, edit_h3, edit_hr, edit_p, edit_img, edit_layout_HTML 
 } from '../actions/edit_actions';
+
 import { update as update_action } from '../actions/index';
 
 import LayoutCell from './LayoutCell';
@@ -27,135 +28,33 @@ function collect(connect, monitor)
 
 class Preview extends Component 
 {
-
     renderItems = () => 
     {
-        //console.log(this.props.items);
+        console.log(this.props.items);
         return this.props.items.map( item => {
-            if(item.type === 'h1')
-            {
-                let style = {};
-
-                Object.entries(item.styles).forEach(
-                    ([key, value]) => {
-                        if(value)
-                        {
-                            style[key.toString()] = value;
-                        }
-                    }
-                );
-
-                return (
-                    <h1 style={style} 
-                        className="item_h1"
-                        key={item.id} 
-                        onClick={ () => {
-                            this.props.edit_h1(item.id)
-                        }}
-                    >
-                        {item.data}
-                    </h1>
-                );
-            }
-            else if(item.type === 'h3')
-            {
-                let style = {};
-
-                Object.entries(item.styles).forEach(
-                    ([key, value]) => {
-                        if(value)
-                        {
-                            style[key.toString()] = value;
-                        }
-                    }
-                );
-
-                return (
-                    <h3 style={style} 
-                        key={item.id} 
-                        className="item_h3"
-                        onClick={ () => {
-                            this.props.edit_h3(item.id)
-                        }}
-                    >
-                        {item.data}
-                    </h3>
-                );
-            }
-            else if(item.type === 'hr')
-            {
-                return (
-                    <div key={item.id} 
-                        className="item_hr"
-                        onClick={ () => {
-                            this.props.edit_hr(item.id)
-                        }}
-                    >
-                    <hr />
-                    </div>
-                );
-            }
-            else if(item.type === 'p')
-            {
-                let style = {};
-
-                Object.entries(item.styles).forEach(
-                    ([key, value]) => {
-                        if(value)
-                        {
-                            style[key.toString()] = value;
-                        }
-                    }
-                );
-
-                return (
-                    <div key={item.id} 
-                        style={style} 
-                        className="item_p"
-                        onClick={ () => {
-                            this.props.edit_p(item.id)
-                        }}
-                    >
-                        <p>{item.data}</p>
-                    </div>
-                );
-            }
-            else if(item.type === 'img')
-            {
-                return (
-                    <div key={item.id} 
-                        style={styles.item_img_container}
-                        className="item_img"
-                        onClick={ () => {
-                            this.props.edit_img(item.id)
-                        }}
-                    >
-                        <img src={item.src} style={styles.item_img} />
-                    </div>
-                );
-            }
-            else if(item.type === 'layout')
-            {
                 if(item.layout_type === 1)
                 {
                     return (
-                        <table className="layout_table" key={item.id} >
+                        <table style={styles.layout_table} key={item.id} >
                         <tbody>
                             <tr>
                                 <LayoutCell 
+                                    {...this.props}
                                     layout_id={item.id} 
                                     location="left"
+                                    items={item.left}
                                 />
                                 <LayoutCell 
+                                    {...this.props}
                                     layout_id={item.id} 
                                     location="right"
+                                    items={item.right}
                                 />
                             </tr>
                         </tbody>
                         </table>
                     );
                 }
-            }
         });
     }
 
@@ -183,11 +82,42 @@ class Preview extends Component
 
 class FullPreview extends Component
 {
+    renderItems = () =>
+    {
+        return this.props.items.map( item => {
+            if(item.layout_type === 1)
+            {
+                return (
+                    <table style={styles.layout_table} key={item.id} >
+                    <tbody>
+                        <tr>
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.leftHTML }}
+                            />
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.rightHTML }}
+                            />
+                        </tr>
+                    </tbody>
+                    </table>
+                );
+            }
+    });
+    }
+
+    renderStaticPage = () =>
+    {
+        return (
+            <div>
+                {this.renderItems()}
+            </div>
+        );
+    }
     
     download()
     {
         var element = document.createElement('a');
-        const htmlString = ReactDOMServer.renderToStaticMarkup(<Preview {...this.props} />);
+        const htmlString = ReactDOMServer.renderToStaticMarkup(this.renderStaticPage());
         //console.log(htmlString);
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(htmlString));
         element.setAttribute('download', "email.html");
@@ -239,6 +169,13 @@ const styles = {
     item_img: {
         width: "100%",
         objectFit: "contain"
+    },
+
+    layout_table: {
+        width: '90%',
+        margin: 10,
+        marginLeft: "5%",
+        marginRight: "5%" 
     }
 }
 
@@ -256,5 +193,7 @@ export default connect(mapStateToProps, {
     edit_hr,
     edit_p,
     edit_img,
-    update_action
-})(DropTarget('item', {}, collect)(FullPreview));
+    update_action,
+    update_action,
+    edit_layout_HTML
+})(DropTarget('layout', {}, collect)(FullPreview));

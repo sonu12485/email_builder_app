@@ -8,17 +8,34 @@ import {
 
 import { edit_styles } from '../../actions/edit_actions';
 
-class styles_h1 extends Component 
+class Styles_text extends Component 
 {
     constructor(props)
     {
         super(props);
 
-        const id = this.props.id;
+        const { id, layout_id, position } = this.props;
 
-        const selectedItem = this.props.items.find( item => {
-            return item.id === id
-        });
+        let x;
+        const selectedItem = this.props.items.map( item => {
+            if(item.id === layout_id)
+            {
+                if(position === 'left')
+                {
+                    x = item.left.find( component => {
+                        return component.id === id
+                    });
+                    return x;
+                }
+                else
+                {
+                    x = item.right.find( component => {
+                        return component.id === id
+                    });
+                    return x;
+                }
+            }
+        })[0];
 
         this.state={
             styles: selectedItem.styles
@@ -52,7 +69,9 @@ class styles_h1 extends Component
         () => {
             this.props.edit_styles(
                 this.props.id,
-                this.state.styles
+                this.state.styles,
+                this.props.layout_id,
+                this.props.position
             );
             this.props.update();
         }
@@ -72,7 +91,9 @@ class styles_h1 extends Component
             () => {
                 this.props.edit_styles(
                     this.props.id,
-                    this.state.styles
+                    this.state.styles,
+                    this.props.layout_id,
+                    this.props.position
                 );
                 this.props.update();
             }
@@ -294,4 +315,4 @@ function mapStateToProps(state)
     }
 }
 
-export default connect(mapStateToProps, { edit_styles })(styles_h1);
+export default connect(mapStateToProps, { edit_styles })(Styles_text);

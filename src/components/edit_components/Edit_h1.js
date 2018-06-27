@@ -9,7 +9,6 @@ import {
 } from '../../actions/edit_actions';
 
 import StyleEditor from '../styles_component/styles_text';
-import MoveManager from '../move_components/move_handler';
 
 class Edit_h1 extends Component 
 {
@@ -17,9 +16,26 @@ class Edit_h1 extends Component
     {
         super(props);
 
-        const selectedItem = this.props.items.find( item => {
-            return item.id === this.props.data.id
-        });
+        let x;
+        const selectedItem = this.props.items.map( item => {
+            if(item.id === this.props.data.layout_id)
+            {
+                if(this.props.data.position === 'left')
+                {
+                    x = item.left.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+                else
+                {
+                    x = item.right.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
+            }
+        })[0];
 
         const data = selectedItem.data;
 
@@ -30,22 +46,26 @@ class Edit_h1 extends Component
 
     deleteElement = () =>
     {
-        const id = this.props.data.id;
+        const { id, layout_id, position } = this.props.data;
         
-        this.props.delete_item(id);
+        this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_h1();
     }
 
     onInputChange = (event) => 
     {
+        const { id, layout_id, position } = this.props.data;
+
         this.setState({
             data: event.target.value
         },
         () => {
             this.props.edit_h1_data(
-                this.props.data.id,
-                this.state.data
+                id,
+                this.state.data,
+                layout_id,
+                position
             );
             this.props.update();
         }
@@ -57,11 +77,6 @@ class Edit_h1 extends Component
         return (
             <div>
 
-                <MoveManager 
-                    id={this.props.data.id} 
-                    update={this.props.update}
-                />
-
                 <div className="editor" >
                     <Input type="textarea" 
                         value={this.state.data} 
@@ -72,6 +87,8 @@ class Edit_h1 extends Component
                 <div>
                     <StyleEditor 
                         id={this.props.data.id} 
+                        layout_id={this.props.data.layout_id}
+                        position={this.props.data.position}
                         update={this.props.update}
                     />
                 </div>

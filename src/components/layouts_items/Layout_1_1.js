@@ -16,12 +16,11 @@ const spec = {
         if(monitor.didDrop())
         {
             console.log("ED");
-            //console.log(monitor.getDropResult());
 
             //call a action 
             if(!monitor.getDropResult().layout_id)
             {
-                props.addLayout(1);
+                props.addLayout(0);
             }
         }
         else
@@ -40,13 +39,13 @@ function collect(connect, monitor)
     }
 }
 
-class Layout_1_2 extends Component {
+class Layout_1_1 extends Component 
+{
     render() {
         const { connectDragSource, connectDragPreview, isDragging } = this.props;
 
         return connectDragSource(
             <div className="layout_items" >
-                <div className="layout_inside_blocks" ></div>
                 <div className="layout_inside_blocks" ></div>
             </div>
         );
@@ -55,4 +54,4 @@ class Layout_1_2 extends Component {
 
 export default connect(null, { 
     addLayout 
-})(DragSource('layout', spec, collect)(Layout_1_2));
+})(DragSource('layout', spec, collect)(Layout_1_1));

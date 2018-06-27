@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 
 import { edit_img, delete_item, edit_img_src } from '../../actions/edit_actions';
 
-import MoveManager from '../move_components/move_handler';
-
 class Edit_img extends Component 
 {
     constructor(props)
@@ -50,11 +48,6 @@ class Edit_img extends Component
     {
         return (
             <div>
-
-                <MoveManager 
-                    id={this.props.data.id} 
-                    update={this.props.update}
-                />
                 
                 <div>
                     <div className="img_input_conatiner" >

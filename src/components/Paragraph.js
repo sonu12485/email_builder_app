@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addParagraph } from '../actions';
+import { addParagraph, addItemToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -28,9 +28,14 @@ const spec = {
             consequat voluptate. Culpa nulla sit nisi adipisicing nostrud ipsum. 
             Anim irure cupidatat id proident ut ex aute est nisi.`;
             //call a action 
-            if(monitor.getDropResult().layout_id)
+            if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
-
+                props.addItemToLayout(
+                    data,
+                    monitor.getDropResult().layout_id,
+                    monitor.getDropResult().location,
+                    "p"
+                );
             }
             else
             {
@@ -65,4 +70,6 @@ class Paragraph extends Component {
     }
 }
 
-export default connect(null, { addParagraph })(DragSource('item', spec, collect)(Paragraph));
+export default connect(null, { 
+    addParagraph, addItemToLayout
+ })(DragSource('item', spec, collect)(Paragraph));

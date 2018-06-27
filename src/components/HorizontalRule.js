@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addhr } from '../actions';
+import { addhr, addHrToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -17,13 +17,16 @@ const spec = {
         {
             console.log("ED");
             //call a action 
-            if(monitor.getDropResult().layout_id)
+            if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
-
+                props.addHrToLayout(
+                    monitor.getDropResult().layout_id,
+                    monitor.getDropResult().location
+                );
             }
             else
             {
-                props.addhr("Heading");
+                props.addhr();
             }
         }
         else
@@ -54,4 +57,6 @@ class HorizontalRule extends Component {
     }
 }
 
-export default connect(null, { addhr })(DragSource('item', spec, collect)(HorizontalRule));
+export default connect(null, { 
+    addhr, addHrToLayout 
+})(DragSource('item', spec, collect)(HorizontalRule));

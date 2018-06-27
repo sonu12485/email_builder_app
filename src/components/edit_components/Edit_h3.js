@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { edit_h3, edit_h3_data, delete_item } from '../../actions/edit_actions';
 
 import StyleEditor from '../styles_component/styles_text';
-import MoveManager from '../move_components/move_handler';
 
 class Edit_h3 extends Component 
 {
@@ -54,11 +53,6 @@ class Edit_h3 extends Component
     {
         return (
             <div>
-
-                <MoveManager 
-                    id={this.props.data.id} 
-                    update={this.props.update}
-                />
 
                 <div className="editor" >
                     <Input type="textarea" 
