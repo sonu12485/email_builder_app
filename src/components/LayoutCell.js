@@ -151,6 +151,8 @@ class LayoutCell extends Component {
         
         if(this.props.items.length === 0)
         {
+            this.props.edit_layout_HTML("", this.props.layout_id, this.props.location);
+
             return connectDropTarget(
                 <td className="layout_table_cells"
                 >Drop Components here.</td>

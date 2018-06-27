@@ -268,6 +268,20 @@ export default function( state=[], action )
                     rightHTML: ''
                 }]);
             }
+            else if(action.payload.layout_type === 2)
+            {
+                return state.concat([{
+                    type:"layout", 
+                    layout_type: action.payload.layout_type,
+                    id: action.payload.id ,
+                    left: [],
+                    center: [],
+                    right: [],
+                    leftHTML: '',
+                    centerHTML: '',
+                    rightHTML: ''
+                }]);
+            }
 
         case "ITEM_ADDED_TO_LAYOUT":
 

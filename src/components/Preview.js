@@ -72,6 +72,35 @@ class Preview extends Component
                         </table>
                     );
                 }
+                else if(item.layout_type === 2)
+                {
+                    return (
+                        <table style={styles.layout_table} key={item.id} >
+                        <tbody>
+                            <tr>
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="left"
+                                    items={item.left}
+                                />
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="center"
+                                    items={item.center}
+                                />
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="right"
+                                    items={item.right}
+                                />
+                            </tr>
+                        </tbody>
+                        </table>
+                    );
+                }
         });
     }
 
@@ -123,6 +152,26 @@ class FullPreview extends Component
                         <tr>
                             <td 
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
+                            />
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.rightHTML }}
+                            />
+                        </tr>
+                    </tbody>
+                    </table>
+                );
+            }
+            else if(item.layout_type === 2)
+            {
+                return (
+                    <table style={styles.layout_table} key={item.id} >
+                    <tbody>
+                        <tr>
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.leftHTML }}
+                            />
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.centerHTML }}
                             />
                             <td 
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}

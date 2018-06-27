@@ -159,6 +159,15 @@
     background-color: #E3F4FA;
 }
 
+.layout_inside_blocks_3{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6666FF;
+    width:33.3333%;
+    height: 50px;
+    background-color: #E3F4FA;
+}
+
 .layout_table_cells{
     height: 100px;
     background-color: #E3F4FA;
