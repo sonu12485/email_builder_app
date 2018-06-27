@@ -17,7 +17,7 @@ class Styles_text extends Component
         const { id, layout_id, position } = this.props;
 
         let x;
-        const selectedItem = this.props.items.map( item => {
+        const selectedItemArray = this.props.items.map( item => {
             if(item.id === layout_id)
             {
                 if(position === 'left')
@@ -27,15 +27,26 @@ class Styles_text extends Component
                     });
                     return x;
                 }
-                else
+                else if(position === 'right')
                 {
                     x = item.right.find( component => {
                         return component.id === id
                     });
                     return x;
                 }
+                else if(position === 'center')
+                {
+                    x = item.center.find( component => {
+                        return component.id === id
+                    });
+                    return x;
+                }
             }
-        })[0];
+        });
+
+        const selectedItem = selectedItemArray.find( item => {
+            return item
+        });
 
         this.state={
             styles: selectedItem.styles

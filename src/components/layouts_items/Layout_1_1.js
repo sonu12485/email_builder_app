@@ -46,7 +46,7 @@ class Layout_1_1 extends Component
 
         return connectDragSource(
             <div className="layout_items" >
-                <div className="layout_inside_blocks" ></div>
+                <div className="layout_inside_blocks_1" ></div>
             </div>
         );
     }

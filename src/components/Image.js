@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addImage, addImageToLayout } from '../actions';
+import { addImageToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -25,10 +25,10 @@ const spec = {
                     monitor.getDropResult().location
                 );
             }
-            else
+            /*else
             {
                 props.addImage("http://via.placeholder.com/500x250");
-            }
+            }*/
         }
         else
         {
@@ -59,5 +59,5 @@ class Image extends Component {
 }
 
 export default connect(null, { 
-    addImage, addImageToLayout 
+    addImageToLayout 
 })(DragSource('item', spec, collect)(Image));

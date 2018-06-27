@@ -84,9 +84,18 @@ export default function( state=[], action )
                             }
                         });
                     }
-                    else
+                    else if(action.payload.position === 'right')
                     {
                         item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
                             if(component.id === action.payload.id)
                             {
                                 component.data = action.payload.data; 
@@ -144,13 +153,21 @@ export default function( state=[], action )
 
                         item.left = x;
                     }
-                    else
+                    else if(action.payload.position === 'right')
                     {
                         x = item.right.filter( component => {
                             return action.payload.id !== component.id
                         });
 
                         item.right = x;
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        x = item.center.filter( component => {
+                            return action.payload.id !== component.id
+                        });
+
+                        item.center = x;
                     }
                 }
             });
@@ -171,9 +188,18 @@ export default function( state=[], action )
                             }
                         });
                     }
-                    else
+                    else if(action.payload.position === 'right')
                     {
                         item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.styles = action.payload.styles; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
                             if(component.id === action.payload.id)
                             {
                                 component.styles = action.payload.styles; 
@@ -220,7 +246,17 @@ export default function( state=[], action )
 
         case "LAYOUT_ADDED":
             
-            if(action.payload.layout_type === 1)
+            if(action.payload.layout_type === 0)
+            {
+                return state.concat([{
+                    type:"layout", 
+                    layout_type: action.payload.layout_type,
+                    id: action.payload.id ,
+                    center: [],
+                    centerHTML: ''
+                }]);
+            }
+            else if(action.payload.layout_type === 1)
             {
                 return state.concat([{
                     type:"layout", 
@@ -249,9 +285,20 @@ export default function( state=[], action )
                             position: action.payload.position 
                         });
                     }
-                    else
+                    else if(action.payload.position === "right")
                     {
                         item.right.push({
+                            type: action.payload.type, 
+                            data: action.payload.data, 
+                            styles: initStyle,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
                             type: action.payload.type, 
                             data: action.payload.data, 
                             styles: initStyle,
@@ -280,9 +327,19 @@ export default function( state=[], action )
                             position: action.payload.position 
                         });
                     }
-                    else
+                    else if(action.payload.position === "right")
                     {
                         item.right.push({
+                            type:"hr", 
+                            id: action.payload.id, 
+                            styles: [],
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
                             type:"hr", 
                             id: action.payload.id, 
                             styles: [],
@@ -311,9 +368,20 @@ export default function( state=[], action )
                             position: action.payload.position 
                         });
                     }
-                    else
+                    else if(action.payload.position === "right")
                     {
                         item.right.push({
+                            type:"img", 
+                            src: action.payload.src, 
+                            styles: [],
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
                             type:"img", 
                             src: action.payload.src, 
                             styles: [],
@@ -336,9 +404,13 @@ export default function( state=[], action )
                     {
                         item.leftHTML = action.payload.html;
                     }
-                    else
+                    else if(action.payload.position === "right")
                     {
                         item.rightHTML = action.payload.html;
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.centerHTML = action.payload.html;
                     }
                 }
             });

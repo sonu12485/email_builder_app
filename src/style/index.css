@@ -141,12 +141,21 @@
     align-items: center;
 }
 
-.layout_inside_blocks{
+.layout_inside_blocks_1{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6666FF;
+    width:100%;
+    height: 50px;
+    background-color: #E3F4FA;
+}
+
+.layout_inside_blocks_2{
     border-style: solid;
     border-width: 1px;
     border-color: #6666FF;
     width:50%;
-    height: 70px;
+    height: 50px;
     background-color: #E3F4FA;
 }
 

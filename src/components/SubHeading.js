@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addSubHeading, addItemToLayout } from '../actions';
+import { addItemToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -26,10 +26,10 @@ const spec = {
                     "h3"
                 );
             }
-            else
+            /*else
             {
                 props.addSubHeading("Sub-Heading");
-            }
+            }*/
         }
         else
         {
@@ -61,5 +61,5 @@ class SubHeading extends Component
 }
 
 export default connect(null, { 
-    addSubHeading, addItemToLayout
+    addItemToLayout
  })(DragSource('item', spec, collect)(SubHeading));

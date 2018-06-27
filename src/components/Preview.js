@@ -32,7 +32,24 @@ class Preview extends Component
     {
         console.log(this.props.items);
         return this.props.items.map( item => {
-                if(item.layout_type === 1)
+                if(item.layout_type === 0)
+                {
+                    return (
+                        <table style={styles.layout_table} key={item.id} >
+                        <tbody>
+                            <tr>
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="center"
+                                    items={item.center}
+                                />
+                            </tr>
+                        </tbody>
+                        </table>
+                    );
+                }
+                else if(item.layout_type === 1)
                 {
                     return (
                         <table style={styles.layout_table} key={item.id} >
@@ -63,7 +80,6 @@ class Preview extends Component
         if(this.props.flag_update)
         {
             console.log("update");
-            this.forceUpdate();
             this.props.update_action();
         }
     }
@@ -85,7 +101,21 @@ class FullPreview extends Component
     renderItems = () =>
     {
         return this.props.items.map( item => {
-            if(item.layout_type === 1)
+            if(item.layout_type === 0)
+            {
+                return (
+                    <table style={styles.layout_table} key={item.id} >
+                    <tbody>
+                        <tr>
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.centerHTML }}
+                            />
+                        </tr>
+                    </tbody>
+                    </table>
+                );
+            }
+            else if(item.layout_type === 1)
             {
                 return (
                     <table style={styles.layout_table} key={item.id} >

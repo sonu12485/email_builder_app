@@ -140,7 +140,6 @@ class LayoutCell extends Component {
         if(this.props.flag_update)
         {
             console.log("update");
-            this.forceUpdate();
             this.props.update_action();
         }
     }

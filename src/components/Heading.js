@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addHeading, addItemToLayout } from '../actions';
+import { addItemToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -26,10 +26,10 @@ const spec = {
                     "h1"
                 );
             }
-            else
+            /*else
             {
                 props.addHeading("Heading");
-            }
+            }*/
         }
         else
         {
@@ -60,5 +60,5 @@ class Heading extends Component {
 }
 
 export default connect(null, { 
-    addHeading, addItemToLayout 
+    addItemToLayout 
 })(DragSource('item', spec, collect)(Heading));

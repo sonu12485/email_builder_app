@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-
+/*
 export function addHeading(data)
 {
     return {
@@ -54,7 +54,7 @@ export function addImage(src)
         }
     }
 }
-
+*/
 
 export function addLayout(layout_type)
 {

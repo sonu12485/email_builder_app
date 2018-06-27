@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addParagraph, addItemToLayout } from '../actions';
+import { addItemToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -37,10 +37,10 @@ const spec = {
                     "p"
                 );
             }
-            else
+            /*else
             {
                 props.addParagraph(data);
-            }
+            }*/
         }
         else
         {
@@ -71,5 +71,5 @@ class Paragraph extends Component {
 }
 
 export default connect(null, { 
-    addParagraph, addItemToLayout
+    addItemToLayout
  })(DragSource('item', spec, collect)(Paragraph));

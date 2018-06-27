@@ -15,9 +15,10 @@ class Edit_h1 extends Component
     constructor(props)
     {
         super(props);
+        console.log(this.props.data);
 
         let x;
-        const selectedItem = this.props.items.map( item => {
+        const selectedItemArray = this.props.items.map( item => {
             if(item.id === this.props.data.layout_id)
             {
                 if(this.props.data.position === 'left')
@@ -27,15 +28,26 @@ class Edit_h1 extends Component
                     });
                     return x;
                 }
-                else
+                else if(this.props.data.position === 'right')
                 {
                     x = item.right.find( component => {
                         return component.id === this.props.data.id
                     });
                     return x;
                 }
+                else if(this.props.data.position === 'center')
+                {
+                    x = item.center.find( component => {
+                        return component.id === this.props.data.id
+                    });
+                    return x;
+                }
             }
-        })[0];
+        });
+
+        const selectedItem = selectedItemArray.find( item => {
+            return item
+        });
 
         const data = selectedItem.data;
 

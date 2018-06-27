@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addhr, addHrToLayout } from '../actions';
+import { addHrToLayout } from '../actions';
 
 const spec = {
     beginDrag(props) 
@@ -24,10 +24,10 @@ const spec = {
                     monitor.getDropResult().location
                 );
             }
-            else
+            /*else
             {
                 props.addhr();
-            }
+            }*/
         }
         else
         {
@@ -58,5 +58,5 @@ class HorizontalRule extends Component {
 }
 
 export default connect(null, { 
-    addhr, addHrToLayout 
+    addHrToLayout 
 })(DragSource('item', spec, collect)(HorizontalRule));
