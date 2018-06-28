@@ -19,56 +19,6 @@ export default function( state=[], action )
     let x;
 
     switch (action.type) {
-        /*
-        case "HEADING_ADDED":
-            return state.concat([{
-                type:"h1", 
-                data: action.payload.data, 
-                styles: initStyle,
-                id: action.payload.id,
-                layout_id: null,
-                position: null 
-            }]);
-
-        case "SUB_HEADING_ADDED":
-            return state.concat([{
-                type:"h3", 
-                data: action.payload.data, 
-                styles: initStyle,
-                id: action.payload.id,
-                layout_id: null,
-                position: null 
-            }]);
-
-        case "HR_ADDED":
-            return state.concat([{
-                type:"hr", 
-                id: action.payload.id, 
-                styles: [],
-                layout_id: null,
-                position: null 
-            }]);
-
-        case "PARAGRAPH_ADDED":
-            return state.concat([{
-                type:"p", 
-                data: action.payload.data, 
-                styles: initStyle,
-                id: action.payload.id,
-                layout_id: null,
-                position: null 
-            }]);
-
-        case "IMAGE_ADDED": 
-            return state.concat([{
-                type:"img", 
-                src: action.payload.src, 
-                styles: [],
-                id: action.payload.id,
-                layout_id: null,
-                position: null 
-            }]);
-        */
 
         case "EDIT_H1_DATA":
             

@@ -30,10 +30,6 @@ const spec = {
                     "p"
                 );
             }
-            /*else
-            {
-                props.addParagraph(data);
-            }*/
         }
         else
         {

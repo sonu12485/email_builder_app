@@ -25,10 +25,6 @@ const spec = {
                     monitor.getDropResult().location
                 );
             }
-            /*else
-            {
-                props.addImage("http://via.placeholder.com/500x250");
-            }*/
         }
         else
         {

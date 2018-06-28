@@ -24,10 +24,6 @@ const spec = {
                     monitor.getDropResult().location
                 );
             }
-            /*else
-            {
-                props.addhr();
-            }*/
         }
         else
         {

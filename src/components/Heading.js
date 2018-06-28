@@ -26,10 +26,6 @@ const spec = {
                     "h1"
                 );
             }
-            /*else
-            {
-                props.addHeading("Heading");
-            }*/
         }
         else
         {
