@@ -85,6 +85,15 @@ class Edit_h3 extends Component
     {
         return (
             <div>
+                
+                <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => this.props.edit_h3() }
+                    >DONE</Button>
+                    <Button color="danger" 
+                        onClick={ () => this.deleteElement() }
+                    >DELETE</Button>
+                </div>
 
                 <div className="editor" >
                     <Input type="textarea" 
@@ -102,14 +111,6 @@ class Edit_h3 extends Component
                     />
                 </div>
 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_h3() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
-                </div>
                 <br />
                 <br />
 

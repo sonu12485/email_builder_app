@@ -86,6 +86,15 @@ class Edit_p extends Component
         return (
             <div>
 
+                <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => this.props.edit_p() }
+                    >DONE</Button>
+                    <Button color="danger" 
+                        onClick={ () => this.deleteElement() }
+                    >DELETE</Button>
+                </div>
+
                 <div className="editor" >
                     <Input type="textarea" 
                         style={{height: 400}}
@@ -103,14 +112,6 @@ class Edit_p extends Component
                     />
                 </div>
                 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_p() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
-                </div>
                 <br />
                 <br />
 
