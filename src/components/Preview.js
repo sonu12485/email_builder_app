@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button } from 'reactstrap';
+import { Button, Badge } from 'reactstrap';
 
 import ReactToPrint from "react-to-print";
 
@@ -10,7 +10,7 @@ import ReactDOMServer from 'react-dom/server';
 import { DropTarget } from 'react-dnd';
 
 import { 
-    edit_h1, edit_h3, edit_hr, edit_p, edit_img, edit_layout_HTML 
+    edit_h1, edit_h3, edit_hr, edit_p, edit_img, edit_layout_HTML, delete_layout 
 } from '../actions/edit_actions';
 
 import { update as update_action } from '../actions/index';
@@ -35,9 +35,11 @@ class Preview extends Component
                 if(item.layout_type === 0)
                 {
                     return (
-                        <table style={styles.layout_table} key={item.id} >
+                        <table className="layout"
+                            style={styles.layout_table} key={item.id} 
+                        >
                         <tbody>
-                            <tr>
+                            <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -45,6 +47,18 @@ class Preview extends Component
                                     items={item.center}
                                 />
                             </tr>
+
+                            <tr className="badge" >
+                                <td><h5>
+                                <Badge color="primary"> MOVE LAYOUT </Badge>
+                                </h5></td>
+                                <td><h5>
+                                <Badge color="danger"
+                                    onClick={ () => this.props.delete_layout(item.id) }
+                                > DELETE LAYOUT </Badge>
+                                </h5></td>
+                            </tr>
+
                         </tbody>
                         </table>
                     );
@@ -52,9 +66,11 @@ class Preview extends Component
                 else if(item.layout_type === 1)
                 {
                     return (
-                        <table style={styles.layout_table} key={item.id} >
+                        <table  className="layout"
+                            style={styles.layout_table} key={item.id} 
+                        >
                         <tbody>
-                            <tr>
+                            <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -68,6 +84,18 @@ class Preview extends Component
                                     items={item.right}
                                 />
                             </tr>
+
+                            <tr className="badge" >
+                                <td><h5>
+                                <Badge color="primary"> MOVE LAYOUT </Badge>
+                                </h5></td>
+                                <td><h5>
+                                <Badge color="danger"
+                                    onClick={ () => this.props.delete_layout(item.id) }
+                                > DELETE LAYOUT </Badge>
+                                </h5></td>
+                            </tr>
+
                         </tbody>
                         </table>
                     );
@@ -75,9 +103,11 @@ class Preview extends Component
                 else if(item.layout_type === 2)
                 {
                     return (
-                        <table style={styles.layout_table} key={item.id} >
+                        <table className="layout" 
+                            style={styles.layout_table} key={item.id} 
+                        >
                         <tbody>
-                            <tr>
+                            <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -97,6 +127,18 @@ class Preview extends Component
                                     items={item.right}
                                 />
                             </tr>
+
+                            <tr className="badge" >
+                                <td><h5>
+                                <Badge color="primary"> MOVE LAYOUT </Badge>
+                                </h5></td>
+                                <td><h5>
+                                <Badge color="danger"
+                                    onClick={ () => this.props.delete_layout(item.id) }
+                                > DELETE LAYOUT </Badge>
+                                </h5></td>
+                            </tr>
+
                         </tbody>
                         </table>
                     );
@@ -116,10 +158,16 @@ class Preview extends Component
     render() 
     {
         const { connectDropTarget, hovered, item } = this.props;
+
+        const style= { ...this.props.body };
         
         return connectDropTarget(
-            <div className="preview" >
+            <div className="preview_container" >
+            <div className="preview" 
+                style={ style }
+            >
                 {this.renderItems()}
+            </div>
             </div>
         );
     }
@@ -186,9 +234,15 @@ class FullPreview extends Component
 
     renderStaticPage = () =>
     {
+        const style= { ...this.props.body };
+
         return (
-            <div>
+            <div style={styles.HTMLPageContainer} >
+            <div style={ style } >
+                <div style={{ width: '100%', height: '100vh' }} >
                 {this.renderItems()}
+                </div>
+            </div>
             </div>
         );
     }
@@ -254,7 +308,15 @@ const styles = {
         width: '90%',
         margin: 10,
         marginLeft: "5%",
-        marginRight: "5%" 
+        marginRight: "5%",
+        tableLayout: "fixed", 
+    },
+
+    HTMLPageContainer: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#eee"
     }
 }
 
@@ -262,7 +324,8 @@ function mapStateToProps(state)
 {
     return { 
         items: state.items,
-        flag_update: state.update
+        flag_update: state.update,
+        body: state.body
     }
 }
 
@@ -274,5 +337,6 @@ export default connect(mapStateToProps, {
     edit_img,
     update_action,
     update_action,
-    edit_layout_HTML
+    edit_layout_HTML,
+    delete_layout
 })(DropTarget('layout', {}, collect)(FullPreview));

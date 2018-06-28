@@ -7,6 +7,7 @@ import Update from './reducer_update';
 import Edit_hr from './reducer_edit_hr';
 import Edit_p from './reducer_edit_p';
 import Edit_img from './reducer_edit_img';
+import Body from './reducer_body';
 
 const rootReducer = combineReducers({
     items: Items,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     update: Update,
     hr_edit: Edit_hr,
     p_edit: Edit_p,
-    img_edit: Edit_img
+    img_edit: Edit_img,
+    body: Body
 });
 
 export default rootReducer;

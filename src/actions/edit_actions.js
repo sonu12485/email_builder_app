@@ -148,6 +148,44 @@ export function edit_layout_HTML(html, layout_id, position)
     }
 }
 
+export function delete_layout(id)
+{
+    return {
+        type: 'DELETE_LAYOUT',
+        payload: {
+            id
+        }
+    }
+}
+
+export function edit_body_width(width)
+{
+    return {
+        type: "CHANGE_BODY_WIDTH",
+        payload: {
+            width
+        }
+    }
+}
+
+export function edit_body_background(color)
+{
+    return {
+        type: "CHANGE_BODY_BACKGROUND",
+        payload: {
+            color
+        }
+    }
+}
+
+export function edit_body_padding(body)
+{
+    return {
+        type: "CHANGE_PADDING",
+        payload: body
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

@@ -458,6 +458,12 @@ export default function( state=[], action )
             });
 
             return state;
+
+        case 'DELETE_LAYOUT':
+            
+            return state.filter( item => {
+                return item.id !== action.payload.id
+            });
     
         default:
             return state;

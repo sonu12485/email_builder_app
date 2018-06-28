@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 import Items from './Items';
 import Layouts from './Layouts';
+import Body from './Body';
 import Preview from './Preview';
 import Edit_h1 from './edit_components/Edit_h1';
 import Edit_h3 from './edit_components/Edit_h3';
@@ -24,7 +25,7 @@ class App extends Component
     super(props);
 
     this.state={
-      tabs_flag: true
+      tabs_flag: 0
     }
   }
 
@@ -73,60 +74,127 @@ class App extends Component
 
   renderItemsOrLayouts = () => 
   {
-    if(this.state.tabs_flag)
+    if(this.state.tabs_flag === 0)
     {
       return <Items />
     }
-    else
+    else if(this.state.tabs_flag === 1)
     {
       return <Layouts />
+    }
+    else if(this.state.tabs_flag === 2)
+    {
+      return <Body />
     }
   }
 
   renderMenu = () =>
   {
-    if(this.state.tabs_flag)
+    if(this.state.tabs_flag === 0)
     {
       return (
         <div>
         <div className="tabs_container" >
         <div className="tabs" >
+
           <div className="tab active" >
-            <div>Components</div>
+            <div>Content</div>
           </div>
+
           <div className="tab inactive" 
             onClick = { () => {
               this.setState({
-                tabs_flag: false
+                tabs_flag: 1
               })
             }}
           >
             <div>Layouts</div>
           </div>
+
+          <div className="tab inactive" 
+            onClick = { () => {
+              this.setState({
+                tabs_flag: 2
+              })
+            }}
+          >
+            <div>Body</div>
+          </div>
+
         </div>
         </div>
           {this.renderItemsOrLayouts()}
         </div>
       );
     }
-    else
+    else if(this.state.tabs_flag === 1)
     {
       return (
         <div>
         <div className="tabs_container" >
         <div className="tabs" >
+
           <div className="tab inactive" 
             onClick = { () => {
               this.setState({
-                tabs_flag: true
+                tabs_flag: 0
               })
             }}
           >
-            <div>Components</div>
+            <div>Content</div>
           </div>
+
           <div className="tab active" >
             <div>Layouts</div>
           </div>
+
+          <div className="tab inactive" 
+            onClick = { () => {
+              this.setState({
+                tabs_flag: 2
+              })
+            }}
+          >
+            <div>Body</div>
+          </div>
+
+        </div>
+        </div>
+          {this.renderItemsOrLayouts()}
+        </div>
+      );  
+    }
+    else if(this.state.tabs_flag === 2)
+    {
+      return (
+        <div>
+        <div className="tabs_container" >
+        <div className="tabs" >
+
+          <div className="tab inactive" 
+            onClick = { () => {
+              this.setState({
+                tabs_flag: 0
+              })
+            }}
+          >
+            <div>Content</div>
+          </div>
+
+          <div className="tab inactive" 
+            onClick = { () => {
+              this.setState({
+                tabs_flag: 1
+              })
+            }}
+          >
+            <div>Layouts</div>
+          </div>
+
+          <div className="tab active" >
+            <div>Body</div>
+          </div>
+          
         </div>
         </div>
           {this.renderItemsOrLayouts()}

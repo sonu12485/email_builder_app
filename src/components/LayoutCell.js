@@ -165,7 +165,7 @@ class LayoutCell extends Component {
 
             return connectDropTarget(
                 <td style={{ border }} >
-                    {this.renderItems()}
+                    {this.renderItems()} 
                 </td>
             );
         }
