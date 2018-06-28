@@ -153,21 +153,43 @@ class LayoutCell extends Component {
         {
             this.props.edit_layout_HTML("", this.props.layout_id, this.props.location);
 
-            return connectDropTarget(
-                <td className="layout_table_cells"
-                >Drop Components here.</td>
-            );
+            if(this.props.large)
+            {
+                return connectDropTarget(
+                    <td className="layout_table_cells"
+                        colSpan="2"
+                    >Drop Contents here.</td>
+                );
+            }
+            else
+            {
+                return connectDropTarget(
+                    <td className="layout_table_cells"
+                    >Drop Contents here.</td>
+                );
+            }
         }
         else
         {
             const html = ReactDOMServer.renderToStaticMarkup(this.renderItems());
             this.props.edit_layout_HTML(html, this.props.layout_id, this.props.location);
 
-            return connectDropTarget(
-                <td style={{ border }} >
-                    {this.renderItems()} 
-                </td>
-            );
+            if(this.props.large)
+            {
+                return connectDropTarget(
+                    <td style={{ border }} colSpan="2" >
+                        {this.renderItems()} 
+                    </td>
+                );
+            }
+            else
+            {
+                return connectDropTarget(
+                    <td style={{ border }} >
+                        {this.renderItems()} 
+                    </td>
+                );
+            }
         }
         
     }

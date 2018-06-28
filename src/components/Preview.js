@@ -143,6 +143,82 @@ class Preview extends Component
                         </table>
                     );
                 }
+                else if(item.layout_type === 3)
+                {
+                    return (
+                        <table  className="layout"
+                            style={styles.layout_table} key={item.id} 
+                        >
+                        <tbody>
+                            <tr className="primary_row" >
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="left"
+                                    items={item.left}
+                                    large={true}
+                                />
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="right"
+                                    items={item.right}
+                                />
+                            </tr>
+
+                            <tr className="badge" >
+                                <td><h5>
+                                <Badge color="primary"> MOVE LAYOUT </Badge>
+                                </h5></td>
+                                <td><h5>
+                                <Badge color="danger"
+                                    onClick={ () => this.props.delete_layout(item.id) }
+                                > DELETE LAYOUT </Badge>
+                                </h5></td>
+                            </tr>
+
+                        </tbody>
+                        </table>
+                    );
+                }
+                else if(item.layout_type === 4)
+                {
+                    return (
+                        <table  className="layout"
+                            style={styles.layout_table} key={item.id} 
+                        >
+                        <tbody>
+                            <tr className="primary_row" >
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="left"
+                                    items={item.left}
+                                />
+                                <LayoutCell 
+                                    {...this.props}
+                                    layout_id={item.id} 
+                                    location="right"
+                                    items={item.right}
+                                    large={true}
+                                />
+                            </tr>
+
+                            <tr className="badge" >
+                                <td><h5>
+                                <Badge color="primary"> MOVE LAYOUT </Badge>
+                                </h5></td>
+                                <td><h5>
+                                <Badge color="danger"
+                                    onClick={ () => this.props.delete_layout(item.id) }
+                                > DELETE LAYOUT </Badge>
+                                </h5></td>
+                            </tr>
+
+                        </tbody>
+                        </table>
+                    );
+                }
         });
     }
 

@@ -284,7 +284,11 @@ export default function( state=[], action )
                     centerHTML: ''
                 }]);
             }
-            else if(action.payload.layout_type === 1)
+            else if(
+                action.payload.layout_type === 1 || 
+                action.payload.layout_type === 3 || 
+                action.payload.layout_type === 4
+            )
             {
                 return state.concat([{
                     type:"layout", 

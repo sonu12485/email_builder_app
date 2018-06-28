@@ -2,7 +2,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: #345F90;
-    border-radius: 35px;
+    border-radius: 10px;
     width: 90%;
     margin: 10px;
     text-align: center;
@@ -140,8 +140,8 @@
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
-    border-radius: 30px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -162,6 +162,24 @@
     border-width: 1px;
     border-color: #6666FF;
     width:50%;
+    height: 50px;
+    background-color: #E3F4FA;
+}
+
+.layout_inside_blocks_2_large{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6666FF;
+    width:66.6667%;
+    height: 50px;
+    background-color: #E3F4FA;
+}
+
+.layout_inside_blocks_2_small{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6666FF;
+    width:33.3333%;
     height: 50px;
     background-color: #E3F4FA;
 }
