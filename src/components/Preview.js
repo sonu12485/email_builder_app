@@ -305,6 +305,40 @@ class FullPreview extends Component
                     </table>
                 );
             }
+            else if(item.layout_type === 3)
+            {
+                return (
+                    <table style={styles.layout_table} key={item.id} >
+                    <tbody>
+                        <tr>
+                            <td colSpan="2"
+                                dangerouslySetInnerHTML={{ __html: item.leftHTML }}
+                            />
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.rightHTML }}
+                            />
+                        </tr>
+                    </tbody>
+                    </table>
+                );
+            }
+            else if(item.layout_type === 4)
+            {
+                return (
+                    <table style={styles.layout_table} key={item.id} >
+                    <tbody>
+                        <tr>
+                            <td 
+                                dangerouslySetInnerHTML={{ __html: item.leftHTML }}
+                            />
+                            <td colSpan="2"
+                                dangerouslySetInnerHTML={{ __html: item.rightHTML }}
+                            />
+                        </tr>
+                    </tbody>
+                    </table>
+                );
+            }
     });
     }
 
