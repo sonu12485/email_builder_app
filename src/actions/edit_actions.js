@@ -186,6 +186,27 @@ export function edit_body_padding(body)
     }
 }
 
+export function edit_layout(id)
+{
+    return {
+        type: "EDIT_LAYOUT",
+        payload: {
+            id
+        }
+    }
+}
+
+export function edit_layout_styles(id, styles)
+{
+    return {
+        type: "EDIT_LAYOUT_STYLES",
+        payload: {
+            id,
+            styles
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

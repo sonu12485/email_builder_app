@@ -5,7 +5,7 @@ import { Button, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import { 
-    edit_h1, edit_h1_data, delete_item
+    edit_h1, edit_h1_data, delete_item, edit_layout
 } from '../../actions/edit_actions';
 
 import StyleEditor from '../styles_component/styles_text';
@@ -15,6 +15,11 @@ class Edit_h1 extends Component
     constructor(props)
     {
         super(props);
+
+        if(this.props.is_layout_edit)
+        {
+            this.props.edit_layout();
+        }
 
         let x;
         const selectedItemArray = this.props.items.map( item => {
@@ -125,12 +130,14 @@ function mapStateToProps(state)
 {
     return {
         data: state.h1_edit,
-        items: state.items
+        items: state.items,
+        is_layout_edit: state.layout_edit.val
     }
 }
 
 export default connect(mapStateToProps, {
     edit_h1,
     edit_h1_data,
-    delete_item
+    delete_item,
+    edit_layout
 })(Edit_h1);

@@ -6,13 +6,20 @@ import {
 
 import { connect } from 'react-redux';
 
-import { edit_img, delete_item, edit_img_src } from '../../actions/edit_actions';
+import { 
+    edit_img, delete_item, edit_img_src, edit_layout
+ } from '../../actions/edit_actions';
 
 class Edit_img extends Component 
 {
     constructor(props)
     {
         super(props);
+
+        if(this.props.is_layout_edit)
+        {
+            this.props.edit_layout();
+        }
 
         let x;
         const selectedItemArray = this.props.items.map( item => {
@@ -134,12 +141,14 @@ function mapStateToProps(state)
 {
     return {
         data: state.img_edit,
-        items: state.items
+        items: state.items,
+        is_layout_edit: state.layout_edit.val
     }
 }
 
 export default connect(mapStateToProps, {
     edit_img,
     delete_item,
-    edit_img_src
+    edit_img_src,
+    edit_layout
 })(Edit_img);

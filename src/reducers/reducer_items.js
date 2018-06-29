@@ -1,7 +1,7 @@
 const initStyle = {
     fontSize: '',
-    color: '',
-    backgroundColor: '',
+    color: '#000000',
+    backgroundColor: '#ffffff',
     fontFamily: 'sans-serif',
     fontWeight: '',
     fontStyle: '',
@@ -12,6 +12,14 @@ const initStyle = {
     paddingLeft: 0,
     paddingRight: 0
 };
+
+const initLayoutStyles = {
+    backgroundColor: '#ffffff',
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0
+}
 
 export default function( state=[], action )
 {
@@ -281,7 +289,8 @@ export default function( state=[], action )
                     layout_type: action.payload.layout_type,
                     id: action.payload.id ,
                     center: [],
-                    centerHTML: ''
+                    centerHTML: '',
+                    styles: initLayoutStyles
                 }]);
             }
             else if(
@@ -297,7 +306,8 @@ export default function( state=[], action )
                     left: [],
                     right: [],
                     leftHTML: '',
-                    rightHTML: ''
+                    rightHTML: '',
+                    styles: initLayoutStyles
                 }]);
             }
             else if(action.payload.layout_type === 2)
@@ -311,7 +321,8 @@ export default function( state=[], action )
                     right: [],
                     leftHTML: '',
                     centerHTML: '',
-                    rightHTML: ''
+                    rightHTML: '',
+                    styles: initLayoutStyles
                 }]);
             }
 
@@ -468,6 +479,17 @@ export default function( state=[], action )
             return state.filter( item => {
                 return item.id !== action.payload.id
             });
+
+        case 'EDIT_LAYOUT_STYLES':
+
+            state.forEach( item => {
+                if(item.id === action.payload.id)
+                {
+                    item.styles = action.payload.styles
+                }
+            });
+
+            return state;
     
         default:
             return state;

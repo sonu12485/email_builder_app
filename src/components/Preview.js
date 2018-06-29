@@ -10,7 +10,8 @@ import ReactDOMServer from 'react-dom/server';
 import { DropTarget } from 'react-dnd';
 
 import { 
-    edit_h1, edit_h3, edit_hr, edit_p, edit_img, edit_layout_HTML, delete_layout 
+    edit_h1, edit_h3, edit_hr, edit_p, edit_img, 
+    edit_layout_HTML, edit_layout 
 } from '../actions/edit_actions';
 
 import { update as update_action } from '../actions/index';
@@ -34,29 +35,37 @@ class Preview extends Component
         return this.props.items.map( item => {
                 if(item.layout_type === 0)
                 {
+                    let style = {
+                        ...styles.layout_table
+                    };
+
+                    let passedStyles = {};
+
+                    Object.entries(item.styles).forEach(
+                        ([key, value]) => {
+                            if(value)
+                            {
+                                style[key.toString()] = value;
+                                passedStyles[key.toString()] = value;
+                            }
+                        }
+                    );
+
                     return (
                         <table className="layout"
-                            style={styles.layout_table} key={item.id} 
+                            style={style} key={item.id} 
+                            onClick={ () => this.props.edit_layout(item.id) }
                         >
                         <tbody>
+                            
                             <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="center"
                                     items={item.center}
+                                    passedStyles={passedStyles}
                                 />
-                            </tr>
-
-                            <tr className="badge" >
-                                <td><h5>
-                                <Badge color="primary"> MOVE LAYOUT </Badge>
-                                </h5></td>
-                                <td><h5>
-                                <Badge color="danger"
-                                    onClick={ () => this.props.delete_layout(item.id) }
-                                > DELETE LAYOUT </Badge>
-                                </h5></td>
                             </tr>
 
                         </tbody>
@@ -65,35 +74,44 @@ class Preview extends Component
                 }
                 else if(item.layout_type === 1)
                 {
+                    let style = {
+                        ...styles.layout_table
+                    };
+
+                    let passedStyles = {};
+
+                    Object.entries(item.styles).forEach(
+                        ([key, value]) => {
+                            if(value)
+                            {
+                                style[key.toString()] = value;
+                                passedStyles[key.toString()] = value;
+                            }
+                        }
+                    );
+
                     return (
                         <table  className="layout"
-                            style={styles.layout_table} key={item.id} 
+                            style={style} key={item.id} 
+                            onClick={ () => this.props.edit_layout(item.id) }
                         >
                         <tbody>
+
                             <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="left"
                                     items={item.left}
+                                    passedStyles={passedStyles}
                                 />
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="right"
                                     items={item.right}
+                                    passedStyles={passedStyles}
                                 />
-                            </tr>
-
-                            <tr className="badge" >
-                                <td><h5>
-                                <Badge color="primary"> MOVE LAYOUT </Badge>
-                                </h5></td>
-                                <td><h5>
-                                <Badge color="danger"
-                                    onClick={ () => this.props.delete_layout(item.id) }
-                                > DELETE LAYOUT </Badge>
-                                </h5></td>
                             </tr>
 
                         </tbody>
@@ -102,41 +120,51 @@ class Preview extends Component
                 }
                 else if(item.layout_type === 2)
                 {
+                    let style = {
+                        ...styles.layout_table
+                    };
+
+                    let passedStyles = {};                    
+
+                    Object.entries(item.styles).forEach(
+                        ([key, value]) => {
+                            if(value)
+                            {
+                                style[key.toString()] = value;
+                                passedStyles[key.toString()] = value;
+                            }
+                        }
+                    );
+
                     return (
                         <table className="layout" 
-                            style={styles.layout_table} key={item.id} 
+                            style={style} key={item.id} 
+                            onClick={ () => this.props.edit_layout(item.id) }
                         >
                         <tbody>
+
                             <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="left"
                                     items={item.left}
+                                    passedStyles={passedStyles}
                                 />
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="center"
                                     items={item.center}
+                                    passedStyles={passedStyles}
                                 />
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="right"
                                     items={item.right}
+                                    passedStyles={passedStyles}
                                 />
-                            </tr>
-
-                            <tr className="badge" >
-                                <td><h5>
-                                <Badge color="primary"> MOVE LAYOUT </Badge>
-                                </h5></td>
-                                <td><h5>
-                                <Badge color="danger"
-                                    onClick={ () => this.props.delete_layout(item.id) }
-                                > DELETE LAYOUT </Badge>
-                                </h5></td>
                             </tr>
 
                         </tbody>
@@ -145,11 +173,29 @@ class Preview extends Component
                 }
                 else if(item.layout_type === 3)
                 {
+                    let style = {
+                        ...styles.layout_table
+                    };
+
+                    let passedStyles = {};
+
+                    Object.entries(item.styles).forEach(
+                        ([key, value]) => {
+                            if(value)
+                            {
+                                style[key.toString()] = value;
+                                passedStyles[key.toString()] = value;
+                            }
+                        }
+                    );
+
                     return (
                         <table  className="layout"
-                            style={styles.layout_table} key={item.id} 
+                            style={style} key={item.id} 
+                            onClick={ () => this.props.edit_layout(item.id) }
                         >
                         <tbody>
+
                             <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
@@ -157,24 +203,15 @@ class Preview extends Component
                                     location="left"
                                     items={item.left}
                                     large={true}
+                                    passedStyles={passedStyles}
                                 />
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="right"
                                     items={item.right}
+                                    passedStyles={passedStyles}
                                 />
-                            </tr>
-
-                            <tr className="badge" >
-                                <td><h5>
-                                <Badge color="primary"> MOVE LAYOUT </Badge>
-                                </h5></td>
-                                <td><h5>
-                                <Badge color="danger"
-                                    onClick={ () => this.props.delete_layout(item.id) }
-                                > DELETE LAYOUT </Badge>
-                                </h5></td>
                             </tr>
 
                         </tbody>
@@ -183,17 +220,36 @@ class Preview extends Component
                 }
                 else if(item.layout_type === 4)
                 {
+                    let style = {
+                        ...styles.layout_table
+                    };
+
+                    let passedStyles = {};
+
+                    Object.entries(item.styles).forEach(
+                        ([key, value]) => {
+                            if(value)
+                            {
+                                style[key.toString()] = value;
+                                passedStyles[key.toString()] = value;
+                            }
+                        }
+                    );
+
                     return (
                         <table  className="layout"
-                            style={styles.layout_table} key={item.id} 
+                            style={style} key={item.id} 
+                            onClick={ () => this.props.edit_layout(item.id) }
                         >
                         <tbody>
+
                             <tr className="primary_row" >
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
                                     location="left"
                                     items={item.left}
+                                    passedStyles={passedStyles}
                                 />
                                 <LayoutCell 
                                     {...this.props}
@@ -201,18 +257,8 @@ class Preview extends Component
                                     location="right"
                                     items={item.right}
                                     large={true}
+                                    passedStyles={passedStyles}
                                 />
-                            </tr>
-
-                            <tr className="badge" >
-                                <td><h5>
-                                <Badge color="primary"> MOVE LAYOUT </Badge>
-                                </h5></td>
-                                <td><h5>
-                                <Badge color="danger"
-                                    onClick={ () => this.props.delete_layout(item.id) }
-                                > DELETE LAYOUT </Badge>
-                                </h5></td>
                             </tr>
 
                         </tbody>
@@ -256,11 +302,26 @@ class FullPreview extends Component
         return this.props.items.map( item => {
             if(item.layout_type === 0)
             {
+                let style = {
+                    ...styles.layout_table
+                };
+
+                let insideStyle = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            insideStyle[key.toString()] = value;
+                        }
+                    }
+                );
+
                 return (
-                    <table style={styles.layout_table} key={item.id} >
+                    <table style={style} key={item.id} >
                     <tbody>
                         <tr>
-                            <td 
+                            <td style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.centerHTML }}
                             />
                         </tr>
@@ -270,14 +331,33 @@ class FullPreview extends Component
             }
             else if(item.layout_type === 1)
             {
+                let style = {
+                    ...styles.layout_table
+                };
+
+                let insideStyle = {};                
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            insideStyle[key.toString()] = value;
+                            if( key === "backgroundColor" )
+                            {
+                                style[key.toString()] = value;
+                            }
+                        }
+                    }
+                );
+
                 return (
-                    <table style={styles.layout_table} key={item.id} >
+                    <table style={style} key={item.id} >
                     <tbody>
                         <tr>
-                            <td 
+                            <td  style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
-                            <td 
+                            <td  style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -287,17 +367,36 @@ class FullPreview extends Component
             }
             else if(item.layout_type === 2)
             {
+                let style = {
+                    ...styles.layout_table
+                };
+
+                let insideStyle = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            insideStyle[key.toString()] = value;
+                            if( key === "backgroundColor" )
+                            {
+                                style[key.toString()] = value;
+                            }
+                        }
+                    }
+                );
+
                 return (
-                    <table style={styles.layout_table} key={item.id} >
+                    <table style={style} key={item.id} >
                     <tbody>
                         <tr>
-                            <td 
+                            <td style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
-                            <td 
+                            <td style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.centerHTML }}
                             />
-                            <td 
+                            <td style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -307,14 +406,33 @@ class FullPreview extends Component
             }
             else if(item.layout_type === 3)
             {
+                let style = {
+                    ...styles.layout_table
+                };
+
+                let insideStyle = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            insideStyle[key.toString()] = value;
+                            if( key === "backgroundColor" )
+                            {
+                                style[key.toString()] = value;
+                            }
+                        }
+                    }
+                );
+
                 return (
-                    <table style={styles.layout_table} key={item.id} >
+                    <table style={style} key={item.id} >
                     <tbody>
                         <tr>
-                            <td colSpan="2"
+                            <td colSpan="2" style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
-                            <td 
+                            <td style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -324,14 +442,33 @@ class FullPreview extends Component
             }
             else if(item.layout_type === 4)
             {
+                let style = {
+                    ...styles.layout_table
+                };
+
+                let insideStyle = {};
+
+                Object.entries(item.styles).forEach(
+                    ([key, value]) => {
+                        if(value)
+                        {
+                            insideStyle[key.toString()] = value;
+                            if( key === "backgroundColor" )
+                            {
+                                style[key.toString()] = value;
+                            }
+                        }
+                    }
+                );
+
                 return (
-                    <table style={styles.layout_table} key={item.id} >
+                    <table style={style} key={item.id} >
                     <tbody>
                         <tr>
-                            <td 
+                            <td style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
-                            <td colSpan="2"
+                            <td colSpan="2" style={insideStyle}
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -446,7 +583,6 @@ export default connect(mapStateToProps, {
     edit_p,
     edit_img,
     update_action,
-    update_action,
     edit_layout_HTML,
-    delete_layout
+    edit_layout
 })(DropTarget('layout', {}, collect)(FullPreview));

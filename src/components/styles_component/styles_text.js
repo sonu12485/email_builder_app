@@ -262,14 +262,16 @@ class Styles_text extends Component
                 <div>
                     <br />
                     <Label>Select Font Color</Label>
-                    <Input type="color" 
+                    <Input type="color" style={{height: 40}}
+                        value={this.state.styles.color}
                         onChange = { (event) => this.onChangeInput('color',event) } 
                     />
                 </div>
                 <div>
                     <br />
                     <Label>Select Background Color</Label>
-                    <Input type="color" 
+                    <Input type="color" style={{height: 40}}
+                        value={this.state.styles.backgroundColor}
                         onChange = { (event) => this.onChangeInput('backgroundColor',event) } 
                     />
                 </div>

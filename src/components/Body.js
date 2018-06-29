@@ -45,7 +45,8 @@ class Body extends Component
                 <div>
                     <br />
                     <Label>Select Background Color</Label>
-                    <Input type="color" 
+                    <Input type="color" style={{height: 40}}
+                        value={this.props.body.background}
                         onChange = { (event) => {
                             this.props.edit_body_background(event.target.value);
                         } } 

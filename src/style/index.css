@@ -200,39 +200,28 @@
     border: 1px solid #6666FF;
 }
 
-.layout .badge {
-    display: none;
-}
-
 .layout:hover .primary_row{
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
 }
 
-.layout:hover .badge {
-    display: inline;
-}
-
 .item_h1:hover {
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
-    margin: 10px;
 }
 
 .item_h3:hover {
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
-    margin: 10px;
 }
 
 .item_hr:hover {
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
-    margin: 10px;
 }
 
 
@@ -240,12 +229,10 @@
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
-    margin: 10px;
 }
 
 .item_img:hover {
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;
-    margin: 10px;
 }

@@ -4,10 +4,22 @@ import { Button } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { edit_hr, delete_item } from '../../actions/edit_actions';
+import { 
+    edit_hr, delete_item, edit_layout 
+} from '../../actions/edit_actions';
 
 class Edit_hr extends Component 
 {
+    constructor(props)
+    {
+        super(props);
+
+        if(this.props.is_layout_edit)
+        {
+            this.props.edit_layout();
+        }
+    }
+
     deleteElement = () =>
     {
         const { id, layout_id, position } = this.props.data;
@@ -39,11 +51,13 @@ class Edit_hr extends Component
 function mapStateToProps(state)
 {
     return {
-        data: state.hr_edit
+        data: state.hr_edit,
+        is_layout_edit: state.layout_edit.val
     }
 }
 
 export default connect(mapStateToProps, {
     edit_hr,
-    delete_item
+    delete_item,
+    edit_layout
 })(Edit_hr);
