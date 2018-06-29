@@ -16,6 +16,7 @@ import Edit_hr from './edit_components/Edit_hr';
 import Edit_p from './edit_components/Edit_p';
 import Edit_img from './edit_components/Edit_img';
 import Edit_Layout from './edit_components/Edit_Layout';
+import Edit_btn from './edit_components/Edit_btn';
 
 import { update as update_action } from '../actions/index';
 
@@ -64,6 +65,12 @@ class App extends Component
     else if(this.props.is_img_edit)
     {
       return <Edit_img update ={ () => {
+        this.update()
+      } } />
+    }
+    else if(this.props.is_btn_edit)
+    {
+      return <Edit_btn update ={ () => {
         this.update()
       } } />
     }
@@ -239,7 +246,8 @@ function mapStateToProps(state)
     is_hr_edit: state.hr_edit.val,
     is_p_edit: state.p_edit.val,
     is_img_edit: state.img_edit.val,
-    is_layout_edit: state.layout_edit.val
+    is_layout_edit: state.layout_edit.val,
+    is_btn_edit: state.btn_edit.val
   }
 }
 

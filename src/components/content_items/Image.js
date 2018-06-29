@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addHrToLayout } from '../actions';
+import { addImageToLayout } from '../../actions';
 
 const spec = {
     beginDrag(props) 
@@ -19,7 +19,8 @@ const spec = {
             //call a action 
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
-                props.addHrToLayout(
+                props.addImageToLayout(
+                    "http://via.placeholder.com/500x250",
                     monitor.getDropResult().layout_id,
                     monitor.getDropResult().location
                 );
@@ -41,18 +42,18 @@ function collect(connect, monitor)
     }
 }
 
-class HorizontalRule extends Component {
+class Image extends Component {
     render() {
         const { connectDragSource, connectDragPreview, isDragging } = this.props;
 
         return connectDragSource(
             <div className="box" >
-                <h4>Horizontal Rule</h4>
+                <h4>Image</h4>
             </div>
         );
     }
 }
 
 export default connect(null, { 
-    addHrToLayout 
-})(DragSource('item', spec, collect)(HorizontalRule));
+    addImageToLayout 
+})(DragSource('item', spec, collect)(Image));

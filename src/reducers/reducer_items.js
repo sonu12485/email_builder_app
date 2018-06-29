@@ -15,10 +15,26 @@ const initStyle = {
 
 const initLayoutStyles = {
     backgroundColor: '#ffffff',
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10
+}
+
+const btnData = {
+    name: 'Button',
+    url: '#',
+    color: 'primary',
+    size: '',
+    block: false,
+    alignment: 'center',
+    target: '',
+    style: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 10,
+        paddingRight: 10
+    }
 }
 
 export default function( state=[], action )
@@ -486,6 +502,83 @@ export default function( state=[], action )
                 if(item.id === action.payload.id)
                 {
                     item.styles = action.payload.styles
+                }
+            });
+
+            return state;
+
+        case "BUTTON_ADDED_TO_LAYOUT":
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === "left")
+                    {
+                        item.left.push({
+                            type: "btn", 
+                            data: btnData,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "right")
+                    {
+                        item.right.push({
+                            type: "btn", 
+                            data: btnData,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
+                            type: "btn", 
+                            data: btnData,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                }
+            });
+
+            return state;
+
+        case "EDIT_BTN_DATA":
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data;
+                            }
+                        });
+                    }
                 }
             });
 

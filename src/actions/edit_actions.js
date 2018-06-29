@@ -207,6 +207,31 @@ export function edit_layout_styles(id, styles)
     }
 }
 
+export function edit_btn(id, layout_id, position)
+{
+    return {
+        type: "EDIT_BTN",
+        payload: {
+            id,
+            layout_id,
+            position
+        }
+    }
+}
+
+export function edit_btn_data(id, data, layout_id, position)
+{
+    return {
+        type: "EDIT_BTN_DATA",
+        payload: {
+            id,
+            data,
+            layout_id,
+            position
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

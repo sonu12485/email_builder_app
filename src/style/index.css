@@ -236,3 +236,9 @@
     border-width: 2px;
     border-color: #6666FF;
 }
+
+.item_btn:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
+}

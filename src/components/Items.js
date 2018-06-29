@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import Heading from './Heading';
-import SubHeading from './SubHeading';
-import HR from './HorizontalRule';
-import Paragraph from './Paragraph';
-import Image from './Image';
+import Heading from './content_items/Heading';
+import SubHeading from './content_items/SubHeading';
+import HR from './content_items/HorizontalRule';
+import Paragraph from './content_items/Paragraph';
+import Image from './content_items/Image';
+import Button from './content_items/Button';
 
 class Items extends Component
 {
@@ -17,6 +18,7 @@ class Items extends Component
                 <HR />
                 <Paragraph />
                 <Image />
+                <Button />
             </div>
         )
     }

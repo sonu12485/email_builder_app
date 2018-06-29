@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addItemToLayout } from '../actions';
+import { addButtonToLayout } from '../../actions';
 
 const spec = {
     beginDrag(props) 
@@ -19,11 +19,9 @@ const spec = {
             //call a action 
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
-                props.addItemToLayout(
-                    "Sub-Heading",
+                props.addButtonToLayout(
                     monitor.getDropResult().layout_id,
-                    monitor.getDropResult().location,
-                    "h3"
+                    monitor.getDropResult().location
                 );
             }
         }
@@ -43,19 +41,19 @@ function collect(connect, monitor)
     }
 }
 
-class SubHeading extends Component 
+class Button extends Component 
 {
     render() {
         const { connectDragSource, connectDragPreview, isDragging } = this.props;
 
         return connectDragSource(
             <div className="box" >
-                <h4>Sub-Heading</h4>
+                <h4>Button</h4>
             </div>
         );
     }
 }
 
 export default connect(null, { 
-    addItemToLayout
- })(DragSource('item', spec, collect)(SubHeading));
+    addButtonToLayout 
+})(DragSource('item', spec, collect)(Button));

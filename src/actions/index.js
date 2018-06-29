@@ -50,6 +50,18 @@ export function addImageToLayout(src,layout_id,position)
     }
 }
 
+export function addButtonToLayout(layout_id,position)
+{
+    return {
+        type: "BUTTON_ADDED_TO_LAYOUT",
+        payload: {
+            layout_id,
+            position,
+            id: _.round(Math.random()*10000000000)
+        }
+    }
+}
+
 export function update()
 {
     return {

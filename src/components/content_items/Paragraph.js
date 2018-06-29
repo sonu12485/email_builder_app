@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { DragSource } from 'react-dnd';
 
-import { addImageToLayout } from '../actions';
+import { addItemToLayout } from '../../actions';
 
 const spec = {
     beginDrag(props) 
@@ -16,13 +16,18 @@ const spec = {
         if(monitor.didDrop())
         {
             console.log("ED");
+            const data = `Ullamco dolore commodo ad do ea
+            mollit fugiat aliquip sit Lorem. Do fugiat in laborum enim 
+            duis veniam reprehenderit. Nulla velit quis excepteur proiden
+            t exercitation.`;
             //call a action 
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
-                props.addImageToLayout(
-                    "http://via.placeholder.com/500x250",
+                props.addItemToLayout(
+                    data,
                     monitor.getDropResult().layout_id,
-                    monitor.getDropResult().location
+                    monitor.getDropResult().location,
+                    "p"
                 );
             }
         }
@@ -42,18 +47,18 @@ function collect(connect, monitor)
     }
 }
 
-class Image extends Component {
+class Paragraph extends Component {
     render() {
         const { connectDragSource, connectDragPreview, isDragging } = this.props;
 
         return connectDragSource(
             <div className="box" >
-                <h4>Image</h4>
+                <h4>Paragraph</h4>
             </div>
         );
     }
 }
 
 export default connect(null, { 
-    addImageToLayout 
-})(DragSource('item', spec, collect)(Image));
+    addItemToLayout
+ })(DragSource('item', spec, collect)(Paragraph));

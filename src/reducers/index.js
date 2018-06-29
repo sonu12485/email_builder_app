@@ -9,6 +9,7 @@ import Edit_p from './reducer_edit_p';
 import Edit_img from './reducer_edit_img';
 import Body from './reducer_body';
 import Edit_layout from './reducer_edit_layout';
+import Edit_btn from './reducer_edit_btn';
 
 const rootReducer = combineReducers({
     items: Items,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     p_edit: Edit_p,
     img_edit: Edit_img,
     body: Body,
-    layout_edit: Edit_layout
+    layout_edit: Edit_layout,
+    btn_edit: Edit_btn
 });
 
 export default rootReducer;

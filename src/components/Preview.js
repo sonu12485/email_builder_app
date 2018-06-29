@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Badge } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 import ReactToPrint from "react-to-print";
 
@@ -11,7 +11,7 @@ import { DropTarget } from 'react-dnd';
 
 import { 
     edit_h1, edit_h3, edit_hr, edit_p, edit_img, 
-    edit_layout_HTML, edit_layout 
+    edit_layout_HTML, edit_layout, edit_btn 
 } from '../actions/edit_actions';
 
 import { update as update_action } from '../actions/index';
@@ -485,6 +485,11 @@ class FullPreview extends Component
 
         return (
             <div style={styles.HTMLPageContainer} >
+            <link rel="stylesheet" 
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+                integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+                crossorigin="anonymous" 
+            />
             <div style={ style } >
                 <div style={{ width: '100%', height: '100vh' }} >
                 {this.renderItems()}
@@ -584,5 +589,6 @@ export default connect(mapStateToProps, {
     edit_img,
     update_action,
     edit_layout_HTML,
-    edit_layout
+    edit_layout,
+    edit_btn
 })(DropTarget('layout', {}, collect)(FullPreview));

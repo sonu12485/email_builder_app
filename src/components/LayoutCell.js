@@ -7,6 +7,8 @@ import { update as update_action } from '../actions/index';
 
 import ReactDOMServer from 'react-dom/server';
 
+import { Button } from 'reactstrap';
+
 function collect(connect, monitor)
 {
     return {
@@ -129,6 +131,29 @@ class LayoutCell extends Component {
                         }}
                     >
                         <img src={item.src} style={styles.item_img} />
+                    </div>
+                );
+            }
+            else if(item.type === 'btn')
+            {
+                return (
+                    <div key={item.id}
+                        className="item_btn"
+                        style={{
+                            textAlign: item.data.alignment,
+                            ...item.data.style
+                        }}
+                        onClick={ () => {
+                            this.props.edit_btn(item.id, this.props.layout_id, this.props.location)
+                        } }
+                    >
+                        <Button
+                            color={item.data.color}
+                            href={item.data.url}
+                            size={item.data.size}
+                            block={item.data.block}
+                            target={item.data.target}
+                        >{item.data.name}</Button>
                     </div>
                 );
             }
