@@ -62,6 +62,19 @@ export function addButtonToLayout(layout_id,position)
     }
 }
 
+export function addHTMLToLayout(html,layout_id,position)
+{
+    return {
+        type: "HTML_ADDED_TO_LAYOUT",
+        payload: {
+            html,
+            layout_id,
+            position,
+            id: _.round(Math.random()*10000000000)
+        }
+    }
+}
+
 export function update()
 {
     return {

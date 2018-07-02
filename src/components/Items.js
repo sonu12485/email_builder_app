@@ -6,6 +6,7 @@ import HR from './content_items/HorizontalRule';
 import Paragraph from './content_items/Paragraph';
 import Image from './content_items/Image';
 import Button from './content_items/Button';
+import HTML from './content_items/Html';
 
 class Items extends Component
 {
@@ -19,6 +20,7 @@ class Items extends Component
                 <Paragraph />
                 <Image />
                 <Button />
+                <HTML />
             </div>
         )
     }

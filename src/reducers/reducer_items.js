@@ -468,6 +468,46 @@ export default function( state=[], action )
 
             return state;
 
+        case "HTML_ADDED_TO_LAYOUT":
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === "left")
+                    {
+                        item.left.push({
+                            type: "html", 
+                            html: action.payload.html,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "right")
+                    {
+                        item.right.push({
+                            type: "html", 
+                            html: action.payload.html,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
+                            type: "html", 
+                            html: action.payload.html,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                }
+            });
+
+            return state;
+
         case "EDIT_LAYOUT_HTML":
             
             state.forEach( item => {
@@ -876,7 +916,43 @@ export default function( state=[], action )
                 return state;
             }
             
-    
+        case "EDIT_HTML_DATA":
+            
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.html = action.payload.html; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.html = action.payload.html; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.html = action.payload.html; 
+                            }
+                        });
+                    }
+                }
+            });
+
+            return state;
+
         default:
             return state;
     }

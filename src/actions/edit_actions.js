@@ -250,6 +250,31 @@ export function dnd_items(
     }
 }
 
+export function edit_HTML(id, layout_id, position)
+{
+    return {
+        type: "EDIT_HTML",
+        payload: {
+            id,
+            layout_id,
+            position
+        }
+    }
+}
+
+export function edit_HTML_data(id,html,layout_id,position)
+{
+    return {
+        type: "EDIT_HTML_DATA",
+        payload: {
+            id,
+            html,
+            layout_id,
+            position
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

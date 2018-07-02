@@ -257,6 +257,22 @@ class LayoutCellItem extends Component {
                 </div>
             );
         }
+        else if(this.props.type === 'html')
+        {
+            return (
+                <div
+                    key={this.props.item.id}
+                    className="item_html"
+                    onClick={ () => {
+                        this.props.edit_HTML(this.props.item.id, 
+                            this.props.layout_id, 
+                            this.props.location)
+                    } }
+                    dangerouslySetInnerHTML={{ __html: this.props.item.html }}
+                >
+                </div>
+            );
+        }
     }
 
     render() {

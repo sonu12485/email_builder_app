@@ -17,6 +17,7 @@ import Edit_p from './edit_components/Edit_p';
 import Edit_img from './edit_components/Edit_img';
 import Edit_Layout from './edit_components/Edit_Layout';
 import Edit_btn from './edit_components/Edit_btn';
+import Edit_HTML from './edit_components/Edit_HTML';
 
 import { update as update_action } from '../actions/index';
 
@@ -73,6 +74,12 @@ class App extends Component
       return <Edit_btn update ={ () => {
         this.update()
       } } />
+    }
+    else if(this.props.is_HTML_edit)
+    {
+      return <Edit_HTML update ={ () => {
+        this.update()
+      } }/>
     }
     else if(this.props.is_layout_edit)
     {
@@ -247,10 +254,23 @@ function mapStateToProps(state)
     is_p_edit: state.p_edit.val,
     is_img_edit: state.img_edit.val,
     is_layout_edit: state.layout_edit.val,
-    is_btn_edit: state.btn_edit.val
+    is_btn_edit: state.btn_edit.val,
+    is_HTML_edit: state.html_edit.val
   }
 }
 
 export default connect(mapStateToProps, {
   update_action
 })(DragDropContext(HTML5Backend)(App));
+
+/*
+
+TODO
+--------------------------
+1 HTML Component (DONE)
+2 social media icons
+3 links
+4 image store
+5 Duplicate feature
+
+*/

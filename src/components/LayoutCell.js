@@ -145,6 +145,17 @@ class LayoutCell extends Component {
                     />
                 );
             }
+            else if(item.type === 'html')
+            {
+                return (
+                    <LayoutCellItem 
+                        key={item.id}
+                        { ...this.props }
+                        type="html"
+                        item={item}
+                    />
+                );
+            }
         });
     }
 
@@ -168,9 +179,6 @@ class LayoutCell extends Component {
                     <h1 style={style} 
                         className="item_h1"
                         key={item.id} 
-                        onClick={ () => {
-                            this.props.edit_h1(item.id, this.props.layout_id, this.props.location)
-                        }}
                     >
                         {item.data}
                     </h1>
@@ -193,9 +201,6 @@ class LayoutCell extends Component {
                     <h3 style={style} 
                         key={item.id} 
                         className="item_h3"
-                        onClick={ () => {
-                            this.props.edit_h3(item.id, this.props.layout_id, this.props.location)
-                        }}
                     >
                         {item.data}
                     </h3>
@@ -206,9 +211,6 @@ class LayoutCell extends Component {
                 return (
                     <div key={item.id} 
                         className="item_hr"
-                        onClick={ () => {
-                            this.props.edit_hr(item.id, this.props.layout_id, this.props.location)
-                        }}
                     >
                     <hr />
                     </div>
@@ -231,9 +233,6 @@ class LayoutCell extends Component {
                     <div key={item.id} 
                         style={style} 
                         className="item_p"
-                        onClick={ () => {
-                            this.props.edit_p(item.id, this.props.layout_id, this.props.location)
-                        }}
                     >
                         <p>{item.data}</p>
                     </div>
@@ -245,9 +244,6 @@ class LayoutCell extends Component {
                     <div key={item.id} 
                         style={styles.item_img_container}
                         className="item_img"
-                        onClick={ () => {
-                            this.props.edit_img(item.id, this.props.layout_id, this.props.location)
-                        }}
                     >
                         <img src={item.src} style={styles.item_img} />
                     </div>
@@ -262,9 +258,6 @@ class LayoutCell extends Component {
                             textAlign: item.data.alignment,
                             ...item.data.style
                         }}
-                        onClick={ () => {
-                            this.props.edit_btn(item.id, this.props.layout_id, this.props.location)
-                        } }
                     >
                         <Button
                             color={item.data.color}
@@ -273,6 +266,17 @@ class LayoutCell extends Component {
                             block={item.data.block}
                             target={item.data.target}
                         >{item.data.name}</Button>
+                    </div>
+                );
+            }
+            else if(item.type === 'html')
+            {
+                return (
+                    <div
+                        key={item.id}
+                        className="item_html"
+                        dangerouslySetInnerHTML={{ __html: item.html }}
+                    >
                     </div>
                 );
             }
