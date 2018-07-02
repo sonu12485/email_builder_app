@@ -232,6 +232,20 @@ export function edit_btn_data(id, data, layout_id, position)
     }
 }
 
+export function dnd_items(drag_id,drop_id,layout_id,position,movement)
+{
+    return {
+        type: "DnD_ITEMS",
+        payload: {
+            drag_id,
+            drop_id,
+            layout_id,
+            position,
+            movement
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

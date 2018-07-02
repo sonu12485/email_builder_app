@@ -11,7 +11,7 @@ import { DropTarget } from 'react-dnd';
 
 import { 
     edit_h1, edit_h3, edit_hr, edit_p, edit_img, 
-    edit_layout_HTML, edit_layout, edit_btn 
+    edit_layout_HTML, edit_layout, edit_btn, dnd_items 
 } from '../actions/edit_actions';
 
 import { update as update_action } from '../actions/index';
@@ -590,5 +590,6 @@ export default connect(mapStateToProps, {
     update_action,
     edit_layout_HTML,
     edit_layout,
-    edit_btn
+    edit_btn,
+    dnd_items
 })(DropTarget('layout', {}, collect)(FullPreview));

@@ -583,6 +583,80 @@ export default function( state=[], action )
             });
 
             return state;
+
+        case 'DnD_ITEMS':
+            
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        const DragIndex = item.left.findIndex( (item) => {
+                            return item.id === action.payload.drag_id
+                        });
+
+                        const DropIndex = item.left.findIndex( (item) => {
+                            return item.id === action.payload.drop_id
+                        });
+
+                        const removedItem = item.left.splice(DragIndex,1)[0];
+
+                        if(action.payload.movement === "up")
+                        {
+                            item.left.splice(DropIndex,0,removedItem);
+                        }
+                        else
+                        {
+                            item.left.splice(DropIndex+1,0,removedItem);
+                        }
+
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        const DragIndex = item.right.findIndex( (item) => {
+                            return item.id === action.payload.drag_id
+                        });
+
+                        const DropIndex = item.right.findIndex( (item) => {
+                            return item.id === action.payload.drop_id
+                        });
+
+                        const removedItem = item.right.splice(DragIndex,1)[0];
+
+                        if(action.payload.movement === "up")
+                        {
+                            item.right.splice(DropIndex,0,removedItem);
+                        }
+                        else
+                        {
+                            item.right.splice(DropIndex+1,0,removedItem);
+                        }
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        const DragIndex = item.center.findIndex( (item) => {
+                            return item.id === action.payload.drag_id
+                        });
+
+                        const DropIndex = item.center.findIndex( (item) => {
+                            return item.id === action.payload.drop_id
+                        });
+
+                        const removedItem = item.center.splice(DragIndex,1)[0];
+
+                        if(action.payload.movement === "up")
+                        {
+                            item.center.splice(DropIndex,0,removedItem);
+                        }
+                        else
+                        {
+                            item.center.splice(DropIndex+1,0,removedItem);
+                        }
+                    }
+                }
+            });
+
+            return state;
     
         default:
             return state;

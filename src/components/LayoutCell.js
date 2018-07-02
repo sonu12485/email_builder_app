@@ -7,7 +7,7 @@ import { update as update_action } from '../actions/index';
 
 import ReactDOMServer from 'react-dom/server';
 
-import { Button } from 'reactstrap';
+import LayoutCellItem from './LayoutCellItem';
 
 function collect(connect, monitor)
 {
@@ -29,6 +29,15 @@ const spec = {
 };
 
 class LayoutCell extends Component {
+
+    constructor(props)
+    {
+        super(props);
+
+        this.state = {
+            items: props.items
+        }
+    }
     renderItems = () =>
     {
         return this.props.items.map( item => {
@@ -46,7 +55,7 @@ class LayoutCell extends Component {
                 );
 
                 return (
-                    <h1 style={style} 
+                    /*<h1 style={style} 
                         className="item_h1"
                         key={item.id} 
                         onClick={ () => {
@@ -54,7 +63,14 @@ class LayoutCell extends Component {
                         }}
                     >
                         {item.data}
-                    </h1>
+                    </h1>*/
+                    <LayoutCellItem 
+                        key={item.id} 
+                        { ...this.props }
+                        type="h1"
+                        style={style}
+                        item={item}
+                    />
                 );
             }
             else if(item.type === 'h3')
@@ -71,7 +87,7 @@ class LayoutCell extends Component {
                 );
 
                 return (
-                    <h3 style={style} 
+                    /*<h3 style={style} 
                         key={item.id} 
                         className="item_h3"
                         onClick={ () => {
@@ -79,20 +95,33 @@ class LayoutCell extends Component {
                         }}
                     >
                         {item.data}
-                    </h3>
+                    </h3>*/
+                    <LayoutCellItem 
+                        key={item.id} 
+                        { ...this.props }
+                        type="h3"
+                        style={style}
+                        item={item}
+                    />
                 );
             }
             else if(item.type === 'hr')
             {
                 return (
-                    <div key={item.id} 
+                    /*<div key={item.id} 
                         className="item_hr"
                         onClick={ () => {
                             this.props.edit_hr(item.id, this.props.layout_id, this.props.location)
                         }}
                     >
                     <hr />
-                    </div>
+                    </div>*/
+                    <LayoutCellItem 
+                        key={item.id} 
+                        { ...this.props }
+                        type="hr"
+                        item={item}
+                    />
                 );
             }
             else if(item.type === 'p')
@@ -109,7 +138,7 @@ class LayoutCell extends Component {
                 );
 
                 return (
-                    <div key={item.id} 
+                    /*<div key={item.id} 
                         style={style} 
                         className="item_p"
                         onClick={ () => {
@@ -117,13 +146,20 @@ class LayoutCell extends Component {
                         }}
                     >
                         <p>{item.data}</p>
-                    </div>
+                    </div>*/
+                    <LayoutCellItem 
+                        key={item.id} 
+                        { ...this.props }
+                        type="p"
+                        style={style}
+                        item={item}
+                    />
                 );
             }
             else if(item.type === 'img')
             {
                 return (
-                    <div key={item.id} 
+                    /*<div key={item.id} 
                         style={styles.item_img_container}
                         className="item_img"
                         onClick={ () => {
@@ -131,13 +167,19 @@ class LayoutCell extends Component {
                         }}
                     >
                         <img src={item.src} style={styles.item_img} />
-                    </div>
+                    </div>*/
+                    <LayoutCellItem 
+                        key={item.id} 
+                        { ...this.props }
+                        type="img"
+                        item={item}
+                    />
                 );
             }
             else if(item.type === 'btn')
             {
                 return (
-                    <div key={item.id}
+                    /*<div key={item.id}
                         className="item_btn"
                         style={{
                             textAlign: item.data.alignment,
@@ -154,7 +196,13 @@ class LayoutCell extends Component {
                             block={item.data.block}
                             target={item.data.target}
                         >{item.data.name}</Button>
-                    </div>
+                    </div>*/
+                    <LayoutCellItem 
+                        key={item.id} 
+                        { ...this.props }
+                        type="btn"
+                        item={item}
+                    />
                 );
             }
         });
@@ -217,22 +265,6 @@ class LayoutCell extends Component {
             }
         }
         
-    }
-}
-
-const styles = {
-    
-    item_img_container: {
-        display: "flex",
-        justifyContent: "center",
-        marginTop:10,
-        marginBottom:10,
-        width: "100%",
-    },
-
-    item_img: {
-        width: "100%",
-        objectFit: "contain"
     }
 }
 
