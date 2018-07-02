@@ -232,15 +232,19 @@ export function edit_btn_data(id, data, layout_id, position)
     }
 }
 
-export function dnd_items(drag_id,drop_id,layout_id,position,movement)
+export function dnd_items(
+    drag_id,drop_id,drag_layout_id,drag_position,drop_layout_id,drop_position,movement
+)
 {
     return {
         type: "DnD_ITEMS",
         payload: {
             drag_id,
             drop_id,
-            layout_id,
-            position,
+            drag_layout_id,
+            drag_position,
+            drop_layout_id,
+            drop_position,
             movement
         }
     }

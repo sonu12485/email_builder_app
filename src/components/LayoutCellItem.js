@@ -22,7 +22,9 @@ import flow from 'lodash/flow';
 const cardSource = {
 	beginDrag(props) {
 		return {
-			id: props.item.id
+            id: props.item.id,
+            layout_id: props.layout_id,
+            position: props.location
 		}
 	},
 }
@@ -84,7 +86,9 @@ const cardTarget = {
     {
         if (!component) {
 			return null
-		}
+        }
+        const dragItem = monitor.getItem();
+        const hoverItem = props.item;
 		const dragIndex = monitor.getItem().id;
 		const hoverIndex = props.item.id;
 
@@ -114,15 +118,31 @@ const cardTarget = {
 		// Dragging downwards
 		if (hoverClientY < hoverMiddleY) {
             console.log("up");
-            console.log("drop" ,dragIndex, hoverIndex);
-            props.dnd_items(dragIndex, hoverIndex, props.layout_id, props.location,"up");            
+            console.log("drop");
+            console.log(dragItem,hoverItem);
+
+            props.dnd_items(dragIndex, 
+                hoverIndex,
+                dragItem.layout_id,
+                dragItem.position,
+                hoverItem.layout_id,
+                hoverItem.position,
+                "up");            
 		}
 
 		// Dragging upwards
 		if (hoverClientY > hoverMiddleY) {
             console.log("down");
-            console.log("drop" ,dragIndex, hoverIndex);
-            props.dnd_items(dragIndex, hoverIndex, props.layout_id, props.location,"down");            
+            console.log("drop");
+            console.log(dragItem,hoverItem);
+
+            props.dnd_items(dragIndex, 
+                hoverIndex, 
+                dragItem.layout_id,
+                dragItem.position,
+                hoverItem.layout_id,
+                hoverItem.position,
+                "down");            
 		}
 
 		monitor.getItem().index = hoverIndex

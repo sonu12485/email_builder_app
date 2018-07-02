@@ -586,77 +586,296 @@ export default function( state=[], action )
 
         case 'DnD_ITEMS':
             
-            state.forEach( item => {
-                if(item.id === action.payload.layout_id)
-                {
-                    if(action.payload.position === 'left')
+            const {
+                drag_id,
+                drop_id,
+                drag_layout_id,
+                drag_position,
+                drop_layout_id,
+                drop_position,
+                movement
+            } = action.payload;
+
+            if(drag_layout_id === drop_layout_id && drag_position === drop_position)
+            {
+                state.forEach( item => {
+                    if(item.id === drag_layout_id)
                     {
-                        const DragIndex = item.left.findIndex( (item) => {
-                            return item.id === action.payload.drag_id
-                        });
-
-                        const DropIndex = item.left.findIndex( (item) => {
-                            return item.id === action.payload.drop_id
-                        });
-
-                        const removedItem = item.left.splice(DragIndex,1)[0];
-
-                        if(action.payload.movement === "up")
+                        if(drag_position === 'left')
                         {
-                            item.left.splice(DropIndex,0,removedItem);
+                            const DragIndex = item.left.findIndex( (item) => {
+                                return item.id === drag_id
+                            });
+    
+                            const DropIndex = item.left.findIndex( (item) => {
+                                return item.id === drop_id
+                            });
+    
+                            const removedItem = item.left.splice(DragIndex,1)[0];
+    
+                            if(movement === "up")
+                            {
+                                item.left.splice(DropIndex,0,removedItem);
+                            }
+                            else
+                            {
+                                item.left.splice(DropIndex+1,0,removedItem);
+                            }
+    
                         }
-                        else
+                        else if(drag_position === 'right')
                         {
-                            item.left.splice(DropIndex+1,0,removedItem);
+                            const DragIndex = item.right.findIndex( (item) => {
+                                return item.id === drag_id
+                            });
+    
+                            const DropIndex = item.right.findIndex( (item) => {
+                                return item.id === drop_id
+                            });
+    
+                            const removedItem = item.right.splice(DragIndex,1)[0];
+    
+                            if(movement === "up")
+                            {
+                                item.right.splice(DropIndex,0,removedItem);
+                            }
+                            else
+                            {
+                                item.right.splice(DropIndex+1,0,removedItem);
+                            }
                         }
-
+                        else if(drag_position === 'center')
+                        {
+                            const DragIndex = item.center.findIndex( (item) => {
+                                return item.id === drag_id
+                            });
+    
+                            const DropIndex = item.center.findIndex( (item) => {
+                                return item.id === drop_id
+                            });
+    
+                            const removedItem = item.center.splice(DragIndex,1)[0];
+    
+                            if(movement === "up")
+                            {
+                                item.center.splice(DropIndex,0,removedItem);
+                            }
+                            else
+                            {
+                                item.center.splice(DropIndex+1,0,removedItem);
+                            }
+                        }
                     }
-                    else if(action.payload.position === 'right')
+                });
+    
+                return state;
+            }
+            else
+            {
+                state.forEach( item => {
+                    if(item.id === drag_layout_id)
                     {
-                        const DragIndex = item.right.findIndex( (item) => {
-                            return item.id === action.payload.drag_id
-                        });
-
-                        const DropIndex = item.right.findIndex( (item) => {
-                            return item.id === action.payload.drop_id
-                        });
-
-                        const removedItem = item.right.splice(DragIndex,1)[0];
-
-                        if(action.payload.movement === "up")
+                        if(drag_position === 'left')
                         {
-                            item.right.splice(DropIndex,0,removedItem);
+                            const DragIndex = item.left.findIndex( (item) => {
+                                return item.id === drag_id
+                            });
+
+                            const removedItem = item.left.splice(DragIndex,1)[0];
+
+                            const newItem = {
+                                ...removedItem,
+                                layout_id: drop_layout_id,
+                                position: drop_position
+                            }
+
+                            state.forEach( item => {
+                                if(item.id === drop_layout_id)
+                                {
+                                    if(drop_position === 'left')
+                                    {
+                                        const DropIndex = item.left.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.left.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.left.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                    else if(drop_position === 'right')
+                                    {
+                                        const DropIndex = item.right.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.right.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.right.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                    else if(drop_position === 'center')
+                                    {
+                                        const DropIndex = item.center.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.center.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.center.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                }
+                            });
                         }
-                        else
+                        else if(drag_position === 'right')
                         {
-                            item.right.splice(DropIndex+1,0,removedItem);
+                            const DragIndex = item.right.findIndex( (item) => {
+                                return item.id === drag_id
+                            });
+
+                            const removedItem = item.right.splice(DragIndex,1)[0];
+
+                            const newItem = {
+                                ...removedItem,
+                                layout_id: drop_layout_id,
+                                position: drop_position
+                            }
+
+                            state.forEach( item => {
+                                if(item.id === drop_layout_id)
+                                {
+                                    if(drop_position === 'left')
+                                    {
+                                        const DropIndex = item.left.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.left.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.left.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                    else if(drop_position === 'right')
+                                    {
+                                        const DropIndex = item.right.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.right.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.right.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                    else if(drop_position === 'center')
+                                    {
+                                        const DropIndex = item.center.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.center.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.center.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                        else if(drag_position === 'center')
+                        {
+                            const DragIndex = item.center.findIndex( (item) => {
+                                return item.id === drag_id
+                            });
+
+                            const removedItem = item.center.splice(DragIndex,1)[0];
+
+                            const newItem = {
+                                ...removedItem,
+                                layout_id: drop_layout_id,
+                                position: drop_position
+                            }
+
+                            state.forEach( item => {
+                                if(item.id === drop_layout_id)
+                                {
+                                    if(drop_position === 'left')
+                                    {
+                                        const DropIndex = item.left.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.left.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.left.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                    else if(drop_position === 'right')
+                                    {
+                                        const DropIndex = item.right.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.right.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.right.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                    else if(drop_position === 'center')
+                                    {
+                                        const DropIndex = item.center.findIndex( (item) => {
+                                            return item.id === drop_id
+                                        });
+
+                                        if(movement === "up")
+                                        {
+                                            item.center.splice(DropIndex,0,newItem);
+                                        }
+                                        else
+                                        {
+                                            item.center.splice(DropIndex+1,0,newItem);
+                                        }
+                                    }
+                                }
+                            });
                         }
                     }
-                    else if(action.payload.position === 'center')
-                    {
-                        const DragIndex = item.center.findIndex( (item) => {
-                            return item.id === action.payload.drag_id
-                        });
-
-                        const DropIndex = item.center.findIndex( (item) => {
-                            return item.id === action.payload.drop_id
-                        });
-
-                        const removedItem = item.center.splice(DragIndex,1)[0];
-
-                        if(action.payload.movement === "up")
-                        {
-                            item.center.splice(DropIndex,0,removedItem);
-                        }
-                        else
-                        {
-                            item.center.splice(DropIndex+1,0,removedItem);
-                        }
-                    }
-                }
-            });
-
-            return state;
+                });
+    
+                return state;
+            }
+            
     
         default:
             return state;
