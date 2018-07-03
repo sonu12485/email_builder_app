@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Button } from 'reactstrap';
 
+import * as FA from 'react-icons/lib/fa';
+
 import { findDOMNode } from 'react-dom';
 
 import {
@@ -272,6 +274,502 @@ class LayoutCellItem extends Component {
                 >
                 </div>
             );
+        }
+        else if(this.props.type === 'social_media_icons')
+        {
+            let size;
+
+            if(this.props.item.data.size === "default")
+            {
+                size = 35;
+            }
+            else if(this.props.item.data.size === "large")
+            {
+                size = 50;
+            }
+            else if(this.props.item.data.size === "small")
+            {
+                size = 25;
+            }
+
+            if(this.props.item.data.layout === "row")
+            {
+                if(this.props.item.data.color === "default")
+                {
+                    return (
+                        <div className="item_social_media" 
+                        onClick={ () => {
+                            this.props.edit_icons(this.props.item.id, 
+                                this.props.layout_id, 
+                                this.props.location)
+                        } }
+                        >
+                        <div
+                            key={this.props.item.id}
+                            style={{textAlign: this.props.item.data.alignment}}
+                        >
+                            {this.props.item.data.icons.map( icon => {
+                                    if(icon === "facebook")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.facebook} key={icon} >
+                                            <FA.FaFacebookOfficial size={size} 
+                                            color={
+                                                this.props.item.data.colors.facebook
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        );
+                                    }
+                                    else if(icon === "twitter")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.twitter} key={icon} >
+                                            <FA.FaTwitter size={size} 
+                                            color={
+                                                this.props.item.data.colors.twitter
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        );
+                                    }
+                                    else if(icon === "linkedin")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.linkedin} key={icon} >
+                                            <FA.FaLinkedinSquare size={size} 
+                                            color={
+                                                this.props.item.data.colors.linkedin
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        );
+                                    }
+                                    else if(icon === "youtube")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.youtube} key={icon} >
+                                            <FA.FaYoutubeSquare size={size} 
+                                            color={
+                                                this.props.item.data.colors.youtube
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                    else if(icon === "google")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.google} key={icon} >
+                                            <FA.FaGooglePlus size={size} 
+                                            color={
+                                                this.props.item.data.colors.google
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                    else if(icon === "github")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.github} key={icon} >
+                                            <FA.FaGithub size={size} 
+                                            color={
+                                                this.props.item.data.colors.github
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                    else if(icon === "instagram")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.instagram} key={icon} >
+                                            <FA.FaInstagram size={size} 
+                                            color={
+                                                this.props.item.data.colors.instagram
+                                            } 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                })}
+                        </div>
+                        </div>
+                    )
+                }
+                else
+                {
+                    return (
+                        <div className="item_social_media" 
+                        onClick={ () => {
+                            this.props.edit_icons(this.props.item.id, 
+                                this.props.layout_id, 
+                                this.props.location)
+                        } }
+                        >
+                        <div
+                            key={this.props.item.id}
+                            style={{textAlign: this.props.item.data.alignment}}
+                        >
+                            {this.props.item.data.icons.map( icon => {
+                                    if(icon === "facebook")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.facebook} key={icon} >
+                                            <FA.FaFacebookOfficial size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        );
+                                    }
+                                    else if(icon === "twitter")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.twitter} key={icon} >
+                                            <FA.FaTwitter size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        );
+                                    }
+                                    else if(icon === "linkedin")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.linkedin} key={icon} >
+                                            <FA.FaLinkedinSquare size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        );
+                                    }
+                                    else if(icon === "youtube")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.youtube} key={icon} >
+                                            <FA.FaYoutubeSquare size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                    else if(icon === "google")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.google} key={icon} >
+                                            <FA.FaGooglePlus size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                    else if(icon === "github")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.github} key={icon} >
+                                            <FA.FaGithub size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                    else if(icon === "instagram")
+                                    {
+                                        return (
+                                            <a target="_blank" href={this.props.item.data.link.instagram} key={icon} >
+                                            <FA.FaInstagram size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            />
+                                            </a>
+                                        )
+                                    }
+                                })}
+                        </div>
+                        </div>
+                    )
+                }
+            }
+            else 
+            {
+                if(this.props.item.data.color === "default")
+                {
+                    return (
+                        <div className="item_social_media" 
+                        onClick={ () => {
+                            this.props.edit_icons(this.props.item.id, 
+                                this.props.layout_id, 
+                                this.props.location)
+                        } }
+                        >
+                        <div
+                            key={this.props.item.id}
+                            style={{textAlign: this.props.item.data.alignment}}
+                        >
+                            {this.props.item.data.icons.map( icon => {
+                                    if(icon === "facebook")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.facebook} >
+                                            <FA.FaFacebookOfficial size={size} 
+                                            color={
+                                                this.props.item.data.colors.facebook
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        );
+                                    }
+                                    else if(icon === "twitter")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.twitter} >
+                                            <FA.FaTwitter size={size} 
+                                            color={
+                                                this.props.item.data.colors.twitter
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        );
+                                    }
+                                    else if(icon === "linkedin")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.linkedin} >
+                                            <FA.FaLinkedinSquare size={size} 
+                                            color={
+                                                this.props.item.data.colors.linkedin
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        );
+                                    }
+                                    else if(icon === "youtube")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.youtube} >
+                                            <FA.FaYoutubeSquare size={size} 
+                                            color={
+                                                this.props.item.data.colors.youtube
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                    else if(icon === "google")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.google} >
+                                            <FA.FaGooglePlus size={size} 
+                                            color={
+                                                this.props.item.data.colors.google
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                    else if(icon === "github")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.github} >
+                                            <FA.FaGithub size={size} 
+                                            color={
+                                                this.props.item.data.colors.github
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                    else if(icon === "instagram")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.instagram} >
+                                            <FA.FaInstagram size={size} 
+                                            color={
+                                                this.props.item.data.colors.instagram
+                                            } 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                })}
+                        </div>
+                        </div>
+                    )
+                }
+                else
+                {
+                    return (
+                        <div className="item_social_media" 
+                        onClick={ () => {
+                            this.props.edit_icons(this.props.item.id, 
+                                this.props.layout_id, 
+                                this.props.location)
+                        } }
+                        >
+                        <div
+                            key={this.props.item.id}
+                            style={{textAlign: this.props.item.data.alignment}}
+                        >
+                            {this.props.item.data.icons.map( icon => {
+                                    if(icon === "facebook")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.facebook} >
+                                            <FA.FaFacebookOfficial size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        );
+                                    }
+                                    else if(icon === "twitter")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.twitter} >
+                                            <FA.FaTwitter size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        );
+                                    }
+                                    else if(icon === "linkedin")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.linkedin} >
+                                            <FA.FaLinkedinSquare size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        );
+                                    }
+                                    else if(icon === "youtube")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.youtube} >
+                                            <FA.FaYoutubeSquare size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                    else if(icon === "google")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.google} >
+                                            <FA.FaGooglePlus size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                    else if(icon === "github")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.github} >
+                                            <FA.FaGithub size={size} 
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                    else if(icon === "instagram")
+                                    {
+                                        return (
+                                            <div
+                                            key={icon}
+                                            >
+                                            <a target="_blank" href={this.props.item.data.link.instagram} >
+                                            <FA.FaInstagram size={size}
+                                            color={this.props.item.data.colorValue} 
+                                            style={{margin: 5}}
+                                            /><br />
+                                            </a>
+                                            </div>
+                                        )
+                                    }
+                                })}
+                        </div>
+                        </div>
+                    )
+                }
+            }
         }
     }
 

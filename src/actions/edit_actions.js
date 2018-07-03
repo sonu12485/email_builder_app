@@ -275,6 +275,31 @@ export function edit_HTML_data(id,html,layout_id,position)
     }
 }
 
+export function edit_icons(id, layout_id, position)
+{
+    return {
+        type: "EDIT_ICONS",
+        payload: {
+            id,
+            layout_id,
+            position
+        }
+    }
+}
+
+export function edit_icons_data(id,data,layout_id,position)
+{
+    return {
+        type: "EDIT_ICONS_DATA",
+        payload: {
+            id,
+            data,
+            layout_id,
+            position
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

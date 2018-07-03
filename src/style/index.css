@@ -206,6 +206,11 @@
     border-color: #6666FF;
 }
 
+.editor_icons{
+    margin: 20px;
+    margin-left: 70px;
+}
+
 .item_h1:hover {
     border-style: solid;
     border-width: 2px;
@@ -244,6 +249,12 @@
 }
 
 .item_html:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
+}
+
+.item_social_media:hover {
     border-style: solid;
     border-width: 2px;
     border-color: #6666FF;

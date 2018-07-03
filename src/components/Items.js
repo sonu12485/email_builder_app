@@ -7,6 +7,7 @@ import Paragraph from './content_items/Paragraph';
 import Image from './content_items/Image';
 import Button from './content_items/Button';
 import HTML from './content_items/Html';
+import SocialMediaIcons from './content_items/SocialMediaIcons';
 
 class Items extends Component
 {
@@ -21,6 +22,7 @@ class Items extends Component
                 <Image />
                 <Button />
                 <HTML />
+                <SocialMediaIcons />
             </div>
         )
     }

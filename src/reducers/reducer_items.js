@@ -37,6 +37,36 @@ const btnData = {
     }
 }
 
+const socialMediaIconsData = {
+    icons: [ 
+        "facebook", "twitter", "linkedin", "youtube", "google", "github", "instagram" 
+    ],
+    iconsLeft: [],
+    colors: {
+        facebook: "#3b5998", 
+        twitter: "#00aced", 
+        linkedin: "#007bb6", 
+        youtube: "#bb0000", 
+        google: "#dd4b39", 
+        github: "#333", 
+        instagram: "#bc2a8d"
+    },
+    size: "default",
+    layout: "row",
+    alignment: "center",
+    color: "default",
+    colorValue: '#aaa',
+    link: {
+        facebook: "#", 
+        twitter: "#", 
+        linkedin: "#", 
+        youtube: "#", 
+        google: "#", 
+        github: "#", 
+        instagram: "#"
+    }
+}
+
 export default function( state=[], action )
 {
     console.log(action);
@@ -945,6 +975,83 @@ export default function( state=[], action )
                             if(component.id === action.payload.id)
                             {
                                 component.html = action.payload.html; 
+                            }
+                        });
+                    }
+                }
+            });
+
+            return state;
+
+        case "ICONS_ADDED_TO_LAYOUT":
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === "left")
+                    {
+                        item.left.push({
+                            type: "social_media", 
+                            data: socialMediaIconsData,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "right")
+                    {
+                        item.right.push({
+                            type: "social_media", 
+                            data: socialMediaIconsData,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
+                            type: "social_media", 
+                            data: socialMediaIconsData,
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                }
+            });
+
+            return state;
+
+        case "EDIT_ICONS_DATA":
+            
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
                             }
                         });
                     }
