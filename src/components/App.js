@@ -277,7 +277,7 @@ TODO
 --------------------------
 1 HTML Component (DONE)
 2 social media icons (DONE)
-3 links
+3 image links (DONE)
 4 image store
 5 Duplicate feature
 

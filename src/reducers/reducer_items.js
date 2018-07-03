@@ -222,6 +222,43 @@ export default function( state=[], action )
 
             return state;
 
+        case "EDIT_IMG_LINK":
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.link = action.payload.link; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.link = action.payload.link; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.link = action.payload.link; 
+                            }
+                        });
+                    }
+                }
+            });
+
+            return state;
+
         case "DELETE":
 
             state.forEach( item => {
@@ -465,6 +502,7 @@ export default function( state=[], action )
                         item.left.push({
                             type:"img", 
                             src: action.payload.src, 
+                            link: '',
                             styles: [],
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
@@ -476,6 +514,7 @@ export default function( state=[], action )
                         item.right.push({
                             type:"img", 
                             src: action.payload.src, 
+                            link: '',
                             styles: [],
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
@@ -487,6 +526,7 @@ export default function( state=[], action )
                         item.center.push({
                             type:"img", 
                             src: action.payload.src, 
+                            link: '',
                             styles: [],
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,

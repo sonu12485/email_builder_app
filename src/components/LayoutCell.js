@@ -253,14 +253,30 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'img')
             {
-                return (
-                    <div key={item.id} 
-                        style={styles.item_img_container}
-                        className="item_img"
-                    >
-                        <img src={item.src} style={styles.item_img} />
-                    </div>
-                );
+                if(item.link === '')
+                {
+                    return (
+                        <div key={item.id} 
+                            style={styles.item_img_container}
+                            className="item_img"
+                        >
+                            <img src={item.src} style={styles.item_img} />
+                        </div>
+                    );
+                }
+                else
+                {
+                    return (
+                        <div key={item.id} 
+                            style={styles.item_img_container}
+                            className="item_img"
+                        >
+                        <a target="_blank" href={item.link} >
+                            <img src={item.src} style={styles.item_img} />
+                        </a>
+                        </div>
+                    );
+                }
             }
             else if(item.type === 'btn')
             {

@@ -123,6 +123,19 @@ export function edit_img_src(id, src, layout_id, position)
     }
 }
 
+export function edit_img_link(id, link, layout_id, position)
+{
+    return {
+        type: "EDIT_IMG_LINK",
+        payload: {
+            id,
+            link,
+            layout_id,
+            position
+        }
+    }
+}
+
 export function edit_styles(id, styles, layout_id, position)
 {
     return {

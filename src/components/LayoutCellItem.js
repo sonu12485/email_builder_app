@@ -217,22 +217,43 @@ class LayoutCellItem extends Component {
                     <p>{this.props.item.data}</p>
                 </div>
             );
-        }
+    }
         else if(this.props.type === 'img')
         {
-            return (
-                <div key={this.props.item.id} 
-                    style={styles.item_img_container}
-                    className="item_img"
-                    onClick={ () => {
-                        this.props.edit_img(this.props.item.id, 
-                            this.props.layout_id, 
-                            this.props.location)
-                    }}
-                >
-                    <img src={this.props.item.src} style={styles.item_img} />
-                </div>
-            );
+            if(this.props.item.link !== '')
+            {
+                return (
+                    <div key={this.props.item.id} 
+                        style={styles.item_img_container}
+                        className="item_img"
+                        onClick={ () => {
+                            this.props.edit_img(this.props.item.id, 
+                                this.props.layout_id, 
+                                this.props.location)
+                        }}
+                    >
+                        <a target="_blank" href={this.props.item.link} >
+                            <img src={this.props.item.src} style={styles.item_img} />
+                        </a>
+                    </div>
+                );
+            }
+            else
+            {
+                return (
+                    <div key={this.props.item.id} 
+                        style={styles.item_img_container}
+                        className="item_img"
+                        onClick={ () => {
+                            this.props.edit_img(this.props.item.id, 
+                                this.props.layout_id, 
+                                this.props.location)
+                        }}
+                    >
+                        <img src={this.props.item.src} style={styles.item_img} />
+                    </div>
+                );
+            }
         }
         else if(this.props.type === 'btn')
         {

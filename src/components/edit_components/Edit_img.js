@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import { 
-    Button, InputGroup, InputGroupAddon, Input
+    Button, InputGroup, InputGroupAddon, Input, Label
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
 import { 
-    edit_img, delete_item, edit_img_src, edit_layout
+    edit_img, delete_item, edit_img_src, edit_layout, edit_img_link
  } from '../../actions/edit_actions';
 
 class Edit_img extends Component 
@@ -53,12 +53,13 @@ class Edit_img extends Component
             return item
         });
 
-        const data = selectedItem.data;
+        const data = selectedItem;
 
         this.state={
             img_src: null,
             data
         }
+        console.log(this.state.data);
     }
 
     onSrcChange = (event) =>
@@ -90,10 +91,44 @@ class Edit_img extends Component
         this.props.update();
     }
 
+    onLinkChange = (val) =>
+    {
+        const { id, layout_id, position } = this.props.data;
+
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                data: {
+                    ...prevState.data,
+                    link: val
+                }
+            }
+        },
+        () => {
+            this.props.edit_img_link(
+                id,
+                this.state.data.link,
+                layout_id,
+                position
+            );
+            this.props.update();
+        }
+        );
+    }
+
     render() 
     {
         return (
             <div>
+
+                <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => this.props.edit_img() }
+                    >DONE</Button>
+                    <Button color="danger" 
+                        onClick={ () => this.deleteElement() }
+                    >DELETE</Button>
+                </div>
                 
                 <div>
                     <div className="img_input_conatiner" >
@@ -120,16 +155,18 @@ class Edit_img extends Component
                 </div>
                 </div>
 
-                <br />
-                <br />
-                <br />
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_img() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
+                <div>
+                    <div className="img_input_conatiner" >
+                        <Label>
+                            Enter Image Link, if any 
+                        </Label>
+                        <Input 
+                            value={this.state.data.link}
+                            onChange={ (event) => this.onLinkChange(
+                                event.target.value.toString()
+                            ) }
+                        />
+                    </div>
                 </div>
 
             </div>
@@ -150,5 +187,6 @@ export default connect(mapStateToProps, {
     edit_img,
     delete_item,
     edit_img_src,
-    edit_layout
+    edit_layout,
+    edit_img_link
 })(Edit_img);
