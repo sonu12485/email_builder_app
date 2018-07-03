@@ -405,7 +405,7 @@ class LayoutCell extends Component {
                                     else if(icon === "github")
                                     {
                                         return (
-                                            <a target="_blank" href={item.data.link.facebook} key={icon} >
+                                            <a target="_blank" href={item.data.link.github} key={icon} >
                                             <FA.FaGithub size={size} 
                                             color={
                                                 item.data.colors.github
