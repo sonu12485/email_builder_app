@@ -5,7 +5,7 @@ import { Button, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import { 
-    edit_h1, edit_h1_data, delete_item, edit_layout
+    edit_h1, edit_h1_data, delete_item, edit_layout, duplicate_item
 } from '../../actions/edit_actions';
 
 import StyleEditor from '../styles_component/styles_text';
@@ -88,12 +88,25 @@ class Edit_h1 extends Component
         );
     }
 
+    onItemDuplicate = () =>
+    {
+        this.props.duplicate_item(
+            this.props.data.id,
+            this.props.data.layout_id,
+            this.props.data.position
+        );
+        this.props.update();
+    }
+
     render() 
     {
         return (
             <div>
 
                 <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => this.onItemDuplicate() }
+                    >DUPLICATE</Button>
                     <Button color="primary" 
                         onClick={ () => this.props.edit_h1() }
                     >DONE</Button>
@@ -139,5 +152,6 @@ export default connect(mapStateToProps, {
     edit_h1,
     edit_h1_data,
     delete_item,
-    edit_layout
+    edit_layout,
+    duplicate_item
 })(Edit_h1);

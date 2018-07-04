@@ -492,7 +492,7 @@ class FullPreview extends Component
                 crossorigin="anonymous" 
             />
             <div style={ style } >
-                <div style={{ width: '100%', height: '100vh' }} >
+                <div style={{ width: '100%', minHeight: '100vh' }} >
                 {this.renderItems()}
                 </div>
             </div>

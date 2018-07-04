@@ -1100,6 +1100,86 @@ export default function( state=[], action )
 
             return state;
 
+        case "DUPLICATE_ITEM": 
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        const item_to_be_duplicated = item.left.find( component => {
+                            return component.id === action.payload.id
+                        });
+
+                        const new_item = {
+                            ...item_to_be_duplicated,
+                            id: action.payload.new_item_id
+                        }
+
+                        const index_of_item_to_be_duplicated = item.left.findIndex( component => {
+                            return component.id === action.payload.id
+                        });
+
+                        item.left.splice(index_of_item_to_be_duplicated+1, 0, new_item);
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        const item_to_be_duplicated = item.right.find( component => {
+                            return component.id === action.payload.id
+                        });
+
+                        const new_item = {
+                            ...item_to_be_duplicated,
+                            id: action.payload.new_item_id
+                        }
+
+                        const index_of_item_to_be_duplicated = item.right.findIndex( component => {
+                            return component.id === action.payload.id
+                        });
+
+                        item.right.splice(index_of_item_to_be_duplicated+1, 0, new_item);
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        const item_to_be_duplicated = item.center.find( component => {
+                            return component.id === action.payload.id
+                        });
+
+                        const new_item = {
+                            ...item_to_be_duplicated,
+                            id: action.payload.new_item_id
+                        }
+
+                        const index_of_item_to_be_duplicated = item.center.findIndex( component => {
+                            return component.id === action.payload.id
+                        });
+
+                        item.center.splice(index_of_item_to_be_duplicated+1, 0, new_item);
+                    }
+                }
+            });
+
+            return state;
+
+        case "DUPLICATE_LAYOUT": 
+
+            const layout_to_be_dublicated = state.find( layout => {
+                return layout.id === action.payload.id
+            });
+
+            const new_layout = {
+                ...layout_to_be_dublicated,
+                id: action.payload.new_layout_id
+            }
+
+            const index_of_layout_to_be_duplicated = state.findIndex( layout => {
+                return layout.id === action.payload.id
+            });
+
+            state.splice(index_of_layout_to_be_duplicated+1, 0, new_layout);
+
+            return state;
+
         default:
             return state;
     }

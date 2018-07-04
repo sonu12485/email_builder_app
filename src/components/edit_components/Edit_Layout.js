@@ -4,7 +4,9 @@ import { Button, Input } from 'reactstrap';
 
 import { connect } from 'react-redux';
 
-import { edit_layout, delete_layout } from '../../actions/edit_actions';
+import { 
+    edit_layout, delete_layout, duplicate_layout 
+} from '../../actions/edit_actions';
 
 import Styles_layout from '../styles_component/styles_layout';
 
@@ -16,6 +18,12 @@ class Edit_Layout extends Component
             <div>
 
                 <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => {
+                            this.props.duplicate_layout(this.props.data.id);
+                            this.props.update();
+                        } }
+                    >DUPLICATE</Button>
                     <Button color="primary" 
                         onClick={ () => this.props.edit_layout() }
                     >DONE</Button>
@@ -48,5 +56,6 @@ function mapStateToProps(state)
 
 export default connect(mapStateToProps, {
     edit_layout,
-    delete_layout
+    delete_layout,
+    duplicate_layout
 })(Edit_Layout);

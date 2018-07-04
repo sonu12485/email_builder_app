@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export function edit_h1(id, layout_id, position)
 {
     return {
@@ -309,6 +311,30 @@ export function edit_icons_data(id,data,layout_id,position)
             data,
             layout_id,
             position
+        }
+    }
+}
+
+export function duplicate_item(id,layout_id,position)
+{
+    return {
+        type: "DUPLICATE_ITEM",
+        payload: {
+            id,
+            layout_id,
+            position,
+            new_item_id: _.round(Math.random()*10000000000)
+        }
+    }
+}
+
+export function duplicate_layout(id)
+{
+    return {
+        type: "DUPLICATE_LAYOUT",
+        payload: {
+            id,
+            new_layout_id: _.round(Math.random()*10000000000)
         }
     }
 }

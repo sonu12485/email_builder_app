@@ -279,6 +279,6 @@ TODO
 2 social media icons (DONE)
 3 image links (DONE)
 4 image store
-5 Duplicate feature
+5 Duplicate feature (DONE)
 
 */

@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 import { 
-    edit_img, delete_item, edit_img_src, edit_layout, edit_img_link
+    edit_img, delete_item, edit_img_src, edit_layout, edit_img_link, duplicate_item
  } from '../../actions/edit_actions';
 
 class Edit_img extends Component 
@@ -116,12 +116,25 @@ class Edit_img extends Component
         );
     }
 
+    onItemDuplicate = () =>
+    {
+        this.props.duplicate_item(
+            this.props.data.id,
+            this.props.data.layout_id,
+            this.props.data.position
+        );
+        this.props.update();
+    }
+
     render() 
     {
         return (
             <div>
 
                 <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => this.onItemDuplicate() }
+                    >DUPLICATE</Button>
                     <Button color="primary" 
                         onClick={ () => this.props.edit_img() }
                     >DONE</Button>
@@ -188,5 +201,6 @@ export default connect(mapStateToProps, {
     delete_item,
     edit_img_src,
     edit_layout,
-    edit_img_link
+    edit_img_link,
+    duplicate_item
 })(Edit_img);
