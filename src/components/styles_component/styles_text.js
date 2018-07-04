@@ -239,7 +239,6 @@ class Styles_text extends Component
                         value={this.state.styles.fontSize} 
                         onChange = { (event) => {this.onChangeInput("fontSize",event)} }
                     >
-                        <option value={''} > </option>
                         {this.renderOptions()}
                     </Input>
                 </div>

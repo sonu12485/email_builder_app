@@ -411,6 +411,23 @@ export default function( state=[], action )
 
         case "ITEM_ADDED_TO_LAYOUT":
 
+            let initialStyle = {
+                ...initStyle
+            };
+
+            if(action.payload.type === 'h1')
+            {
+                initialStyle["fontSize"] = 38;
+            }
+            else if(action.payload.type === 'h3')
+            {
+                initialStyle["fontSize"] = 26;
+            }
+            else
+            {
+                initialStyle["fontSize"] = 16;
+            }
+
             state.forEach( item => {
                 if(item.id === action.payload.layout_id)
                 {
@@ -419,7 +436,7 @@ export default function( state=[], action )
                         item.left.push({
                             type: action.payload.type, 
                             data: action.payload.data, 
-                            styles: initStyle,
+                            styles: initialStyle,
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
                             position: action.payload.position 
@@ -430,7 +447,7 @@ export default function( state=[], action )
                         item.right.push({
                             type: action.payload.type, 
                             data: action.payload.data, 
-                            styles: initStyle,
+                            styles: initialStyle,
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
                             position: action.payload.position 
@@ -441,7 +458,7 @@ export default function( state=[], action )
                         item.center.push({
                             type: action.payload.type, 
                             data: action.payload.data, 
-                            styles: initStyle,
+                            styles: initialStyle,
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
                             position: action.payload.position 

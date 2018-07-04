@@ -158,7 +158,7 @@ class LayoutCellItem extends Component {
         if(this.props.type === 'h1')
         {
             return (
-                <h1 style={this.props.style} 
+                <div style={this.props.style} 
                     className="item_h1"
                     key={this.props.item.id} 
                     onClick={ () => {
@@ -168,13 +168,13 @@ class LayoutCellItem extends Component {
                     }}
                 >
                     {this.props.item.data}
-                </h1>
+                </div>
             );
         }
         else if(this.props.type === 'h3')
         {
             return (
-                <h3 style={this.props.style} 
+                <div style={this.props.style} 
                     className="item_h3"
                     key={this.props.item.id} 
                     onClick={ () => {
@@ -184,7 +184,7 @@ class LayoutCellItem extends Component {
                     }}
                 >
                     {this.props.item.data}
-                </h3>
+                </div>
             );
         }
         else if(this.props.type === 'hr')
@@ -214,7 +214,7 @@ class LayoutCellItem extends Component {
                             this.props.location)
                     }}
                 >
-                    <p>{this.props.item.data}</p>
+                    {this.props.item.data}
                 </div>
             );
     }

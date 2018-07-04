@@ -189,12 +189,12 @@ class LayoutCell extends Component {
                 );
 
                 return (
-                    <h1 style={style} 
+                    <div style={style} 
                         className="item_h1"
                         key={item.id} 
                     >
                         {item.data}
-                    </h1>
+                    </div>
                 );
             }
             else if(item.type === 'h3')
@@ -211,12 +211,12 @@ class LayoutCell extends Component {
                 );
 
                 return (
-                    <h3 style={style} 
+                    <div style={style} 
                         key={item.id} 
                         className="item_h3"
                     >
                         {item.data}
-                    </h3>
+                    </div>
                 );
             }
             else if(item.type === 'hr')
@@ -247,7 +247,7 @@ class LayoutCell extends Component {
                         style={style} 
                         className="item_p"
                     >
-                        <p>{item.data}</p>
+                        {item.data}
                     </div>
                 );
             }
