@@ -4,6 +4,8 @@ import {
     Button, InputGroup, InputGroupAddon, Input, Label
 } from 'reactstrap';
 
+import { withRouter } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 
 import { 
@@ -169,6 +171,16 @@ class Edit_img extends Component
                 </div>
 
                 <div>
+                    <h4 style={{textAlign: "center", marginTop: 40}} >OR</h4>
+                </div>
+
+                <div className="btn_container" >
+                    <Button color="primary" 
+                        onClick={ () => {this.props.history.push("/store")} }
+                    >UPLOAD FROM STORE</Button>
+                </div>
+
+                <div>
                     <div className="img_input_conatiner" >
                         <Label>
                             Enter Image Link, if any 
@@ -196,11 +208,11 @@ function mapStateToProps(state)
     }
 }
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     edit_img,
     delete_item,
     edit_img_src,
     edit_layout,
     edit_img_link,
     duplicate_item
-})(Edit_img);
+})(Edit_img));

@@ -262,3 +262,40 @@
     border-width: 2px;
     border-color: #6666FF;
 }
+
+.store_header {
+    background-color: #CCCCCC;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.store_header_content{
+    margin: 20px;
+}
+
+.store_content{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.store_content_image_container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.store_content_upload{
+    margin-top: 30px;
+}
+
+.image_card{
+    width: 30%;
+    margin: 1%;
+}

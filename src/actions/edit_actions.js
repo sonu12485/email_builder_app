@@ -339,6 +339,27 @@ export function duplicate_layout(id)
     }
 }
 
+export function add_image_to_store(name,url)
+{
+    return {
+        type: "ADD_STORE_IMAGE",
+        payload: {
+            name,
+            url
+        }
+    }
+}
+
+export function delete_image_from_store(id)
+{
+    return {
+        type: "DELETE_STORE_IMAGE",
+        payload: {
+            id
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {
