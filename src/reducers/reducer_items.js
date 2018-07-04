@@ -1184,9 +1184,68 @@ export default function( state=[], action )
                 return layout.id === action.payload.id
             });
 
-            const new_layout = {
-                ...layout_to_be_dublicated,
-                id: action.payload.new_layout_id
+            let new_layout = {}
+
+            if(layout_to_be_dublicated.layout_type === 0)
+            {
+                new_layout = {
+                    ...layout_to_be_dublicated,
+                    id: action.payload.new_layout_id,
+                    center: layout_to_be_dublicated.center.map( item => {
+                        return {
+                            ...item,
+                            layout_id: action.payload.new_layout_id
+                        }
+                    })
+                }
+            }
+            else if(
+                layout_to_be_dublicated.layout_type === 1 || 
+                layout_to_be_dublicated.layout_type === 3 || 
+                layout_to_be_dublicated.layout_type === 4
+            )
+            {
+                new_layout = {
+                    ...layout_to_be_dublicated,
+                    id: action.payload.new_layout_id,
+                    left: layout_to_be_dublicated.left.map( item => {
+                        return {
+                            ...item,
+                            layout_id: action.payload.new_layout_id
+                        }
+                    }),
+                    right: layout_to_be_dublicated.right.map( item => {
+                        return {
+                            ...item,
+                            layout_id: action.payload.new_layout_id
+                        }
+                    })
+                }
+            }
+            else if(layout_to_be_dublicated.layout_type === 2)
+            {
+                new_layout = {
+                    ...layout_to_be_dublicated,
+                    id: action.payload.new_layout_id,
+                    left: layout_to_be_dublicated.left.map( item => {
+                        return {
+                            ...item,
+                            layout_id: action.payload.new_layout_id
+                        }
+                    }),
+                    right: layout_to_be_dublicated.right.map( item => {
+                        return {
+                            ...item,
+                            layout_id: action.payload.new_layout_id
+                        }
+                    }),
+                    center: layout_to_be_dublicated.center.map( item => {
+                        return {
+                            ...item,
+                            layout_id: action.payload.new_layout_id
+                        }
+                    })
+                }
             }
 
             const index_of_layout_to_be_duplicated = state.findIndex( layout => {
