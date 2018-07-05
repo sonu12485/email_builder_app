@@ -224,7 +224,10 @@ class LayoutCellItem extends Component {
             {
                 return (
                     <div key={this.props.item.id} 
-                        style={styles.item_img_container}
+                        style={{
+                            ...styles.item_img_container,
+                            overflow: "hidden"
+                        }}
                         className="item_img"
                         onClick={ () => {
                             this.props.edit_img(this.props.item.id, 
@@ -233,7 +236,10 @@ class LayoutCellItem extends Component {
                         }}
                     >
                         <a target="_blank" href={this.props.item.link} >
-                            <img src={this.props.item.src} style={styles.item_img} />
+                            <img src={this.props.item.src} style={{
+                                transform: `rotate(${this.props.item.rotate}deg)`,
+                                ...styles.item_img
+                            }} />
                         </a>
                     </div>
                 );
@@ -242,7 +248,10 @@ class LayoutCellItem extends Component {
             {
                 return (
                     <div key={this.props.item.id} 
-                        style={styles.item_img_container}
+                        style={{
+                            ...styles.item_img_container,
+                            overflow: "hidden"
+                        }}
                         className="item_img"
                         onClick={ () => {
                             this.props.edit_img(this.props.item.id, 
@@ -250,7 +259,10 @@ class LayoutCellItem extends Component {
                                 this.props.location)
                         }}
                     >
-                        <img src={this.props.item.src} style={styles.item_img} />
+                        <img src={this.props.item.src} style={{
+                            transform: `rotate(${this.props.item.rotate}deg)`,
+                            ...styles.item_img
+                        }} />
                     </div>
                 );
             }

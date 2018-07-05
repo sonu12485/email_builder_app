@@ -257,10 +257,16 @@ class LayoutCell extends Component {
                 {
                     return (
                         <div key={item.id} 
-                            style={styles.item_img_container}
+                            style={{
+                                ...styles.item_img_container,
+                                overflow: "hidden"
+                            }}
                             className="item_img"
                         >
-                            <img src={item.src} style={styles.item_img} />
+                            <img src={item.src} style={{
+                                ...styles.item_img,
+                                transform: `rotate(${item.rotate}deg)`
+                            }} />
                         </div>
                     );
                 }
@@ -268,11 +274,17 @@ class LayoutCell extends Component {
                 {
                     return (
                         <div key={item.id} 
-                            style={styles.item_img_container}
+                            style={{
+                                ...styles.item_img_container,
+                                overflow: "hidden"
+                            }}
                             className="item_img"
                         >
                         <a target="_blank" href={item.link} >
-                            <img src={item.src} style={styles.item_img} />
+                            <img src={item.src} style={{
+                                ...styles.item_img,
+                                transform: `rotate(${item.rotate}deg)`
+                            }} />
                         </a>
                         </div>
                     );

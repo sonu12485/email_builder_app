@@ -9,8 +9,11 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { 
-    edit_img, delete_item, edit_img_src, edit_layout, edit_img_link, duplicate_item
- } from '../../actions/edit_actions';
+    edit_img, delete_item, edit_img_src, edit_layout, edit_img_link,
+    duplicate_item, image_rotate
+} from '../../actions/edit_actions';
+
+import * as FA from 'react-icons/lib/fa';
 
 class Edit_img extends Component 
 {
@@ -128,6 +131,17 @@ class Edit_img extends Component
         this.props.update();
     }
 
+    onImageRotate = (val) =>
+    {
+        this.props.image_rotate(
+            this.props.data.id,
+            val,
+            this.props.data.layout_id,
+            this.props.data.position
+        );
+        this.props.update();
+    }
+
     render() 
     {
         return (
@@ -143,6 +157,19 @@ class Edit_img extends Component
                     <Button color="danger" 
                         onClick={ () => this.deleteElement() }
                     >DELETE</Button>
+                </div>
+
+                <div className="btn_container" >
+                    <FA.FaMailReply size={40} 
+                        color="#345F90" 
+                        style={{margin: 5}}         
+                        onClick={ () => this.onImageRotate(-90) }                                
+                    />
+                    <FA.FaMailForward size={40} 
+                        color="#345F90" 
+                        style={{margin: 5}}   
+                        onClick={ () => this.onImageRotate(90) }                                      
+                    />
                 </div>
                 
                 <div>
@@ -214,5 +241,6 @@ export default withRouter(connect(mapStateToProps, {
     edit_img_src,
     edit_layout,
     edit_img_link,
-    duplicate_item
+    duplicate_item,
+    image_rotate
 })(Edit_img));

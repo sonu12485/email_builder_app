@@ -360,6 +360,19 @@ export function delete_image_from_store(id)
     }
 }
 
+export function image_rotate(id,val,layout_id,position)
+{
+    return {
+        type: "IMAGE_ROTATE",
+        payload: {
+            id,
+            val,
+            layout_id,
+            position
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {
