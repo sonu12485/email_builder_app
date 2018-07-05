@@ -20,7 +20,7 @@ const spec = {
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
                 props.addImageToLayout(
-                    "http://via.placeholder.com/500x250",
+                    "http://via.placeholder.com/200x200?text=IMAGE",
                     monitor.getDropResult().layout_id,
                     monitor.getDropResult().location
                 );

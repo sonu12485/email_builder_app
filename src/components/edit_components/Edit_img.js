@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import { 
     edit_img, delete_item, edit_img_src, edit_layout, edit_img_link,
-    duplicate_item, image_rotate
+    duplicate_item, image_rotate, edit_styles
 } from '../../actions/edit_actions';
 
 import * as FA from 'react-icons/lib/fa';
@@ -59,12 +59,13 @@ class Edit_img extends Component
         });
 
         const data = selectedItem;
+        const styles = selectedItem.styles;
 
         this.state={
             img_src: null,
-            data
+            data,
+            styles
         }
-        console.log(this.state.data);
     }
 
     onSrcChange = (event) =>
@@ -140,6 +141,89 @@ class Edit_img extends Component
             this.props.data.position
         );
         this.props.update();
+    }
+
+    onFullWidthChange = (val) =>
+    {
+        const { id, layout_id, position } = this.props.data;
+
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                styles: {
+                    ...prevState.styles,
+                    fullWidth: val
+                }
+            }
+        },
+        () => {
+            this.props.edit_styles(
+                id,
+                this.state.styles,
+                layout_id,
+                position
+            );
+            this.props.update();
+        }
+        );
+    }
+
+    renderFullWidthCheckbox = () =>
+    {
+        if(this.state.styles.fullWidth)
+        {
+            return (
+                <div className="image_style_checkbox_input" >
+                    <Label check>
+                        <Input type="checkbox" 
+                            onChange = { () => this.onFullWidthChange(false) }
+                            checked
+                        />{' '}
+                        Full Width
+                    </Label>
+                    <br />
+                </div>
+            );
+        }
+        else
+        {
+            return (
+                <div className="image_style_checkbox_input" >
+                    <Label check>
+                        <Input type="checkbox" 
+                            onChange = { () => this.onFullWidthChange(true) }
+                        />{' '}
+                        Full Width
+                    </Label>
+                    <br />
+                </div>
+            );
+        }
+    }
+
+    onChangeStyles = (key,val) =>
+    {
+        const { id, layout_id, position } = this.props.data;
+
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                styles: {
+                    ...prevState.styles,
+                    [key]: val
+                }
+            }
+        },
+        () => {
+            this.props.edit_styles(
+                id,
+                this.state.styles,
+                layout_id,
+                position
+            );
+            this.props.update();
+        }
+        );
     }
 
     render() 
@@ -221,6 +305,66 @@ class Edit_img extends Component
                     </div>
                 </div>
 
+                <div className="image_style_input" >
+                    <Label>Select Alignment</Label>
+                    <Input type="select" 
+                        value={this.state.styles.textAlign} 
+                        onChange = { (event) => {this.onChangeStyles(
+                            "textAlign",event.target.value
+                        )} }
+                    >
+                        <option value={'left'} >Left</option>
+                        <option value={'center'} >Center</option>
+                        <option value={'right'} >Right</option>
+                        
+                    </Input>
+                </div>
+
+                <div>
+                    {this.renderFullWidthCheckbox()}
+                </div>
+
+                <div className="image_style_input" >
+                    <br />
+
+                    <Label>Select Top Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingTop} 
+                        onChange = { (event) => this.onChangeStyles(
+                            "paddingTop",Number(event.target.value)
+                        ) }
+                    />
+
+                    <Label>Select Bottom Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingBottom} 
+                        onChange = { (event) => this.onChangeStyles(
+                            "paddingBottom",Number(event.target.value)
+                        ) }
+                    />
+
+                    <Label>Select Left Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingLeft} 
+                        onChange = { (event) => this.onChangeStyles(
+                            "paddingLeft",Number(event.target.value)
+                        ) }
+                    />
+
+                    <Label>Select Right Padding</Label>
+                    <Input type="number" 
+                        value={this.state.styles.paddingRight} 
+                        onChange = { (event) => this.onChangeStyles(
+                            "paddingRight",Number(event.target.value)
+                        ) }
+                    />
+
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         );
     }
@@ -242,5 +386,6 @@ export default withRouter(connect(mapStateToProps, {
     edit_layout,
     edit_img_link,
     duplicate_item,
-    image_rotate
+    image_rotate,
+    edit_styles
 })(Edit_img));

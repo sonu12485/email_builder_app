@@ -253,20 +253,41 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'img')
             {
+                const item_img_container_styles = {
+                    marginTop:10,
+                    marginBottom:10,
+                    width: "100%",
+                    overflow: "hidden",
+                    ...item.styles
+                };
+
+                let item_img_styles = {};
+
+                if(item.styles.fullWidth)
+                {
+                    item_img_styles = {
+                        width: "100%",
+                        height: "auto",
+                        transform: `rotate(${item.rotate}deg)`,
+                    }
+                }
+                else
+                {
+                    item_img_styles = {
+                        maxWidth: "100%",
+                        height: "auto",
+                        transform: `rotate(${item.rotate}deg)`,
+                    }
+                }
+
                 if(item.link === '')
                 {
                     return (
                         <div key={item.id} 
-                            style={{
-                                ...styles.item_img_container,
-                                overflow: "hidden"
-                            }}
+                            style={item_img_container_styles}
                             className="item_img"
                         >
-                            <img src={item.src} style={{
-                                ...styles.item_img,
-                                transform: `rotate(${item.rotate}deg)`
-                            }} />
+                            <img src={item.src} style={item_img_styles} />
                         </div>
                     );
                 }
@@ -274,17 +295,11 @@ class LayoutCell extends Component {
                 {
                     return (
                         <div key={item.id} 
-                            style={{
-                                ...styles.item_img_container,
-                                overflow: "hidden"
-                            }}
+                            style={item_img_container_styles}
                             className="item_img"
                         >
                         <a target="_blank" href={item.link} >
-                            <img src={item.src} style={{
-                                ...styles.item_img,
-                                transform: `rotate(${item.rotate}deg)`
-                            }} />
+                            <img src={item.src} style={item_img_styles} />
                         </a>
                         </div>
                     );
@@ -859,16 +874,15 @@ class LayoutCell extends Component {
 const styles = {
     
     item_img_container: {
-        display: "flex",
-        justifyContent: "center",
         marginTop:10,
         marginBottom:10,
         width: "100%",
+        textAlign: 'center'
     },
 
     item_img: {
-        width: "100%",
-        objectFit: "contain"
+        maxWidth: "100%",
+        height: "auto"
     }
 }
 

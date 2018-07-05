@@ -220,14 +220,38 @@ class LayoutCellItem extends Component {
     }
         else if(this.props.type === 'img')
         {
+            const item_img_container_styles = {
+                marginTop:10,
+                marginBottom:10,
+                width: "100%",
+                overflow: "hidden",
+                ...this.props.item.styles
+            };
+
+            let item_img_styles = {};
+
+            if(this.props.item.styles.fullWidth)
+            {
+                item_img_styles = {
+                    width: "100%",
+                    height: "auto",
+                    transform: `rotate(${this.props.item.rotate}deg)`,
+                }
+            }
+            else
+            {
+                item_img_styles = {
+                    maxWidth: "100%",
+                    height: "auto",
+                    transform: `rotate(${this.props.item.rotate}deg)`,
+                }
+            }
+
             if(this.props.item.link !== '')
             {
                 return (
                     <div key={this.props.item.id} 
-                        style={{
-                            ...styles.item_img_container,
-                            overflow: "hidden"
-                        }}
+                        style={item_img_container_styles}
                         className="item_img"
                         onClick={ () => {
                             this.props.edit_img(this.props.item.id, 
@@ -236,10 +260,7 @@ class LayoutCellItem extends Component {
                         }}
                     >
                         <a target="_blank" href={this.props.item.link} >
-                            <img src={this.props.item.src} style={{
-                                transform: `rotate(${this.props.item.rotate}deg)`,
-                                ...styles.item_img
-                            }} />
+                            <img src={this.props.item.src} style={item_img_styles} />
                         </a>
                     </div>
                 );
@@ -248,10 +269,7 @@ class LayoutCellItem extends Component {
             {
                 return (
                     <div key={this.props.item.id} 
-                        style={{
-                            ...styles.item_img_container,
-                            overflow: "hidden"
-                        }}
+                        style={ item_img_container_styles }
                         className="item_img"
                         onClick={ () => {
                             this.props.edit_img(this.props.item.id, 
@@ -259,10 +277,7 @@ class LayoutCellItem extends Component {
                                 this.props.location)
                         }}
                     >
-                        <img src={this.props.item.src} style={{
-                            transform: `rotate(${this.props.item.rotate}deg)`,
-                            ...styles.item_img
-                        }} />
+                        <img src={this.props.item.src} style={item_img_styles} />
                     </div>
                 );
             }
@@ -829,22 +844,6 @@ class LayoutCellItem extends Component {
     }
 }
 
-const styles = {
-    
-    item_img_container: {
-        display: "flex",
-        justifyContent: "center",
-        marginTop:10,
-        marginBottom:10,
-        width: "100%",
-    },
-
-    item_img: {
-        width: "100%",
-        objectFit: "contain"
-    }
-}
-
 export default flow(
     DragSource(
         'move',
@@ -857,4 +856,4 @@ export default flow(
     DropTarget('move', cardTarget, (connect) => ({
         connectDropTarget: connect.dropTarget(),
     }))
-  )(LayoutCellItem);
+)(LayoutCellItem);

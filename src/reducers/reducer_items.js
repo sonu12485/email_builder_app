@@ -13,6 +13,15 @@ const initStyle = {
     paddingRight: 0
 };
 
+const initImageStyle = {
+    textAlign: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    fullWidth: false
+}
+
 const initLayoutStyles = {
     backgroundColor: '#ffffff',
     paddingTop: 10,
@@ -558,6 +567,7 @@ export default function( state=[], action )
                             src: action.payload.src, 
                             link: '',
                             rotate: 0,
+                            styles: initImageStyle,
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
                             position: action.payload.position 
@@ -570,6 +580,7 @@ export default function( state=[], action )
                             src: action.payload.src, 
                             link: '',
                             rotate: 0,
+                            styles: initImageStyle,
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
                             position: action.payload.position 
@@ -582,6 +593,7 @@ export default function( state=[], action )
                             src: action.payload.src, 
                             link: '',
                             rotate: 0,
+                            styles: initImageStyle,
                             id: action.payload.id,
                             layout_id: action.payload.layout_id,
                             position: action.payload.position 

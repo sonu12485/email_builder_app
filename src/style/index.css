@@ -299,3 +299,12 @@
     width: 30%;
     margin: 1%;
 }
+
+.image_style_checkbox_input {
+    margin: 20px;
+    margin-left: 70px;
+}
+
+.image_style_input {
+    margin: 30px;
+}

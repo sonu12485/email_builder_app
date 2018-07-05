@@ -543,20 +543,6 @@ class FullPreview extends Component
 }
 
 const styles = {
-    
-    item_img_container: {
-        display: "flex",
-        justifyContent: "center",
-        marginTop:10,
-        marginBottom:10,
-        width: "100%",
-    },
-
-    item_img: {
-        width: "100%",
-        objectFit: "contain"
-    },
-
     layout_table: {
         width: '90%',
         margin: 10,
