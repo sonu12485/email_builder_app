@@ -298,6 +298,15 @@ class Preview extends Component
 
 class FullPreview extends Component
 {
+    constructor(props)
+    {
+        super(props);
+
+        this.state = {
+            DesktopView: true 
+        };
+    }
+
     renderItems = () =>
     {
         return this.props.items.map( item => {
@@ -516,12 +525,84 @@ class FullPreview extends Component
         document.body.removeChild(element);
     }
 
+    renderViewOptions = () =>
+    {
+        if(this.state.DesktopView)
+        {
+            return (
+                <div className="tabs_container" >
+                <div className="tabs" >
+
+                <div className="tab active" >
+                    <div>Desktop</div>
+                </div>
+
+                <div className="tab inactive" 
+                    onClick = { () => {
+                        this.setState({
+                            DesktopView: false
+                        });
+                    }}
+                >
+                    <div>Mobile</div>
+                </div>
+                
+                </div>
+                </div>
+            );
+        }
+        else
+        {
+            return (
+                <div className="tabs_container" >
+                <div className="tabs" >
+
+                <div className="tab inactive" 
+                    onClick = { () => {
+                        this.setState({
+                            DesktopView: true
+                        });
+                    }}
+                >
+                    <div>Desktop</div>
+                </div>
+
+                <div className="tab active" >
+                    <div>Mobile</div>
+                </div>
+                
+                </div>
+                </div>
+            );
+        }
+    }
+    renderPreview = () =>
+    {
+        if(this.state.DesktopView)
+        {
+            return <Preview {...this.props} />
+        }
+        else
+        {
+            return (
+                <div className="preview_container" >
+                    <div style={{width: 400}} >
+                        <Preview {...this.props} />
+                    </div>
+                </div>
+            );
+        }
+    }
+
     render()
     {
         return (
             <div>
                 <div className="header" >
                     <div><h3>Preview</h3></div>
+                    <div style={{width: "30%"}} >   
+                        {this.renderViewOptions()}
+                    </div>
                     <div>
 
                         <Button color="primary"
@@ -535,7 +616,7 @@ class FullPreview extends Component
 
                     </div>
                 </div>
-                <Preview {...this.props} />
+                {this.renderPreview()}
 
             </div>
         );
