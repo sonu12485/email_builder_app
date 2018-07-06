@@ -44,16 +44,24 @@ class Edit_hr extends Component
         return (
             <div>
 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.onItemDuplicate() }
-                    >DUPLICATE</Button>
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_hr() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
+              <div className="col-md-12 mt-3 mb-3 btnSection">
+                   <div className="row">
+                     <div className="col-sm-4">
+                        <Button color="primary" 
+                            onClick={ () => this.onItemDuplicate() } className="btn-sm btn-block"
+                        >DUPLICATE</Button>
+                      </div>
+                       <div className="col-sm-4">
+                            <Button color="success" 
+                                onClick={ () => this.props.edit_hr() } className="btn-sm btn-block"
+                            >DONE</Button>
+                        </div>
+                         <div className="col-sm-4">
+                            <Button color="danger" 
+                                onClick={ () => this.deleteElement() } className="btn-sm btn-block"
+                            >DELETE</Button>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

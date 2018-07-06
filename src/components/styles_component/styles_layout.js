@@ -46,11 +46,9 @@ class Styles_layout extends Component
     render() 
     {
         return (
-            <div className="style_inputs" >
-                
-                <br />
-                <div>
-                    <Label>Select Background Color</Label><br />
+            <div className="mt-3" >
+                <div className="col-md-12 form-group">
+                    <Label>Select Background Color</Label>
                     <Input type="color" style={{height: 40}}
                         value={this.state.styles.backgroundColor}
                         onChange = { (event) => this.onChangeInput(
@@ -58,44 +56,47 @@ class Styles_layout extends Component
                         ) } 
                     />
                 </div>
-
-                <div>
-                    <br />
-
-                    <Label>Select Top Padding</Label>
+                <div className="col-md-12">
+                <p>Padding</p>
+                 <div className="row">
+                 <div className="col-md-3 form-group">
+                    <Label>Top</Label>
                     <Input type="number" 
                         value={this.state.styles.paddingTop} 
                         onChange = { (event) => this.onChangeInput(
                             "paddingTop",Number(event.target.value)
                         ) }
                     />
-
-                    <Label>Select Bottom Padding</Label>
+                    </div>
+                    <div className="col-md-3 form-group">
+                    <Label>Bottom</Label>
                     <Input type="number" 
                         value={this.state.styles.paddingBottom} 
                         onChange = { (event) => this.onChangeInput(
                             "paddingBottom",Number(event.target.value)
                         ) }
                     />
-
-                    <Label>Select Left Padding</Label>
+                    </div>
+                    <div className="col-md-3 form-group">
+                    <Label>Left</Label>
                     <Input type="number" 
                         value={this.state.styles.paddingLeft} 
                         onChange = { (event) => this.onChangeInput(
                             "paddingLeft",Number(event.target.value)
                         ) }
                     />
-
-                    <Label>Select Right Padding</Label>
+                    </div>
+                    <div className="col-md-3 form-group">
+                    <Label>Right</Label>
                     <Input type="number" 
                         value={this.state.styles.paddingRight} 
                         onChange = { (event) => this.onChangeInput(
                             "paddingRight",Number(event.target.value)
                         ) }
                     />
-
+                    </div>
                 </div>
-
+              </div>
             </div>
         );
     }

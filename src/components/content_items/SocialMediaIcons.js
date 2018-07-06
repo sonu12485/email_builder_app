@@ -48,7 +48,8 @@ class SocialMediaIcons extends Component
 
         return connectDragSource(
             <div className="box" >
-                <h4>Social Media Icons</h4>
+                <img src="img/content-icon/social-media-icon.png" alt="" className="img-fluid mx-auto d-block" width="90%"/>
+                <p className="mb-0">Social Media Icons</p>
             </div>
         );
     }

@@ -49,7 +49,8 @@ class Html extends Component
 
         return connectDragSource(
             <div className="box" >
-                <h4>HTML Code</h4>
+                <img src="img/content-icon/html-icon.png" alt="" className="img-fluid mx-auto d-block" width="90%"/>
+                <p className="mb-0">HTML Code</p>
             </div>
         );
     }

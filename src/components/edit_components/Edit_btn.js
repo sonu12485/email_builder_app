@@ -129,23 +129,31 @@ class Edit_btn extends Component
         return (
             <div>
                 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.onItemDuplicate() }
-                    >DUPLICATE</Button>
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_btn() }
-                    >DONE</Button>
+                <div className="col-md-12 mt-3 btnSection">
+                    <div className="row">
+                     <div className="col-sm-4">
+                        <Button color="primary" 
+                            onClick={ () => this.onItemDuplicate() } className="btn-sm btn-block"
+                        >DUPLICATE</Button>
+                     </div>
+                     <div className="col-sm-4">
+                        <Button color="success" 
+                            onClick={ () => this.props.edit_btn() } className="btn-sm btn-block"
+                        >DONE</Button>
+                    </div>
+                    <div className="col-sm-4">
                     <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
+                        onClick={ () => this.deleteElement() } className="btn-sm btn-block"
                     >DELETE</Button>
+                    </div>
+                 </div>
                 </div>
 
                 <br />
 
-                <div className="style_inputs" >
-
-                    <div>
+                <div className="col-md-12" >
+                 <div className="row">
+                    <div className="col-md-6 form-group">
                         <Label>Enter Button Name</Label>
                         <Input
                             value={this.state.data.name} 
@@ -155,8 +163,7 @@ class Edit_btn extends Component
                         />
                     </div>
 
-                    <div>
-                        <br />
+                    <div className="col-md-6 form-group">
                         <Label>Enter Button URL</Label>
                         <Input
                             value={this.state.data.url} 
@@ -166,8 +173,7 @@ class Edit_btn extends Component
                         />
                     </div>
 
-                    <div>
-                        <br />
+                    <div className="col-md-6 form-group">
                         <Label>Open URL in</Label>
                         <Input type="select" 
                             value={this.state.data.target} 
@@ -181,8 +187,7 @@ class Edit_btn extends Component
                         </Input>
                     </div>
 
-                    <div>
-                        <br />
+                    <div className="col-md-6 form-group">
                         <Label>Select Button Style</Label>
                         <Input type="select" 
                             value={this.state.data.color} 
@@ -200,8 +205,7 @@ class Edit_btn extends Component
                         </Input>
                     </div>
 
-                    <div>
-                        <br />
+                    <div className="col-md-6 form-group">
                         <Label>Select Button Size</Label>
                         <Input type="select" 
                             value={this.state.data.size} 
@@ -216,8 +220,7 @@ class Edit_btn extends Component
                         </Input>
                     </div>
 
-                    <div>
-                        <br />
+                    <div className="col-md-6 form-group">
                         <Label>Select for Block Button</Label>
                         <Input type="select" 
                             value={this.state.data.block} 
@@ -231,8 +234,7 @@ class Edit_btn extends Component
                         </Input>
                     </div>
 
-                    <div>
-                        <br />
+                    <div className="col-md-6 form-group">
                         <Label>Select Button Alignment</Label>
                         <Input type="select" 
                             value={this.state.data.alignment} 
@@ -246,44 +248,49 @@ class Edit_btn extends Component
                             
                         </Input>
                     </div>
-
-                    <div>
-                    <br />
-
-                    <Label>Select Top Padding</Label>
+                    <div className="col-md-12">
+                    <p>Padding</p>
+                    <div className="row">
+                    <div className="col-md-3 form-group">
+                    <Label>Top</Label>
                     <Input type="number" 
                         value={this.state.data.style.paddingTop} 
                         onChange = { (event) => this.onChangePadding(
                             "paddingTop",Number(event.target.value)
                         ) }
                     />
+                    </div>
+                    <div className="col-md-3 form-group">
 
-                    <Label>Select Bottom Padding</Label>
+                    <Label>Bottom</Label>
                     <Input type="number" 
                         value={this.state.data.style.paddingBottom} 
                         onChange = { (event) => this.onChangePadding(
                             "paddingBottom",Number(event.target.value)
                         ) }
                     />
-
-                    <Label>Select Left Padding</Label>
+                    </div>
+                    <div className="col-md-3 form-group">
+                    <Label>Left</Label>
                     <Input type="number" 
                         value={this.state.data.style.paddingLeft} 
                         onChange = { (event) => this.onChangePadding(
                             "paddingLeft",Number(event.target.value)
                         ) }
                     />
-
-                    <Label>Select Right Padding</Label>
+                    </div>
+                    <div className="col-md-3 form-group">
+                    <Label>Right</Label>
                     <Input type="number" 
                         value={this.state.data.style.paddingRight} 
                         onChange = { (event) => this.onChangePadding(
                             "paddingRight",Number(event.target.value)
                         ) }
                     />
-
+                    </div>
+                    </div>
                 </div>
-
+                </div>
                 </div>
 
                 <br />

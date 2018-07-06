@@ -19,7 +19,7 @@ class Store extends Component {
         if(this.props.is_img_edit)
         {
             return (
-                <Button color="primary"
+                <Button color="primary" className="btn-sm mr-1"
                     onClick={ () => {
                         const { id, layout_id, position } = this.props.data;
 
@@ -50,12 +50,13 @@ class Store extends Component {
                 >
                     <CardImg top 
                         width="100%" 
+                        height="250"
                         src={image.url}
                     />
                     <CardBody>
                         <CardTitle>{image.name}</CardTitle>
                         {this.renderUploadBtn(image.url)}
-                        <Button color="danger"
+                        <Button color="danger" className="btn-sm"
                             onClick={ () => {
                                 this.props.delete_image_from_store(image.id);
                             }}
@@ -69,15 +70,19 @@ class Store extends Component {
     render() {
         return (
             <div>
-                <div className="store_header" >
-                    <div className="store_header_content" >
+                 <div className="store_header" >
+                 <div className="container">
+                   <div className="row">
+                    <div className="col-md-8" >
                         <h3>Image Store</h3>
                     </div>
-                    <div className="store_header_content" >
+                    <div className="col-md-4" >
                         <Button color="primary"
-                            onClick={ () => {this.props.history.push("/")}}
+                            onClick={ () => {this.props.history.push("/")}} className="btn-sm float-right"
                         >BACK</Button>
                     </div>
+                    </div>
+                 </div>
                 </div>
                 <div className="store_content" >
                     <div className="store_content_image_container" >

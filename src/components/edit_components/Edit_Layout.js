@@ -16,23 +16,30 @@ class Edit_Layout extends Component
     {
         return (
             <div>
-
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => {
-                            this.props.duplicate_layout(this.props.data.id);
-                            this.props.update();
-                        } }
-                    >DUPLICATE</Button>
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_layout() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => {
-                            this.props.delete_layout(this.props.data.id);
-                            this.props.edit_layout();
-                        }}
-                    >DELETE</Button>
+                <div className="col-md-12 mt-3 btnSection">
+                   <div className="row">
+                     <div className="col-sm-4">
+                            <Button color="primary" 
+                                onClick={ () => {
+                                    this.props.duplicate_layout(this.props.data.id);
+                                    this.props.update();
+                                } } className="btn-sm btn-block"
+                            >DUPLICATE</Button>
+                        </div>
+                         <div className="col-sm-4">
+                            <Button color="success" 
+                                onClick={ () => this.props.edit_layout() } className="btn-sm btn-block"
+                            >DONE</Button>
+                        </div>
+                        <div className="col-sm-4">
+                            <Button color="danger" 
+                                onClick={ () => {
+                                    this.props.delete_layout(this.props.data.id);
+                                    this.props.edit_layout();
+                                }} className="btn-sm btn-block"
+                            >DELETE</Button>
+                        </div>
+                    </div>
                 </div>
 
                 <div>

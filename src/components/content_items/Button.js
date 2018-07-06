@@ -48,7 +48,8 @@ class Button extends Component
 
         return connectDragSource(
             <div className="box" >
-                <h4>Button</h4>
+                <img src="img/content-icon/button-icon.png" alt="" className="img-fluid mx-auto d-block" width="90%"/>
+                <p className="mb-0">Button</p>
             </div>
         );
     }

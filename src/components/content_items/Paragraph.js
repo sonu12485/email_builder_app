@@ -53,7 +53,8 @@ class Paragraph extends Component {
 
         return connectDragSource(
             <div className="box" >
-                <h4>Paragraph</h4>
+                <img src="img/content-icon/paragraph-icon.png" alt="" className="img-fluid mx-auto d-block" width="90%"/>
+                <p className="mb-0">Paragraph</p>
             </div>
         );
     }

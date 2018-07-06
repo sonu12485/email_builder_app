@@ -49,7 +49,8 @@ class Heading extends Component {
 
         return connectDragSource(
             <div className="box" >
-                <h4>Heading</h4>
+                <img src="img/content-icon/heading-icon.png" alt="" className="img-fluid mx-auto d-block" width="90%"/>
+                <p className="mb-0">Heading</p>
             </div>
         );
     }

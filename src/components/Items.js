@@ -14,15 +14,34 @@ class Items extends Component
     render()
     {
         return (
-            <div className="item_container" >
-                <Heading />
-                <SubHeading />
-                <HR />
-                <Paragraph />
-                <Image />
-                <Button />
-                <HTML />
-                <SocialMediaIcons />
+            <div className="item_container col-md-12" >
+            <div className="row">
+                <div className="col-md-4 p-0">
+                    <Heading />
+                </div>
+                <div className="col-md-4 p-0">
+                    <SubHeading />
+                </div>
+                 <div className="col-md-4 p-0">
+                     <HTML />
+                </div>
+                <div className="col-md-4 p-0">
+                    <Paragraph />
+                </div>
+                <div className="col-md-4 p-0">
+                    <Image />
+                </div>
+                <div className="col-md-4 p-0">
+                    <Button />
+                </div>
+               
+                <div className="col-md-4 p-0">
+                    <HR />
+                </div>
+                <div className="col-md-4 p-0">
+                 <SocialMediaIcons />
+                </div>
+                </div>
             </div>
         )
     }

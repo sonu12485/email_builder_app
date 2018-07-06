@@ -116,7 +116,7 @@ class Styles_text extends Component
         if(this.state.styles.fontWeight === '')
         {
             return (
-                <Col sm={{ size: 10 }}>
+                <Col sm={{ size: 4 }}>
                 <Label check>
                     <Input type="checkbox" 
                         onChange = { () => this.onCheckboxChange("fontWeight","bold") }
@@ -129,7 +129,7 @@ class Styles_text extends Component
         else
         {
             return (
-                <Col sm={{ size: 10 }}>
+                <Col sm={{ size: 4 }}>
                 <Label check>
                     <Input type="checkbox" 
                         onChange = { () => this.onCheckboxChange("fontWeight","") }
@@ -147,7 +147,7 @@ class Styles_text extends Component
         if(this.state.styles.fontStyle === '')
         {
             return (
-                <Col sm={{ size: 10 }}>
+                <Col sm={{ size: 4 }}>
                 <Label check>
                     <Input type="checkbox" 
                         onChange = { () => this.onCheckboxChange("fontStyle","italic") }
@@ -160,7 +160,7 @@ class Styles_text extends Component
         else
         {
             return (
-                <Col sm={{ size: 10 }}>
+                <Col sm={{ size: 4 }}>
                 <Label check>
                     <Input type="checkbox" 
                         onChange = { () => this.onCheckboxChange("fontStyle","") }
@@ -178,7 +178,7 @@ class Styles_text extends Component
         if(this.state.styles.textDecoration === '')
         {
             return (
-                <Col sm={{ size: 10 }}>
+                <Col sm={{ size: 4 }}>
                 <Label check>
                     <Input type="checkbox" 
                         onChange = { () => this.onCheckboxChange("textDecoration","underline") }
@@ -191,7 +191,7 @@ class Styles_text extends Component
         else
         {
             return (
-                <Col sm={{ size: 10 }}>
+                <Col sm={{ size: 4 }}>
                 <Label check>
                     <Input type="checkbox" 
                         onChange = { () => this.onCheckboxChange("textDecoration","") }
@@ -207,11 +207,16 @@ class Styles_text extends Component
     renderCheckboxInputs = () => 
     {
         return (
-            <div>
-                <br />
-                {this.renderBoldInput()}
-                {this.renderItalicInput()}
-                {this.renderUnderlineInput()}
+            <div className="row">
+                <div className="col-md-2 p-0">
+                    {this.renderBoldInput()}
+                </div>
+                <div className="col-md-3">
+                 {this.renderItalicInput()}
+                 </div>
+                <div className="col-md-4">
+                 {this.renderUnderlineInput() }
+                </div>
             </div>
         )
     }
@@ -232,9 +237,15 @@ class Styles_text extends Component
     render() 
     {
         return (
-            <div className="style_inputs" >
-                <div>
-                    <Label>Select Font Size</Label>
+            <div className="col-md-12" >
+             <p className="mb-0"><b>Font Style</b></p>
+             <div className="col-md-12 form-group">
+                    {this.renderCheckboxInputs()}
+                </div>
+            <p className="mb-0"><b>Font</b></p>
+            <div className="row">
+                <div className="col-md-4 form-group">
+                    <Label>Size</Label>
                     <Input type="select" 
                         value={this.state.styles.fontSize} 
                         onChange = { (event) => {this.onChangeInput("fontSize",event)} }
@@ -242,9 +253,8 @@ class Styles_text extends Component
                         {this.renderOptions()}
                     </Input>
                 </div>
-                <div>
-                    <br />
-                    <Label>Select Font Family</Label>
+                <div className="col-md-4 form-group">
+                    <Label>Family</Label>
                     <Input type="select" 
                         value={this.state.styles.fontFamily} 
                         onChange = { (event) => {this.onChangeInput("fontFamily",event)} }
@@ -255,66 +265,68 @@ class Styles_text extends Component
                         
                     </Input>
                 </div>
-                <div>
-                    {this.renderCheckboxInputs()}
-                </div>
-                <div>
-                    <br />
-                    <Label>Select Font Color</Label>
-                    <Input type="color" style={{height: 40}}
-                        value={this.state.styles.color}
-                        onChange = { (event) => this.onChangeInput('color',event) } 
-                    />
-                </div>
-                <div>
-                    <br />
-                    <Label>Select Background Color</Label>
-                    <Input type="color" style={{height: 40}}
-                        value={this.state.styles.backgroundColor}
-                        onChange = { (event) => this.onChangeInput('backgroundColor',event) } 
-                    />
-                </div>
-                <div>
-                    <br />
-                    <Label>Select Alignment</Label>
-                    <Input type="select" 
-                        value={this.state.styles.textAlign} 
-                        onChange = { (event) => {this.onChangeInput("textAlign",event)} }
-                    >
-                        <option value={'center'} >Center</option>
-                        <option value={'left'} >Left</option>
-                        <option value={'right'} >Right</option>
-                        
-                    </Input>
-                </div>
-                <div>
-                    <br />
-
-                    <Label>Select Top Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingTop} 
-                        onChange = { (event) => this.onChangeInput("paddingTop",event) }
-                    />
-
-                    <Label>Select Bottom Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingBottom} 
-                        onChange = { (event) => this.onChangeInput("paddingBottom",event) }
-                    />
-
-                    <Label>Select Left Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingLeft} 
-                        onChange = { (event) => this.onChangeInput("paddingLeft",event) }
-                    />
-
-                    <Label>Select Right Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingRight} 
-                        onChange = { (event) => this.onChangeInput("paddingRight",event) }
-                    />
-
-                </div>
+                <div className="col-md-4 form-group">
+                        <Label>Alignment</Label>
+                        <Input type="select" 
+                            value={this.state.styles.textAlign} 
+                            onChange = { (event) => {this.onChangeInput("textAlign",event)} }
+                        >
+                            <option value={'center'} >Center</option>
+                            <option value={'left'} >Left</option>
+                            <option value={'right'} >Right</option>
+                            
+                        </Input>
+                    </div>
+               
+                    <div className="col-md-6 form-group">
+                        <Label>Color</Label>
+                        <Input type="color" style={{height: 40}}
+                            value={this.state.styles.color}
+                            onChange = { (event) => this.onChangeInput('color',event) } 
+                        />
+                    </div>
+                    <div className="col-md-6 form-group">
+                        <Label>Background Color</Label>
+                        <Input type="color" style={{height: 40}}
+                            value={this.state.styles.backgroundColor}
+                            onChange = { (event) => this.onChangeInput('backgroundColor',event) } 
+                        />
+                    </div>
+                    
+                    <div className="col-md-12">
+                    <p className="mb-0"><b>Padding</b></p>
+                    <div className="row">
+                        <div className="col-md-3 form-group">
+                        <Label>Top</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingTop} 
+                            onChange = { (event) => this.onChangeInput("paddingTop",event) }
+                        />
+                        </div>
+                         <div className="col-md-3 form-group">
+                        <Label>Bottom</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingBottom} 
+                            onChange = { (event) => this.onChangeInput("paddingBottom",event) }
+                        />
+                         </div>
+                         <div className="col-md-3 form-group">
+                        <Label>Left</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingLeft} 
+                            onChange = { (event) => this.onChangeInput("paddingLeft",event) }
+                        />
+                         </div>
+                         <div className="col-md-3 form-group">
+                         <Label>Right</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingRight} 
+                            onChange = { (event) => this.onChangeInput("paddingRight",event) }
+                        />
+                        </div>
+                        </div>
+                      </div>
+                    </div>
             </div>
         );
     }

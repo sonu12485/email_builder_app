@@ -47,7 +47,8 @@ class HorizontalRule extends Component {
 
         return connectDragSource(
             <div className="box" >
-                <h4>Horizontal Rule</h4>
+                <img src="img/content-icon/horizontal-ruler-icon.png" alt="" className="img-fluid mx-auto d-block" width="90%"/>
+                <p className="mb-0">Horizontal Ruler</p>
             </div>
         );
     }

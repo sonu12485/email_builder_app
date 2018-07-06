@@ -50,7 +50,8 @@ class SubHeading extends Component
 
         return connectDragSource(
             <div className="box" >
-                <h4>Sub-Heading</h4>
+                <img src="img/content-icon/sub-heading-icon.png" className="img-fluid mx-auto d-block" alt="" width="90%"/>
+                <p className="mb-0">Sub-Heading</p>
             </div>
         );
     }

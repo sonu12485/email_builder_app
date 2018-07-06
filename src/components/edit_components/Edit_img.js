@@ -231,16 +231,24 @@ class Edit_img extends Component
         return (
             <div>
 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.onItemDuplicate() }
-                    >DUPLICATE</Button>
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_img() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
+                <div className="col-md-12 mt-3 btnSection">
+                   <div className="row">
+                     <div className="col-sm-4">
+                        <Button color="primary" 
+                            onClick={ () => this.onItemDuplicate() } className="btn-sm btn-block"
+                        >DUPLICATE</Button>
+                    </div>
+                     <div className="col-sm-4">
+                        <Button color="success" 
+                            onClick={ () => this.props.edit_img() } className="btn-sm btn-block"
+                        >DONE</Button>
+                    </div>
+                     <div className="col-sm-4">
+                        <Button color="danger" 
+                            onClick={ () => this.deleteElement() } className="btn-sm btn-block"
+                        >DELETE</Button>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="btn_container" >
@@ -272,7 +280,7 @@ class Edit_img extends Component
                 </div>
 
                 <div>
-                    <h4 style={{textAlign: "center", marginTop: 40}} >OR</h4>
+                    <h4 style={{textAlign: "center"}} >OR</h4>
                 </div>
 
                 <div className="image_drop_conatiner" >
@@ -282,17 +290,17 @@ class Edit_img extends Component
                 </div>
 
                 <div>
-                    <h4 style={{textAlign: "center", marginTop: 40}} >OR</h4>
+                    <h4 style={{textAlign: "center"}} >OR</h4>
                 </div>
 
-                <div className="btn_container" >
+                <div className="btn_container form-group" >
                     <Button color="primary" 
                         onClick={ () => {this.props.history.push("/store")} }
                     >UPLOAD FROM STORE</Button>
                 </div>
 
-                <div>
-                    <div className="img_input_conatiner" >
+                <div  className="col-md-12">
+                    <div className=" form-group" >
                         <Label>
                             Enter Image Link, if any 
                         </Label>
@@ -304,61 +312,69 @@ class Edit_img extends Component
                         />
                     </div>
                 </div>
+                <div className="col-sm-12">
+                <div className="row">
+                    <div className="col-md-6 form-group" >
+                        <Label>Select Alignment</Label>
+                        <Input type="select" 
+                            value={this.state.styles.textAlign} 
+                            onChange = { (event) => {this.onChangeStyles(
+                                "textAlign",event.target.value
+                            )} }
+                        >
+                            <option value={'left'} >Left</option>
+                            <option value={'center'} >Center</option>
+                            <option value={'right'} >Right</option>
+                            
+                        </Input>
+                    </div>
 
-                <div className="image_style_input" >
-                    <Label>Select Alignment</Label>
-                    <Input type="select" 
-                        value={this.state.styles.textAlign} 
-                        onChange = { (event) => {this.onChangeStyles(
-                            "textAlign",event.target.value
-                        )} }
-                    >
-                        <option value={'left'} >Left</option>
-                        <option value={'center'} >Center</option>
-                        <option value={'right'} >Right</option>
-                        
-                    </Input>
+                    <div className="col-md-6 form-group edit_image_checkbox" >
+                        {this.renderFullWidthCheckbox()}
+                    </div>
+                </div>
                 </div>
 
-                <div>
-                    {this.renderFullWidthCheckbox()}
-                </div>
-
-                <div className="image_style_input" >
-                    <br />
-
-                    <Label>Select Top Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingTop} 
-                        onChange = { (event) => this.onChangeStyles(
-                            "paddingTop",Number(event.target.value)
-                        ) }
-                    />
-
-                    <Label>Select Bottom Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingBottom} 
-                        onChange = { (event) => this.onChangeStyles(
-                            "paddingBottom",Number(event.target.value)
-                        ) }
-                    />
-
-                    <Label>Select Left Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingLeft} 
-                        onChange = { (event) => this.onChangeStyles(
-                            "paddingLeft",Number(event.target.value)
-                        ) }
-                    />
-
-                    <Label>Select Right Padding</Label>
-                    <Input type="number" 
-                        value={this.state.styles.paddingRight} 
-                        onChange = { (event) => this.onChangeStyles(
-                            "paddingRight",Number(event.target.value)
-                        ) }
-                    />
-
+                <div className="col-md-12">
+                    <p className="mb-0"><b>Padding</b></p>
+                    <div className="row">
+                        <div className="col-md-3 form-group">
+                        <Label>Top</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingTop} 
+                            onChange = { (event) => this.onChangeStyles(
+                                "paddingTop",Number(event.target.value)
+                            ) }
+                        />
+                        </div>
+                         <div className="col-md-3 form-group">
+                        <Label>Bottom</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingBottom} 
+                            onChange = { (event) => this.onChangeStyles(
+                                "paddingBottom",Number(event.target.value)
+                            ) }
+                        />
+                         </div>
+                         <div className="col-md-3 form-group">
+                        <Label>Left</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingLeft} 
+                            onChange = { (event) => this.onChangeStyles(
+                                "paddingLeft",Number(event.target.value)
+                            ) }
+                        />
+                         </div>
+                         <div className="col-md-3 form-group">
+                         <Label>Right</Label>
+                        <Input type="number" 
+                            value={this.state.styles.paddingRight} 
+                            onChange = { (event) => this.onChangeStyles(
+                                "paddingRight",Number(event.target.value)
+                            ) }
+                        />
+                        </div>
+                    </div>
                 </div>
 
                 <br />

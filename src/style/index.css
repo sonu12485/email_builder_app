@@ -1,12 +1,18 @@
+body{
+    font-family: 'Roboto', sans-serif !important;
+}
+
 .box{
-    border-style: solid;
-    border-width: 2px;
-    border-color: #345F90;
-    border-radius: 10px;
-    width: 90%;
+    border: 2px solid #6666FF;
+    border-radius: 5px;
     margin: 10px;
     text-align: center;
     cursor: move;
+    padding:5px;
+}
+
+.box:hover {
+    box-shadow: 8px 8px 2px 1px #f1f1f1;
 }
 
 .item_container{
@@ -29,9 +35,9 @@
 }
 
 .header{
-    background-color: #CCCCCC;
     width: 100%;
     height: 70px;
+    border-bottom:1px solid #ccc;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -63,7 +69,8 @@
 .image_drop_conatiner {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom:20px;
 }
 
 .image_drop {
@@ -91,16 +98,14 @@
 
 .tabs {
     width: 95%;
-    height: 50px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top:20px;
+    margin-bottom:20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-style: solid;
     border-width: 1px;
     border-color: #345F90;
-    border-radius: 35px;
 }
 
 .tab {
@@ -109,11 +114,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-right:1px solid #ccc;
 }
 
 .tab div {
-    font-size: 22px;
-    font-weight: bold;
+    font-size:18px;
 }
 
 .active {
@@ -121,7 +126,6 @@
     border-style: solid;
     border-width: 1px;
     border-color: #345F90;
-    border-radius: 35px;
     color: white;
 }
 
@@ -141,7 +145,7 @@
     margin-right: 30px;
     border-style: solid;
     border-width: 2px;
-    border-color: #6666FF;
+    border-color: #ccc;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -151,56 +155,61 @@
     cursor: move;
 }
 
+.layout_items:hover {
+    box-shadow: 8px 8px 2px 1px #f1f1f1;
+}
+
 .layout_inside_blocks_1{
     border-style: solid;
     border-width: 1px;
-    border-color: #6666FF;
+    border-color: #b3b1b1;
     width:100%;
     height: 50px;
-    background-color: #E3F4FA;
+    background-color: #eee;
 }
 
 .layout_inside_blocks_2{
     border-style: solid;
     border-width: 1px;
-    border-color: #6666FF;
+    border-color:#b3b1b1;
     width:50%;
     height: 50px;
-    background-color: #E3F4FA;
+    background-color: #eee;
 }
 
 .layout_inside_blocks_2_large{
     border-style: solid;
     border-width: 1px;
-    border-color: #6666FF;
+    border-color:#b3b1b1;
     width:66.6667%;
     height: 50px;
-    background-color: #E3F4FA;
+    background-color: #eee;
 }
 
 .layout_inside_blocks_2_small{
     border-style: solid;
     border-width: 1px;
-    border-color: #6666FF;
+    border-color:#b3b1b1;
     width:33.3333%;
     height: 50px;
-    background-color: #E3F4FA;
+    background-color: #eee;
 }
 
 .layout_inside_blocks_3{
     border-style: solid;
     border-width: 1px;
-    border-color: #6666FF;
+    border-color:#b3b1b1;
     width:33.3333%;
     height: 50px;
-    background-color: #E3F4FA;
+    background-color: #eee;
 }
 
 .layout_table_cells{
     height: 100px;
     background-color: #E3F4FA;
+    color: rgb(21, 169, 233);
     text-align: center;
-    border: 1px solid #6666FF;
+    border: 1px dashed #5CBAE5;
 }
 
 .layout:hover .primary_row{
@@ -211,7 +220,6 @@
 
 .editor_icons{
     margin: 20px;
-    margin-left: 70px;
 }
 
 .item_h1:hover {
@@ -305,6 +313,11 @@
     margin-left: 70px;
 }
 
-.image_style_input {
-    margin: 30px;
+.edit_image_checkbox {
+    padding: 10px;
+}
+
+.btnSection{
+    border-bottom:1px solid #ccc;
+    padding-bottom:9px;
 }

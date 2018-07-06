@@ -160,11 +160,12 @@ class Edit_icons extends Component
     renderIcons = () => 
     {
         return (
-            <div className="editor_icons" >
+            <div className="col-md-12 form-group mt-3">
+            <div className="row m-0">
 
                 {this.state.data.icons.map( icon => {
                     return (
-                        <div key={icon} >
+                        <div key={icon} className="col-md-3">
                             <Label check>
                                 <Input type="checkbox" 
                                     onChange = { () => this.onIconUncheck(icon) }
@@ -179,7 +180,7 @@ class Edit_icons extends Component
             
                 {this.state.data.iconsLeft.map( icon => {
                     return (
-                        <div key={icon} >
+                        <div key={icon} className="col-md-3 ">
                             <Label check>
                                 <Input type="checkbox" 
                                     onChange = { () => this.onIconCheck(icon) }
@@ -190,7 +191,7 @@ class Edit_icons extends Component
                         </div>
                     )
                 })}
-
+                </div>
             </div>
         );
     }
@@ -204,8 +205,7 @@ class Edit_icons extends Component
         else
         {
             return (
-                <div>
-                    <br />
+                <div className="col-md-6 form-group">
                     <Label>Select Icon Color</Label>
                     <Input type="color" style={{height: 40}}
                         value={this.state.data.colorValue}
@@ -250,7 +250,7 @@ class Edit_icons extends Component
     {
         return this.state.data.icons.map( icon => {
             return (
-                <div key={icon} >
+                <div key={icon} className="col-md-6 form-group">
                     <Label>Enter Your {icon} URL</Label>
                     <Input value={this.state.data.link[icon]}
                         onChange={ (event) => this.onChangeInputURL(
@@ -258,7 +258,6 @@ class Edit_icons extends Component
                             event.target.value.toString()
                         ) }
                     />
-                    <br />
                 </div>
             );
         });
@@ -279,97 +278,103 @@ class Edit_icons extends Component
         return (
             <div>
                 
-                <div className="btn_container" >
-                    <Button color="primary" 
-                        onClick={ () => this.onItemDuplicate() }
-                    >DUPLICATE</Button>
-                    <Button color="primary" 
-                        onClick={ () => this.props.edit_icons() }
-                    >DONE</Button>
-                    <Button color="danger" 
-                        onClick={ () => this.deleteElement() }
-                    >DELETE</Button>
+                 <div className="col-md-12 mt-3 mb-3 btnSection">
+                   <div className="row">
+                     <div className="col-sm-4">
+                        <Button color="primary" 
+                            onClick={ () => this.onItemDuplicate() } className="btn-sm btn-block"
+                        >DUPLICATE</Button>
+                    </div>
+                    <div className="col-sm-4">
+                        <Button color="success" 
+                            onClick={ () => this.props.edit_icons() } className="btn-sm btn-block"
+                        >DONE</Button>
+                    </div>
+                    <div className="col-sm-4">
+                        <Button color="danger" 
+                            onClick={ () => this.deleteElement() } className="btn-sm btn-block"
+                        >DELETE</Button>
+                    </div>
+                  </div>
                 </div>   
 
                 {this.renderIcons()}    
 
-                <div className="style_inputs" >
+                <div className="col-md-12" >
+                    <div className="row">
+                        <div className="col-md-6 form-group">
+                            <Label>Select Icon Color</Label>
+                            <Input type="select" 
+                                value={this.state.data.color} 
+                                onChange = { (event) => {this.onChangeInput(
+                                    "color",
+                                    event.target.value.toString()
+                                )} }
+                            >
 
-                <div>
-                    <Label>Select Icon Color</Label>
-                    <Input type="select" 
-                        value={this.state.data.color} 
-                        onChange = { (event) => {this.onChangeInput(
-                            "color",
-                            event.target.value.toString()
-                        )} }
-                    >
+                                <option value={'default'} >Default</option>
+                                <option value={'custom'} >Custom</option>
 
-                        <option value={'default'} >Default</option>
-                        <option value={'custom'} >Custom</option>
+                            </Input>
+                        </div>
+                     {this.renderColorSelector()}
+                        <div className="col-md-6 form-group">
+                            <Label>Select Icon Size</Label>
+                            <Input type="select" 
+                                value={this.state.data.size} 
+                                onChange = { (event) => {this.onChangeInput(
+                                    "size",
+                                    event.target.value.toString()
+                                )} }
+                            >
 
-                    </Input>
-                </div>
+                                <option value={'small'} >Small</option>
+                                <option value={'default'} >Default</option>
+                                <option value={'large'} >Large</option>
 
-                {this.renderColorSelector()}
+                            </Input>
+                        </div>
 
-                <div>
-                    <br />
-                    <Label>Select Icon Size</Label>
-                    <Input type="select" 
-                        value={this.state.data.size} 
-                        onChange = { (event) => {this.onChangeInput(
-                            "size",
-                            event.target.value.toString()
-                        )} }
-                    >
+                        <div className="col-md-6 form-group">
+                            <Label>Select Icon Layout</Label>
+                            <Input type="select" 
+                                value={this.state.data.layout} 
+                                onChange = { (event) => {this.onChangeInput(
+                                    "layout",
+                                    event.target.value.toString()
+                                )} }
+                            >
 
-                        <option value={'small'} >Small</option>
-                        <option value={'default'} >Default</option>
-                        <option value={'large'} >Large</option>
+                                <option value={'row'} >Row</option>
+                                <option value={'column'} >Column</option>
 
-                    </Input>
-                </div>
+                            </Input>
+                        </div>
 
-                <div>
-                    <br />
-                    <Label>Select Icon Layout</Label>
-                    <Input type="select" 
-                        value={this.state.data.layout} 
-                        onChange = { (event) => {this.onChangeInput(
-                            "layout",
-                            event.target.value.toString()
-                        )} }
-                    >
+                        <div className="col-md-6 form-group">
+                            <Label>Select Icon Alignment</Label>
+                            <Input type="select" 
+                                value={this.state.data.alignment} 
+                                onChange = { (event) => {this.onChangeInput(
+                                    "alignment",
+                                    event.target.value.toString()
+                                )} }
+                            >
 
-                        <option value={'row'} >Row</option>
-                        <option value={'column'} >Column</option>
+                                <option value={'left'} >Left</option>
+                                <option value={'center'} >Center</option>
+                                <option value={'right'} >Right</option>
 
-                    </Input>
-                </div>
-
-                <div>
-                    <br />
-                    <Label>Select Icon Alignment</Label>
-                    <Input type="select" 
-                        value={this.state.data.alignment} 
-                        onChange = { (event) => {this.onChangeInput(
-                            "alignment",
-                            event.target.value.toString()
-                        )} }
-                    >
-
-                        <option value={'left'} >Left</option>
-                        <option value={'center'} >Center</option>
-                        <option value={'right'} >Right</option>
-
-                    </Input>
-                </div>
+                            </Input>
+                        </div>
+                    </div>
 
                 </div>    
 
-                <div className="editor" >
-                    {this.renderURLInputs()}
+                <div className="col-md-12" >
+                    <div className="row">
+                        {this.renderURLInputs()}
+                    </div>
                 </div>     
 
             </div>

@@ -598,26 +598,36 @@ class FullPreview extends Component
     {
         return (
             <div>
+                <div>
                 <div className="header" >
-                    <div><h3>Preview</h3></div>
-                    <div style={{width: "30%"}} >   
-                        {this.renderViewOptions()}
-                    </div>
-                    <div>
+                            <div>
+                                <h4><b>Preview</b></h4>
+                            </div>
 
-                        <Button color="primary"
-                            onClick={ () => {
-                                this.download()                           
-                            }}
-                        >SAVE</Button>{"  "}
-                        <Button color="danger"
-                            onClick={ () => window.location.reload() }
-                        >CANCEL</Button>
+                            <div style={{width: "30%"}} >   
+                                {this.renderViewOptions()}
+                            </div>
 
-                    </div>
+                            <div>
+                                <div className="btn_container" >
+                                    <div style={{margin: 10}} >
+                                        <Button color="primary"
+                                            onClick={ () => {
+                                                this.download()                           
+                                            }} className="btn-sm btn-block"
+                                        >SAVE</Button>
+                                    </div>
+                                    <div>
+                                        <Button color="danger"
+                                            onClick={ () => window.location.reload() } className="btn-sm btn-block"
+                                        >CANCEL</Button>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
                 {this.renderPreview()}
 
+            </div>
             </div>
         );
     }

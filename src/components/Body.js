@@ -13,9 +13,9 @@ class Body extends Component
     render() 
     {
         return (
-            <div className="style_inputs" >
-                
-                <div>
+            <div className="col-md-12" >
+                <div className="row">
+                <div className="col-md-6 form-group">
                     <Label>Select Page Width</Label>
                     <Input type="select" 
                         value={this.props.body.width}
@@ -42,8 +42,7 @@ class Body extends Component
                     </Input>
                 </div>
 
-                <div>
-                    <br />
+                <div  className="col-md-6 form-group">
                     <Label>Select Background Color</Label>
                     <Input type="color" style={{height: 40}}
                         value={this.props.body.background}
@@ -53,9 +52,7 @@ class Body extends Component
                     />
                 </div>
 
-                <div>
-                    <br />
-
+                <div  className="col-md-6 form-group">
                     <Label>Select Top Padding</Label>
                     <Input type="number" 
                         value={this.props.body.paddingTop} 
@@ -70,7 +67,9 @@ class Body extends Component
                             });
                         } }
                     />
+                </div>
 
+                <div className="col-md-6 form-group">
                     <Label>Select Bottom Padding</Label>
                     <Input type="number" 
                         value={this.props.body.paddingBottom} 
@@ -85,7 +84,9 @@ class Body extends Component
                             });
                         } }
                     />
+                </div>
 
+                <div className="col-md-6 form-group">
                     <Label>Select Left Padding</Label>
                     <Input type="number" 
                         value={this.props.body.paddingLeft} 
@@ -100,7 +101,9 @@ class Body extends Component
                             });
                         } }
                     />
-
+                </div>
+                
+                <div className="col-md-6 form-group">
                     <Label>Select Right Padding</Label>
                     <Input type="number" 
                         value={this.props.body.paddingRight} 
@@ -115,9 +118,8 @@ class Body extends Component
                             });
                         } }
                     />
-
                 </div>
-
+                </div>
             </div>
         );
     }
