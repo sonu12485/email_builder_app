@@ -52,73 +52,76 @@ class Body extends Component
                     />
                 </div>
 
-                <div  className="col-md-6 form-group">
-                    <Label>Select Top Padding</Label>
-                    <Input type="number" 
-                        value={this.props.body.paddingTop} 
-                        onChange = { (event) => {
-                            this.props.edit_body_padding({
-                                width: this.props.body.width,
-                                background : this.props.body.background,
-                                paddingTop: Number(event.target.value),
-                                paddingBottom: this.props.body.paddingBottom,
-                                paddingLeft: this.props.body.paddingLeft,
-                                paddingRight: this.props.body.paddingRight
-                            });
-                        } }
-                    />
-                </div>
+                <div className="col-md-12">
+                    <p className="mb-0"><b>Padding</b></p>
+                    <div className="row">
+                        <div className="col-md-3 form-group">
+                        <Label>Top</Label>
+                        <Input type="number" 
+                            value={this.props.body.paddingTop} 
+                            onChange = { (event) => {
+                                this.props.edit_body_padding({
+                                    width: this.props.body.width,
+                                    background : this.props.body.background,
+                                    paddingTop: Number(event.target.value),
+                                    paddingBottom: this.props.body.paddingBottom,
+                                    paddingLeft: this.props.body.paddingLeft,
+                                    paddingRight: this.props.body.paddingRight
+                                });
+                            } }
+                        />
+                        </div>
+                         <div className="col-md-3 form-group">
+                        <Label>Bottom</Label>
+                        <Input type="number" 
+                            value={this.props.body.paddingBottom} 
+                            onChange = { (event) => {
+                                this.props.edit_body_padding({
+                                    width: this.props.body.width,
+                                    background : this.props.body.background,
+                                    paddingTop: this.props.body.paddingTop,
+                                    paddingBottom: Number(event.target.value),
+                                    paddingLeft: this.props.body.paddingLeft,
+                                    paddingRight: this.props.body.paddingRight
+                                });
+                            } }
+                        />
+                         </div>
+                         <div className="col-md-3 form-group">
+                        <Label>Left</Label>
+                        <Input type="number" 
+                            value={this.props.body.paddingLeft} 
+                            onChange = { (event) => {
+                                this.props.edit_body_padding({
+                                    width: this.props.body.width,
+                                    background : this.props.body.background,
+                                    paddingTop: this.props.body.paddingTop,
+                                    paddingBottom: this.props.body.paddingBottom,
+                                    paddingLeft: Number(event.target.value),
+                                    paddingRight: this.props.body.paddingRight
+                                });
+                            } }
+                        />
+                         </div>
+                         <div className="col-md-3 form-group">
+                         <Label>Right</Label>
+                        <Input type="number" 
+                            value={this.props.body.paddingRight} 
+                            onChange = { (event) => {
+                                this.props.edit_body_padding({
+                                    width: this.props.body.width,
+                                    background : this.props.body.background,
+                                    paddingTop: this.props.body.paddingTop,
+                                    paddingBottom: this.props.body.paddingBottom,
+                                    paddingLeft: this.props.body.paddingLeft,
+                                    paddingRight: Number(event.target.value)
+                                });
+                            } }
+                        />
+                        </div>
+                        </div>
+                      </div>
 
-                <div className="col-md-6 form-group">
-                    <Label>Select Bottom Padding</Label>
-                    <Input type="number" 
-                        value={this.props.body.paddingBottom} 
-                        onChange = { (event) => {
-                            this.props.edit_body_padding({
-                                width: this.props.body.width,
-                                background : this.props.body.background,
-                                paddingTop: this.props.body.paddingTop,
-                                paddingBottom: Number(event.target.value),
-                                paddingLeft: this.props.body.paddingLeft,
-                                paddingRight: this.props.body.paddingRight
-                            });
-                        } }
-                    />
-                </div>
-
-                <div className="col-md-6 form-group">
-                    <Label>Select Left Padding</Label>
-                    <Input type="number" 
-                        value={this.props.body.paddingLeft} 
-                        onChange = { (event) => {
-                            this.props.edit_body_padding({
-                                width: this.props.body.width,
-                                background : this.props.body.background,
-                                paddingTop: this.props.body.paddingTop,
-                                paddingBottom: this.props.body.paddingBottom,
-                                paddingLeft: Number(event.target.value),
-                                paddingRight: this.props.body.paddingRight
-                            });
-                        } }
-                    />
-                </div>
-                
-                <div className="col-md-6 form-group">
-                    <Label>Select Right Padding</Label>
-                    <Input type="number" 
-                        value={this.props.body.paddingRight} 
-                        onChange = { (event) => {
-                            this.props.edit_body_padding({
-                                width: this.props.body.width,
-                                background : this.props.body.background,
-                                paddingTop: this.props.body.paddingTop,
-                                paddingBottom: this.props.body.paddingBottom,
-                                paddingLeft: this.props.body.paddingLeft,
-                                paddingRight: Number(event.target.value)
-                            });
-                        } }
-                    />
-                </div>
                 </div>
             </div>
         );

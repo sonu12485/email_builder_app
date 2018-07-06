@@ -12,7 +12,7 @@ body{
 }
 
 .box:hover {
-    box-shadow: 8px 8px 2px 1px #f1f1f1;
+    box-shadow: 8px 8px 2px 1px #ccc;
 }
 
 .item_container{
@@ -156,7 +156,7 @@ body{
 }
 
 .layout_items:hover {
-    box-shadow: 8px 8px 2px 1px #f1f1f1;
+    box-shadow: 8px 8px 2px 1px #ccc;
 }
 
 .layout_inside_blocks_1{
