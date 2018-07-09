@@ -22,6 +22,8 @@ import Edit_icons from './edit_components/Edit_icons';
 
 import { update as update_action } from '../actions/index';
 
+import checkToken from '../functions/checkToken';
+
 class App extends Component 
 {
   constructor(props)
@@ -31,6 +33,14 @@ class App extends Component
     this.state={
       tabs_flag: 0
     }
+  }
+
+  componentDidMount()
+  {
+      if( !checkToken() )
+      {
+          this.props.history.push('/');
+      }
   }
 
   update = () =>
@@ -270,15 +280,3 @@ function mapStateToProps(state)
 export default connect(mapStateToProps, {
   update_action
 })(DragDropContext(HTML5Backend)(App));
-
-/*
-
-TODO
---------------------------
-1 HTML Component (DONE)
-2 social media icons (DONE)
-3 image links (DONE)
-4 image store (DONE)
-5 Duplicate feature (DONE)
-
-*/

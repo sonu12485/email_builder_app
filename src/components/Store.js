@@ -12,7 +12,17 @@ import {
 
 import { withRouter } from 'react-router-dom';
 
-class Store extends Component {
+import checkToken from '../functions/checkToken';
+
+class Store extends Component 
+{
+    componentDidMount()
+    {
+        if( !checkToken() )
+        {
+            this.props.history.push('/');
+        }
+    }
 
     renderUploadBtn = (url) =>
     {
@@ -30,7 +40,7 @@ class Store extends Component {
                             position
                         );
 
-                        this.props.history.push("/");
+                        this.props.history.push("/new");
                     }}
                 >SELECT</Button>
             );

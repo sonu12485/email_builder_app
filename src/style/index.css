@@ -321,3 +321,97 @@ body{
     border-bottom:1px solid #ccc;
     padding-bottom:9px;
 }
+
+.header_home {
+    width: 100%;
+    height: 70px;
+    background-color: #eee;
+    border-bottom:1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.index {
+    height: 100vh;
+    background: linear-gradient(#eee, #aaa);
+}
+
+.index h1 {
+    text-align: center;
+    padding: 30px;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 60px;
+}
+
+.index .btn {
+    width: 200px;
+}
+
+.index img{
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 12px 12px 3px 2px rgb(105, 105, 105);
+}
+
+.background {
+    height: 100vh;
+    background: linear-gradient(#eee, #aaa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_box {
+    width: 50%;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 12px 12px 3px 2px rgb(105, 105, 105);
+}
+
+@media only screen and (max-width: 1000px) {
+    .input_box {
+        width: 90%;
+        padding: 30px;
+        background-color: white;
+        border-radius: 40px;
+        box-shadow: 12px 12px 3px 2px rgb(105, 105, 105);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .index h1 {
+        text-align: center;
+        padding: 30px;
+        font-family: 'Paytone One', sans-serif;
+        font-size: 40px;
+    }
+    .index .btn {
+        width: 100px;
+    }
+    .index img{
+        width: 95%;
+        height: 200px;
+        border-radius: 5px;
+        box-shadow: 10px 10px 3px 2px rgb(105, 105, 105);
+    }
+}
+
+.home_text {
+    padding: 15px;
+    font-size: 24px;
+}
+
+.new {
+    width: 160px;
+    height: 200px;
+    background-color: #eee;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

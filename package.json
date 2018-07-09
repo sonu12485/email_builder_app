@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
     "create-file": "^1.0.1",
+    "crypto": "^1.0.1",
     "draft-js": "^0.10.5",
     "draftjs-to-html": "^0.8.4",
     "i": "^0.3.6",
     "immutable": "^3.8.2",
+    "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "lodash.flow": "^3.5.0",
     "mongoose": "^5.2.1",
@@ -27,7 +31,8 @@
     "react-splitter-layout": "^3.0.0",
     "react-to-print": "^1.0.19",
     "reactstrap": "^6.1.0",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
