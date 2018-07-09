@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button } from 'reactstrap';
+import { 
+    Button, Modal, ModalHeader, ModalBody, Label, Input 
+} from 'reactstrap';
 
 import ReactToPrint from "react-to-print";
 
@@ -303,7 +305,9 @@ class FullPreview extends Component
         super(props);
 
         this.state = {
-            DesktopView: true 
+            DesktopView: true,
+            modal: false,
+            name: ''
         };
     }
 
@@ -594,10 +598,46 @@ class FullPreview extends Component
         }
     }
 
+    toggle = () =>
+    {
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                modal: !prevState.modal
+            }
+        });
+    }
+
+    onNameChange = (val) =>
+    {
+        this.setState({
+            name: val
+        });
+    }
+
     render()
     {
         return (
             <div>
+                
+                <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                <ModalHeader toggle={this.toggle}>Save as Template</ModalHeader>
+                <ModalBody style={{padding: 30}} >
+                    
+                    <Label>Enter a name for the template</Label>
+                    <Input
+                        value={this.state.name} 
+                        onChange = { (event) => this.onNameChange(event.target.value) }
+                    />
+
+                </ModalBody>
+                <div className="btn_container" >
+                    <Button color="primary"
+                        onClick = { () => console.log(this.state.name) }
+                    >SAVE</Button>
+                </div>
+                </Modal>
+
                 <div>
                 <div className="header" >
                             <div>
@@ -610,14 +650,20 @@ class FullPreview extends Component
 
                             <div>
                                 <div className="btn_container" >
-                                    <div style={{margin: 10}} >
+                                    <div style={{margin: 5}} >
                                         <Button color="primary"
+                                            onClick={ () => this.toggle()} 
+                                            className="btn-sm btn-block"
+                                        >SAVE</Button>
+                                    </div>
+                                    <div style={{margin: 5}} >
+                                        <Button color="success"
                                             onClick={ () => {
                                                 this.download()                           
                                             }} className="btn-sm btn-block"
-                                        >SAVE</Button>
+                                        >DOWNLOAD</Button>
                                     </div>
-                                    <div>
+                                    <div style={{margin: 5}} >
                                         <Button color="danger"
                                             onClick={ () => window.location.reload() } className="btn-sm btn-block"
                                         >CANCEL</Button>

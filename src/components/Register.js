@@ -59,7 +59,7 @@ class Register extends Component
             <div className="background" >
                 <div className="input_box" >
                 <Form onSubmit = { (event) => this.onFormSubmit(event) } >
-                    <Label>UserName</Label>
+                    <Label>Name</Label>
                     <Input
                         value={this.state.username} 
                         onChange = { (event) => this.onInputChange("username",event.target.value) }
