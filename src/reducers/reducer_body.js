@@ -14,25 +14,28 @@ export default function(state=initState, action)
 
         case "CHANGE_BODY_WIDTH":
 
-            const background = state.background;
-
             return {
-                width: action.payload.width,
-                background
+                ...state,
+                width: action.payload.width
             }
 
         case "CHANGE_BODY_BACKGROUND":
 
-            const width = state.width;
-
             return {
-                width,
+                ...state,
                 background: action.payload.color
             }
 
         case "CHANGE_PADDING":
 
-            return action.payload;
+            return {
+                ...state,
+                ...action.payload
+            }
+
+        case "ASSIGN_TEMPLATE_BODY":
+
+            return action.payload.body;
     
         default:
             return state;

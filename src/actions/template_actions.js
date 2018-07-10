@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function saveTemplate(name,data)
+export function saveTemplate(name,data,body)
 {
     return dispatch => {
 
@@ -13,7 +13,8 @@ export function saveTemplate(name,data)
             },
             data: {
                 name,
-                data
+                data,
+                body
             }
         })
         .then( (res) => {

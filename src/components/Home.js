@@ -10,7 +10,7 @@ import { Button } from 'reactstrap';
 
 import { getTemplates, deleteTemplate } from '../actions/template_actions';
 
-import { assign_template } from '../actions/edit_actions';
+import { assign_template, assign_template_body } from '../actions/edit_actions';
 
 import checkToken from '../functions/checkToken';
 import logout from '../functions/logout';
@@ -38,6 +38,9 @@ class Home extends Component
                                 this.props.assign_template(
                                     JSON.parse(template.data)
                                 );
+                                this.props.assign_template_body(
+                                    JSON.parse(template.body)
+                                );
                                 this.props.history.push('/new');
                             } }
                         >
@@ -63,6 +66,21 @@ class Home extends Component
         }
     }
 
+    initEmptyEmail = () =>
+    {
+        const initBody = {
+            width: 600,
+            background: '#ffffff',
+            paddingTop: 0,
+            paddingBottom: 0,
+            paddingLeft: 0,
+            paddingRight: 0 
+        };
+        this.props.assign_template([]);
+        this.props.assign_template_body( initBody );
+        this.props.history.push('/new');
+    }
+
     render() 
     {
         return (
@@ -86,7 +104,9 @@ class Home extends Component
 
                 <div style={{paddingLeft: 50}} >
                     <div className="new" 
-                        onClick = { () => this.props.history.push('/new')}
+                        onClick = { () => {
+                            this.initEmptyEmail()
+                        }}
                     >
                         <FA.FaPlus size={50} 
                             color="#345F90" 
@@ -121,5 +141,6 @@ function mapStateToProps(state)
 export default withRouter(connect(mapStateToProps, {
     getTemplates,
     assign_template,
-    deleteTemplate
+    deleteTemplate,
+    assign_template_body
 })(Home));

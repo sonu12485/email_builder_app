@@ -636,7 +636,8 @@ class FullPreview extends Component
                     onClick = { () => {
                         this.props.saveTemplate(
                             this.state.name,
-                            JSON.stringify(this.props.items)
+                            JSON.stringify(this.props.items),
+                            JSON.stringify(this.props.body)
                         );
                         this.toggle();
                     }}

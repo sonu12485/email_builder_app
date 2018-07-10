@@ -383,6 +383,16 @@ export function assign_template(data)
     }
 }
 
+export function assign_template_body(body)
+{
+    return {
+        type: "ASSIGN_TEMPLATE_BODY",
+        payload: {
+            body
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {
