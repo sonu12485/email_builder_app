@@ -13,6 +13,7 @@ import Edit_btn from './reducer_edit_btn';
 import Edit_HTML from './reducer_edit_html';
 import Edit_icons from './reducer_edit_icons';
 import ImageStore from './reducer_image_store';
+import Templates from './reducer_templates';
 
 const rootReducer = combineReducers({
     items: Items,
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
     btn_edit: Edit_btn,
     html_edit: Edit_HTML,
     icon_edit: Edit_icons,
-    image_store: ImageStore
+    image_store: ImageStore,
+    templates: Templates
 });
 
 export default rootReducer;

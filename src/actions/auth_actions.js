@@ -43,8 +43,6 @@ export function login(email, password)
                     }
                 })
                 .then( res => {
-                    alert('login successfull');
-                    console.log(res.data.token);
                     const iat = _.round(new Date().getTime() / 1000);
                     const expiresIn = 86400;
                     const token = res.data.token;

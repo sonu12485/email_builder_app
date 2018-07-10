@@ -39,6 +39,7 @@ app.post('/register', (req,res) => {
     email,
     password: hashedPassword,
     salt,
+    templates: []
   });
 
   user.save()
@@ -64,7 +65,7 @@ app.post('/login', (req,res) => {
 
       if(hashedPassword === user.password)
       {
-        jwt.sign({ user }, SECRET, { expiresIn: '1d' }, (err, token) => {
+        jwt.sign({ email: user.email }, SECRET, { expiresIn: '1d' }, (err, token) => {
           res.json({
             token
           });
@@ -79,6 +80,139 @@ app.post('/login', (req,res) => {
     .catch( () => {
       res.sendStatus(404);
     })
+
+});
+
+function getAuthToken(req, res, next)
+{
+  const authHeader = req.headers['authorization'];
+
+  if(typeof authHeader !== 'undefined')
+  {
+    const token = authHeader.split(' ')[1];
+
+    req.token = token;
+
+    next();
+  }
+  else
+  {
+    res.sendStatus(403);
+  }
+}
+
+app.post('/save', getAuthToken, (req,res) => {
+
+  const templateObj = req.body;
+
+  jwt.verify(req.token, SECRET, (err, authData) => {
+
+    if(err)
+    {
+      res.sendStatus(403);
+    }
+    else
+    {
+      const email = authData.email;
+
+      User.findOne({ email })
+        .then( (user) => {
+
+          user.templates.push(templateObj);
+
+          user.save()
+            .then( () => {
+              res.sendStatus(200);
+            })
+            .catch( () => {
+              res.sendStatus(500);
+            });
+
+        })
+        .catch( () => {
+          res.sendStatus(500);
+        });
+    }
+
+  });
+
+});
+
+app.post('/templates', getAuthToken, (req,res) => {
+
+  jwt.verify(req.token, SECRET, (err, authData) => {
+
+    if(err)
+    {
+      res.sendStatus(403);
+    }
+    else
+    {
+      const email = authData.email;
+
+      User.findOne({ email })
+        .then( (user) => {
+
+          res.json(user.templates);
+
+        })
+        .catch( () => {
+          res.sendStatus(500);
+        });
+    }
+
+  });
+
+});
+
+app.post('/delete', getAuthToken, (req,res) => {
+
+  const name = req.body.name;
+
+  jwt.verify(req.token, SECRET, (err, authData) => {
+
+    if(err)
+    {
+      res.sendStatus(403);
+    }
+    else
+    {
+      const email = authData.email;
+
+      User.findOne({ email })
+        .then( (user) => {
+
+          const new_templates = user.templates.filter( template => {
+            return template.name !== name
+          });
+
+          user.templates = new_templates;
+
+          user.save()
+            .then( () => {
+
+              User.findOne({ email })
+                .then( (user) => {
+        
+                  res.json(user.templates);
+        
+                })
+                .catch( () => {
+                  res.sendStatus(500);
+                });
+
+            })
+            .catch( () => {
+              res.sendStatus(500);
+            });
+
+        })
+        .catch( () => {
+          res.sendStatus(500);
+        });
+    }
+
+  });
 
 });
 

@@ -373,6 +373,16 @@ export function image_rotate(id,val,layout_id,position)
     }
 }
 
+export function assign_template(data)
+{
+    return {
+        type: "ASSIGN_TEMPLATE",
+        payload: {
+            data
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

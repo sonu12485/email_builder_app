@@ -5,6 +5,8 @@ import {
     Button, Modal, ModalHeader, ModalBody, Label, Input 
 } from 'reactstrap';
 
+import { withRouter } from 'react-router-dom';
+
 import ReactToPrint from "react-to-print";
 
 import ReactDOMServer from 'react-dom/server';
@@ -16,6 +18,8 @@ import {
     edit_layout_HTML, edit_layout, edit_btn, dnd_items,
     edit_HTML, edit_icons 
 } from '../actions/edit_actions';
+
+import { saveTemplate } from '../actions/template_actions';
 
 import { update as update_action } from '../actions/index';
 
@@ -615,6 +619,32 @@ class FullPreview extends Component
         });
     }
 
+    renderSaveBtn = () => 
+    {
+        if(this.state.name === '')
+        {
+            return (
+                <Button color="primary"
+                    disabled
+                >SAVE</Button>
+            );
+        }
+        else
+        {
+            return (
+                <Button color="primary"
+                    onClick = { () => {
+                        this.props.saveTemplate(
+                            this.state.name,
+                            JSON.stringify(this.props.items)
+                        );
+                        this.toggle();
+                    }}
+                >SAVE</Button>
+            );
+        }
+    }
+
     render()
     {
         return (
@@ -632,9 +662,7 @@ class FullPreview extends Component
 
                 </ModalBody>
                 <div className="btn_container" >
-                    <Button color="primary"
-                        onClick = { () => console.log(this.state.name) }
-                    >SAVE</Button>
+                    {this.renderSaveBtn()}
                 </div>
                 </Modal>
 
@@ -666,7 +694,13 @@ class FullPreview extends Component
                                     <div style={{margin: 5}} >
                                         <Button color="danger"
                                             onClick={ () => window.location.reload() } className="btn-sm btn-block"
-                                        >CANCEL</Button>
+                                        >ERASE</Button>
+                                    </div>
+                                    <div style={{margin: 5}} >
+                                        <Button color="primary"
+                                            onClick={ () => this.props.history.push('/home') } 
+                                            className="btn-sm btn-block"
+                                        >BACK</Button>
                                     </div>
                                 </div>
                             </div>
@@ -705,7 +739,7 @@ function mapStateToProps(state)
     }
 }
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     edit_h1,
     edit_h3,
     edit_hr,
@@ -717,5 +751,6 @@ export default connect(mapStateToProps, {
     edit_btn,
     dnd_items,
     edit_HTML,
-    edit_icons
-})(DropTarget('layout', {}, collect)(FullPreview));
+    edit_icons,
+    saveTemplate
+})(DropTarget('layout', {}, collect)(FullPreview)));

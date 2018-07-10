@@ -1305,6 +1305,10 @@ export default function( state=[], action )
 
             return state;
 
+        case "ASSIGN_TEMPLATE":
+
+            return action.payload.data;
+
         default:
             return state;
     }

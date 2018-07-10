@@ -412,6 +412,15 @@ body{
     border-radius: 4px;
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 5px;
+}
+
+.templates_container{
+    padding-left: 45px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
