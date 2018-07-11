@@ -42,12 +42,25 @@ app.post('/register', (req,res) => {
     templates: []
   });
 
-  user.save()
-    .then( () => {
-      res.sendStatus(200);
-    })
-    .catch( () => {
-      res.sendStatus(500);
+  User.findOne({ email })
+    .then( (temp_user) => {
+
+      if(temp_user)
+      {
+        console.log("user",temp_user);
+        res.sendStatus(403);
+      }
+      else
+      {
+        user.save()
+        .then( () => {
+          res.sendStatus(200);
+        })
+        .catch( () => {
+          res.sendStatus(500);
+        });
+      }
+
     });
 
 });
