@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 const PORT = 8000;
 const SECRET = "secret_key_for_auth_tokens";
 
+const { default_data, default_body } = require('./default_template_data');
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/email_builder');
 
@@ -54,7 +56,24 @@ app.post('/register', (req,res) => {
       {
         user.save()
         .then( () => {
-          res.sendStatus(200);
+          
+          User.findOne({ email })
+            .then( added_user => {
+
+              added_user.templates.push({
+                name: 'Default',
+                data: default_data,
+                body: default_body,
+                default: true
+              });
+
+              added_user.save()
+                .then( () => {
+                  res.sendStatus(200);
+                });
+
+            });
+
         })
         .catch( () => {
           res.sendStatus(500);

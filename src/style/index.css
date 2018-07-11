@@ -13,7 +13,7 @@ body{
 
 .box:hover {
     box-shadow: 8px 8px 2px 1px #ccc;
-    margin: 7px;
+    margin: 9px;
 }
 
 .item_container{
@@ -159,7 +159,7 @@ body{
 
 .layout_items:hover {
     box-shadow: 8px 8px 2px 1px #ccc;
-    margin: 7px;
+    margin: 9px;
     margin-left: 27px;
     margin-right: 27px;
 }

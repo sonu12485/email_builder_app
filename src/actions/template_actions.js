@@ -14,7 +14,8 @@ export function saveTemplate(name,data,body)
             data: {
                 name,
                 data,
-                body
+                body,
+                default: false
             }
         })
         .then( (res) => {

@@ -26,6 +26,24 @@ class Home extends Component
         this.props.getTemplates();
     }
 
+    renderDeleteBtn = (flag,name) =>
+    {
+        if(flag)
+        {
+            return <div></div>
+        }
+        else
+        {
+            return (
+                <Button color="danger"
+                    onClick = { () => this.props.deleteTemplate(
+                        name
+                    ) }
+                >DELETE</Button>
+            );
+        }
+    }
+
     renderTemplates = () => 
     {
         if(this.props.templates)
@@ -50,11 +68,7 @@ class Home extends Component
                         </div>
 
                         <div className="btn_container" >
-                            <Button color="danger"
-                                onClick = { () => this.props.deleteTemplate(
-                                    template.name
-                                ) }
-                            >DELETE</Button>
+                            {this.renderDeleteBtn(template.default, template.name)}
                         </div>
                     </div>
                 );
