@@ -819,6 +819,39 @@ class LayoutCellItem extends Component {
                 }
             }
         }
+        else if(this.props.type === 'video')
+        {
+            return (
+                <div
+                    style={{
+                        position: "relative",
+                        width: "100%",
+                        paddingTop: "56.25%", // for 16:9 aspect ratio
+                        overflow: "hidden"
+                    }}
+                >
+                <iframe
+                    key={this.props.item.id} 
+                    style = {{
+                        position: "absolute",
+                        top: 0, bottom: 0, left: 0, right: 0,
+                        padding: 10
+                    }}
+                    width = "100%"
+                    height = "100%"
+                    className="item_video"
+                    src={this.props.item.data.url} 
+                    frameborder="0" 
+                    onClick={ () => {
+                        this.props.edit_video(this.props.item.id, 
+                            this.props.layout_id, 
+                            this.props.location)
+                    }}
+                >
+                </iframe>
+                </div>
+            );
+        }
     }
 
     render() {

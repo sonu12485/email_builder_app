@@ -19,6 +19,7 @@ import Edit_Layout from './edit_components/Edit_Layout';
 import Edit_btn from './edit_components/Edit_btn';
 import Edit_HTML from './edit_components/Edit_HTML';
 import Edit_icons from './edit_components/Edit_icons';
+import Edit_video from './edit_components/Edit_video';
 
 import { update as update_action } from '../actions/index';
 
@@ -39,7 +40,7 @@ class App extends Component
   {
       if( !checkToken() )
       {
-          this.props.history.push('/');
+          //this.props.history.push('/');
       }
   }
 
@@ -95,6 +96,12 @@ class App extends Component
     else if(this.props.is_icon_edit)
     {
       return <Edit_icons update ={ () => {
+        this.update()
+      } } />
+    }
+    else if(this.props.is_video_edit)
+    {
+      return <Edit_video update ={ () => {
         this.update()
       } } />
     }
@@ -273,7 +280,8 @@ function mapStateToProps(state)
     is_layout_edit: state.layout_edit.val,
     is_btn_edit: state.btn_edit.val,
     is_HTML_edit: state.html_edit.val,
-    is_icon_edit: state.icon_edit.val
+    is_icon_edit: state.icon_edit.val,
+    is_video_edit: state.video_edit.val
   }
 }
 

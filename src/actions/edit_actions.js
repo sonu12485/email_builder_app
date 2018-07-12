@@ -393,6 +393,31 @@ export function assign_template_body(body)
     }
 }
 
+export function edit_video(id,layout_id,position)
+{
+    return {
+        type: "EDIT_VIDEO",
+        payload: {
+            id,
+            layout_id,
+            position
+        }
+    }
+}
+
+export function edit_video_url(id,layout_id,position,data)
+{
+    return {
+        type: "EDIT_VIDEO_URL",
+        payload: {
+            id,
+            layout_id,
+            position,
+            data
+        }
+    }
+}
+
 /*
 export function slide_item_up(id)
 {

@@ -87,6 +87,18 @@ export function addIconsToLayout(layout_id,position)
     }
 }
 
+export function addVideoToLayout(layout_id,position)
+{
+    return {
+        type: "VIDEO_ADDED_TO_LAYOUT",
+        payload: {
+            layout_id,
+            position,
+            id: _.round(Math.random()*10000000000)
+        }
+    }
+}
+
 export function update()
 {
     return {

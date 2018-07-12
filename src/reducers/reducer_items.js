@@ -1309,6 +1309,89 @@ export default function( state=[], action )
 
             return action.payload.data;
 
+        case "VIDEO_ADDED_TO_LAYOUT":
+
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === "left")
+                    {
+                        item.left.push({
+                            type: "video", 
+                            data: {
+                                url: 'https://www.youtube.com/embed/N1n6be2m2cA'
+                            },
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "right")
+                    {
+                        item.right.push({
+                            type: "video", 
+                            data: {
+                                url: 'https://www.youtube.com/embed/N1n6be2m2cA'
+                            },
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                    else if(action.payload.position === "center")
+                    {
+                        item.center.push({
+                            type: "video", 
+                            data: {
+                                url: 'https://www.youtube.com/embed/N1n6be2m2cA'
+                            },
+                            id: action.payload.id,
+                            layout_id: action.payload.layout_id,
+                            position: action.payload.position 
+                        });
+                    }
+                }
+            });
+
+            return state;
+
+        case "EDIT_VIDEO_URL":
+            
+            state.forEach( item => {
+                if(item.id === action.payload.layout_id)
+                {
+                    if(action.payload.position === 'left')
+                    {
+                        item.left.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'right')
+                    {
+                        item.right.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                    else if(action.payload.position === 'center')
+                    {
+                        item.center.forEach( component => {
+                            if(component.id === action.payload.id)
+                            {
+                                component.data = action.payload.data; 
+                            }
+                        });
+                    }
+                }
+            });
+
+            return state;
+
         default:
             return state;
     }

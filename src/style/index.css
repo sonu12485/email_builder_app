@@ -276,6 +276,12 @@ body{
     border-color: #6666FF;
 }
 
+.item_video:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6666FF;
+}
+
 .store_header {
     background-color: #CCCCCC;
     width: 100%;

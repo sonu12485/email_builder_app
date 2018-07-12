@@ -169,6 +169,17 @@ class LayoutCell extends Component {
                     />
                 )
             }
+            else if(item.type === "video")
+            {
+                return (
+                    <LayoutCellItem 
+                        key={item.id}
+                        { ...this.props }
+                        type="video"
+                        item={item}
+                    />
+                );
+            }
         });
     }
 
@@ -807,6 +818,33 @@ class LayoutCell extends Component {
                         )
                     }
                 }
+            }
+            else if(item.type === 'video')
+            {
+                return (
+                    <div
+                        style={{
+                            position: "relative",
+                            width: "100%",
+                            paddingTop: "56.25%", // for 16:9 aspect ratio
+                            overflow: "hidden"
+                        }}
+                    >
+                    <iframe
+                        key={item.id} 
+                        style = {{
+                            position: "absolute",
+                            top: 0, bottom: 0, left: 0, right: 0
+                        }}
+                        width = "100%"
+                        height = "100%"
+                        className="item_video"
+                        src={item.data.url} 
+                        frameborder="0" 
+                    >
+                    </iframe>
+                    </div>
+                );
             }
         });
     }

@@ -8,6 +8,7 @@ import Image from './content_items/Image';
 import Button from './content_items/Button';
 import HTML from './content_items/Html';
 import SocialMediaIcons from './content_items/SocialMediaIcons';
+import Video from './content_items/Video';
 
 class Items extends Component
 {
@@ -40,6 +41,9 @@ class Items extends Component
                 </div>
                 <div className="col-md-4 p-0">
                  <SocialMediaIcons />
+                </div>
+                <div className="col-md-4 p-0">
+                 <Video />
                 </div>
                 </div>
             </div>

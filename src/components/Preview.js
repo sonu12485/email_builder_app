@@ -16,7 +16,7 @@ import { DropTarget } from 'react-dnd';
 import { 
     edit_h1, edit_h3, edit_hr, edit_p, edit_img, 
     edit_layout_HTML, edit_layout, edit_btn, dnd_items,
-    edit_HTML, edit_icons 
+    edit_HTML, edit_icons, edit_video 
 } from '../actions/edit_actions';
 
 import { saveTemplate } from '../actions/template_actions';
@@ -753,5 +753,6 @@ export default withRouter(connect(mapStateToProps, {
     dnd_items,
     edit_HTML,
     edit_icons,
-    saveTemplate
+    saveTemplate,
+    edit_video
 })(DropTarget('layout', {}, collect)(FullPreview)));
