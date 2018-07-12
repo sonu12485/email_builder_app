@@ -3,6 +3,13 @@
 ```
   npm install
 ```
+
+and
+
+```
+  sudo service mongod start
+```
+
 and
 
 ```
