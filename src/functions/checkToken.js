@@ -1,3 +1,5 @@
+// these are global functions implemented to check for auth tokens and thier expire time
+
 import _ from 'lodash';
 
 function checkTime()

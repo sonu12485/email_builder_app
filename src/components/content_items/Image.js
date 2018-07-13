@@ -1,3 +1,5 @@
+// A component when drap and dropped adds a image to a layout
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -16,7 +18,7 @@ const spec = {
         if(monitor.didDrop())
         {
             console.log("ED");
-            //call a action 
+            // On drop call a action to add image to layouts
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
                 props.addImageToLayout(

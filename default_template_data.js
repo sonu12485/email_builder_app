@@ -1,3 +1,4 @@
+// data for the default template
 const default_data = JSON.stringify(
   [
     {
@@ -144,6 +145,7 @@ const default_data = JSON.stringify(
   ]
 );
 
+// body data for the default template
 const default_body = '{"width":600,"background":"#ffffff","paddingTop":0,"paddingBottom":0,"paddingLeft":0,"paddingRight":0}';
 
 module.exports = { default_body, default_data };

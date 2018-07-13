@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// this action saves a template
 export function saveTemplate(name,data,body)
 {
     return dispatch => {
@@ -28,6 +29,8 @@ export function saveTemplate(name,data,body)
     }
 }
 
+// this action fetches all the templates
+// (goes to reducer_templates)
 export function getTemplates()
 {
     return dispatch => {
@@ -56,6 +59,8 @@ export function getTemplates()
     }
 }
 
+// this action deletes template
+// (goes to reducer_templates)
 export function deleteTemplate(name)
 {
     return dispatch => {

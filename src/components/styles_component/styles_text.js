@@ -1,3 +1,5 @@
+// styles menu for text components
+
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
@@ -16,6 +18,7 @@ class Styles_text extends Component
 
         const { id, layout_id, position } = this.props;
 
+        // extract the styles data of given components to be edited and store it in states
         let x;
         const selectedItemArray = this.props.items.map( item => {
             if(item.id === layout_id)
@@ -77,6 +80,7 @@ class Styles_text extends Component
                 }
             }
         },
+        // call action that edits styles
         () => {
             this.props.edit_styles(
                 this.props.id,
@@ -84,6 +88,7 @@ class Styles_text extends Component
                 this.props.layout_id,
                 this.props.position
             );
+            // update action call for live reload
             this.props.update();
         }
         );
@@ -99,6 +104,7 @@ class Styles_text extends Component
                     }
                 }
             },
+            // call action that edits styles
             () => {
                 this.props.edit_styles(
                     this.props.id,
@@ -106,6 +112,7 @@ class Styles_text extends Component
                     this.props.layout_id,
                     this.props.position
                 );
+                // update action call for live reload
                 this.props.update();
             }
             );

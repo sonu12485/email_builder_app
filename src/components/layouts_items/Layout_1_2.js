@@ -1,3 +1,5 @@
+// A component when drap and dropped adds a double column layout 
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -18,7 +20,7 @@ const spec = {
             console.log("ED");
             //console.log(monitor.getDropResult());
 
-            //call a action 
+            // on drop call a action to add given layout 
             if(!monitor.getDropResult().layout_id)
             {
                 props.addLayout(1);

@@ -1,5 +1,8 @@
+// this reducer stores all the images data of the image store
+
 import _ from 'lodash';
 
+// initial images in the store
 const initState = [
     {
         name: "Beach",

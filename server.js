@@ -11,11 +11,13 @@ const app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 
+// port and secret_key(for access tokens) is declared
 const PORT = 8000;
 const SECRET = "secret_key_for_auth_tokens";
 
 const { default_data, default_body } = require('./default_template_data');
 
+//Connected to mongoDB instance
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/email_builder');
 
@@ -23,9 +25,11 @@ mongoose.connection
   .once( 'open', () => console.log("mongoDB connected") )
   .on( 'error', (error) => console.warn("Error",error) );
 
+// User Model for mongoDB user collection
 const User = require('./mongodb_models/user');
 
 // Serve static assets
+// run "npm run build" this creates the production build of the react app to be used by node server
 app.use(express.static(path.resolve(__dirname, 'build')));
 
 app.post('/register', (req,res) => {
@@ -34,6 +38,7 @@ app.post('/register', (req,res) => {
 
   const salt = crypto.randomBytes(128).toString('hex');
 
+  // hash the password and store it
   const hashedPassword = crypto.pbkdf2Sync(password,salt,10000,512,'sha512').toString('hex');
 
   const user = new User({
@@ -49,7 +54,6 @@ app.post('/register', (req,res) => {
 
       if(temp_user)
       {
-        console.log("user",temp_user);
         res.sendStatus(403);
       }
       else
@@ -57,6 +61,7 @@ app.post('/register', (req,res) => {
         user.save()
         .then( () => {
           
+          // Find the user just registered and then add default template to it
           User.findOne({ email })
             .then( added_user => {
 
@@ -97,6 +102,7 @@ app.post('/login', (req,res) => {
 
       if(hashedPassword === user.password)
       {
+        // If login successfull then sign a token and send it
         jwt.sign({ email: user.email }, SECRET, { expiresIn: '1d' }, (err, token) => {
           res.json({
             token
@@ -115,6 +121,7 @@ app.post('/login', (req,res) => {
 
 });
 
+// this middleware extracts the auth token from header and passes it to the "req" part
 function getAuthToken(req, res, next)
 {
   const authHeader = req.headers['authorization'];
@@ -133,10 +140,12 @@ function getAuthToken(req, res, next)
   }
 }
 
+// save a template
 app.post('/save', getAuthToken, (req,res) => {
 
   const templateObj = req.body;
 
+  // verify the token and then proceed
   jwt.verify(req.token, SECRET, (err, authData) => {
 
     if(err)
@@ -150,6 +159,7 @@ app.post('/save', getAuthToken, (req,res) => {
       User.findOne({ email })
         .then( (user) => {
 
+          // added a template
           user.templates.push(templateObj);
 
           user.save()
@@ -170,8 +180,10 @@ app.post('/save', getAuthToken, (req,res) => {
 
 });
 
+// get all templates of a user
 app.post('/templates', getAuthToken, (req,res) => {
 
+  // verify the token and then proceed
   jwt.verify(req.token, SECRET, (err, authData) => {
 
     if(err)
@@ -185,6 +197,7 @@ app.post('/templates', getAuthToken, (req,res) => {
       User.findOne({ email })
         .then( (user) => {
 
+          // return all templates of a user
           res.json(user.templates);
 
         })
@@ -197,10 +210,12 @@ app.post('/templates', getAuthToken, (req,res) => {
 
 });
 
+// delete a template
 app.post('/delete', getAuthToken, (req,res) => {
 
   const name = req.body.name;
 
+  // verify the token and then proceed
   jwt.verify(req.token, SECRET, (err, authData) => {
 
     if(err)
@@ -214,6 +229,7 @@ app.post('/delete', getAuthToken, (req,res) => {
       User.findOne({ email })
         .then( (user) => {
 
+          // delete template by filtering it away
           const new_templates = user.templates.filter( template => {
             return template.name !== name
           });
@@ -248,6 +264,7 @@ app.post('/delete', getAuthToken, (req,res) => {
 
 });
 
+// pass all other routes to React that will be handled by React Router
 app.get('*', (req,res) => {
   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });

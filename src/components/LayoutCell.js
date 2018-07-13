@@ -1,3 +1,6 @@
+// this renders the components in a particular layout column and 
+// also computes it's equivalent HTML and stores it
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -42,6 +45,8 @@ class LayoutCell extends Component {
             items: props.items
         }
     }
+
+    // this renders all components present inside a particular layout column
     renderItems = () =>
     {
         return this.props.items.map( item => {
@@ -49,6 +54,7 @@ class LayoutCell extends Component {
             {
                 let style = {};
 
+                // sets styles for each component
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -58,6 +64,7 @@ class LayoutCell extends Component {
                     }
                 );
 
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id} 
@@ -72,6 +79,7 @@ class LayoutCell extends Component {
             {
                 let style = {};
 
+                // sets styles for each component
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -81,6 +89,7 @@ class LayoutCell extends Component {
                     }
                 );
 
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id} 
@@ -93,6 +102,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'hr')
             {
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id} 
@@ -106,6 +116,7 @@ class LayoutCell extends Component {
             {
                 let style = {};
 
+                // sets styles for each component
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -115,6 +126,7 @@ class LayoutCell extends Component {
                     }
                 );
 
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id} 
@@ -127,6 +139,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'img')
             {
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id} 
@@ -138,6 +151,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'btn')
             {
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id} 
@@ -149,6 +163,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'html')
             {
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id}
@@ -160,6 +175,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'social_media')
             {
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id}
@@ -171,6 +187,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === "video")
             {
+                // the LayoutCellItem then renders each single component in side a layout column/LayoutCell
                 return (
                     <LayoutCellItem 
                         key={item.id}
@@ -183,6 +200,7 @@ class LayoutCell extends Component {
         });
     }
 
+    // this computes the equivalent HTML of all components inside a layout column and saves it
     renderItemsHTML = () =>
     {
         return this.props.items.map( item => {
@@ -190,6 +208,7 @@ class LayoutCell extends Component {
             {
                 let style = {};
 
+                // sets styles for each component
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -212,6 +231,7 @@ class LayoutCell extends Component {
             {
                 let style = {};
 
+                // sets styles for each component
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -244,6 +264,7 @@ class LayoutCell extends Component {
             {
                 let style = {};
 
+                // sets styles for each component
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -264,6 +285,7 @@ class LayoutCell extends Component {
             }
             else if(item.type === 'img')
             {
+                // sets styles for each component
                 const item_img_container_styles = {
                     marginTop:10,
                     marginBottom:10,
@@ -321,6 +343,7 @@ class LayoutCell extends Component {
                 return (
                     <div key={item.id}
                         className="item_btn"
+                        // sets styles for each component
                         style={{
                             textAlign: item.data.alignment,
                             ...item.data.style
@@ -823,6 +846,7 @@ class LayoutCell extends Component {
             {
                 return (
                     <div
+                        // sets styles for each component
                         style={{
                             position: "relative",
                             width: "100%",
@@ -832,6 +856,7 @@ class LayoutCell extends Component {
                     >
                     <iframe
                         key={item.id} 
+                        // sets styles for each component
                         style = {{
                             position: "absolute",
                             top: 0, bottom: 0, left: 0, right: 0
@@ -885,7 +910,9 @@ class LayoutCell extends Component {
         }
         else
         {
+            // this computes the equivalent HTML of all components inside a layout column and saves it
             const html = ReactDOMServer.renderToStaticMarkup(this.renderItemsHTML());
+            // call action to save equivalent HTML
             this.props.edit_layout_HTML(html, this.props.layout_id, this.props.location);
 
             if(this.props.large)

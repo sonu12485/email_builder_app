@@ -1,3 +1,5 @@
+// edit menu for videos
+
 import React, { Component } from 'react';
 
 import { 
@@ -30,6 +32,7 @@ class Edit_video extends Component
     {
         const { id, layout_id, position } = this.props.data;
         
+        // call action to delete
         this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_video();
@@ -37,6 +40,7 @@ class Edit_video extends Component
 
     onItemDuplicate = () =>
     {
+        // call action to duplicate
         this.props.duplicate_item(
             this.props.data.id,
             this.props.data.layout_id,
@@ -56,6 +60,7 @@ class Edit_video extends Component
     {
         const { id, layout_id, position } = this.props.data;
 
+        // call action that edits video url
         this.props.edit_video_url(
             id,
             layout_id,
@@ -64,6 +69,7 @@ class Edit_video extends Component
                 url: this.state.url
             }
         );
+        // update action call for live reload
         this.props.update();
     }
     

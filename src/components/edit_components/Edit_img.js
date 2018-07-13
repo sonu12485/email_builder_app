@@ -1,3 +1,5 @@
+// edit menu for images
+
 import React, { Component } from 'react';
 
 import { 
@@ -26,6 +28,7 @@ class Edit_img extends Component
             this.props.edit_layout();
         }
 
+        // extract the data of image to be edited and store it in states
         let x;
         const selectedItemArray = this.props.items.map( item => {
             if(item.id === this.props.data.layout_id)
@@ -79,6 +82,7 @@ class Edit_img extends Component
     {
         const { id, layout_id, position } = this.props.data;
         
+        // call action to delete
         this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_img();
@@ -88,12 +92,14 @@ class Edit_img extends Component
     {
         const { id, layout_id, position } = this.props.data;
 
+        // call action that edits src
         this.props.edit_img_src(
             id,
             this.state.img_src,
             layout_id,
             position
         );
+        // update action call for live reload
         this.props.update();
     }
 
@@ -110,6 +116,7 @@ class Edit_img extends Component
                 }
             }
         },
+        // call action that edits link
         () => {
             this.props.edit_img_link(
                 id,
@@ -124,6 +131,7 @@ class Edit_img extends Component
 
     onItemDuplicate = () =>
     {
+        // call action to duplicate
         this.props.duplicate_item(
             this.props.data.id,
             this.props.data.layout_id,
@@ -134,6 +142,7 @@ class Edit_img extends Component
 
     onImageRotate = (val) =>
     {
+        // call action that rotates image 
         this.props.image_rotate(
             this.props.data.id,
             val,
@@ -156,6 +165,7 @@ class Edit_img extends Component
                 }
             }
         },
+        // call action that edits image styles
         () => {
             this.props.edit_styles(
                 id,
@@ -214,6 +224,7 @@ class Edit_img extends Component
                 }
             }
         },
+        // call action that edits image styles
         () => {
             this.props.edit_styles(
                 id,

@@ -1,3 +1,5 @@
+// renders all the components that can be draged and dropped
+
 import React, { Component } from 'react';
 
 import Heading from './content_items/Heading';

@@ -1,3 +1,5 @@
+// index page of the app 
+
 import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
@@ -10,6 +12,7 @@ class Index extends Component
 {
     componentDidMount()
     {
+        // checks if user logged in or not
         if( checkToken() )
         {
             this.props.history.push('/home');

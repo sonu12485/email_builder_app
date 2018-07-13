@@ -1,3 +1,5 @@
+// styles menu for layouts
+
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
@@ -14,6 +16,7 @@ class Styles_layout extends Component
     {
         super(props);
 
+        // extract the styles data of given layout to be edited and store it in states
         const selectedLayout = this.props.items.find( item => {
             return item.id === this.props.id
         });
@@ -33,11 +36,13 @@ class Styles_layout extends Component
                 }
             }
         },
+        // call action that edits styles of layouts
         () => {
             this.props.edit_layout_styles(
                 this.props.id,
                 this.state.styles
             );
+            // update action call for live reload
             this.props.update();
         }
         );

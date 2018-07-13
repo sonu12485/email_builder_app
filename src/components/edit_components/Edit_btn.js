@@ -1,3 +1,5 @@
+// edit menu for buttons
+
 import React, { Component } from 'react';
 
 import { Button, Input, Label } from 'reactstrap';
@@ -19,6 +21,7 @@ class Edit_btn extends Component
             this.props.edit_layout();
         }
 
+        // extract the data of button to be edited and store it in states
         let x;
         const selectedItemArray = this.props.items.map( item => {
             if(item.id === this.props.data.layout_id)
@@ -62,6 +65,7 @@ class Edit_btn extends Component
     {
         const { id, layout_id, position } = this.props.data;
         
+        // call action to delete
         this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_btn();
@@ -78,12 +82,14 @@ class Edit_btn extends Component
             }
         },
         () => {
+            // call action that edits data
             this.props.edit_btn_data(
                 this.props.data.id,
                 this.state.data,
                 this.props.data.layout_id,
                 this.props.data.position
             );
+            // update action call for live reload
             this.props.update();
         }
         );
@@ -103,12 +109,14 @@ class Edit_btn extends Component
             }
         },
         () => {
+            // call action that edits data
             this.props.edit_btn_data(
                 this.props.data.id,
                 this.state.data,
                 this.props.data.layout_id,
                 this.props.data.position
             );
+            // update action call for live reload
             this.props.update();
         }
         );
@@ -116,6 +124,7 @@ class Edit_btn extends Component
 
     onItemDuplicate = () =>
     {
+        // call action to duplicate
         this.props.duplicate_item(
             this.props.data.id,
             this.props.data.layout_id,

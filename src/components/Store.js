@@ -1,3 +1,5 @@
+// image store component
+
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
@@ -18,6 +20,7 @@ class Store extends Component
 {
     componentDidMount()
     {
+        // checks if user logged in or not
         if( !checkToken() )
         {
             this.props.history.push('/');
@@ -33,6 +36,7 @@ class Store extends Component
                     onClick={ () => {
                         const { id, layout_id, position } = this.props.data;
 
+                        // call action to select the image and set image component src
                         this.props.edit_img_src(
                             id,
                             url,
@@ -51,6 +55,7 @@ class Store extends Component
         }
     }
 
+    // render all images of the store
     renderImages = () =>
     {
         return this.props.images.map( image => {
@@ -68,6 +73,7 @@ class Store extends Component
                         {this.renderUploadBtn(image.url)}
                         <Button color="danger" className="btn-sm"
                             onClick={ () => {
+                                // call action to delete image for store
                                 this.props.delete_image_from_store(image.id);
                             }}
                         >DELETE</Button>

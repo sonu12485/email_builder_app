@@ -1,3 +1,5 @@
+// edit menu for layouts
+
 import React, { Component } from 'react';
 
 import { Button, Input } from 'reactstrap';
@@ -21,6 +23,7 @@ class Edit_Layout extends Component
                      <div className="col-sm-4">
                             <Button color="primary" 
                                 onClick={ () => {
+                                    // call action to duplicate
                                     this.props.duplicate_layout(this.props.data.id);
                                     this.props.update();
                                 } } className="btn-sm btn-block"
@@ -34,6 +37,7 @@ class Edit_Layout extends Component
                         <div className="col-sm-4">
                             <Button color="danger" 
                                 onClick={ () => {
+                                    // call action to delete
                                     this.props.delete_layout(this.props.data.id);
                                     this.props.edit_layout();
                                 }} className="btn-sm btn-block"

@@ -1,3 +1,5 @@
+// Home page of the app
+
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
@@ -19,6 +21,7 @@ class Home extends Component
 {
     componentDidMount()
     {
+        // checks if user logged in or not
         if( !checkToken() )
         {
             this.props.history.push('/');
@@ -36,6 +39,7 @@ class Home extends Component
         {
             return (
                 <Button color="danger"
+                    // call action to delete template
                     onClick = { () => this.props.deleteTemplate(
                         name
                     ) }
@@ -44,6 +48,7 @@ class Home extends Component
         }
     }
 
+    // renders all templates of a user
     renderTemplates = () => 
     {
         if(this.props.templates)
@@ -80,6 +85,7 @@ class Home extends Component
         }
     }
 
+    // initializes empty document/email
     initEmptyEmail = () =>
     {
         const initBody = {

@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+// this action handles adding of layout comtainer
+// (goes to reducer_items)
 export function addLayout(layout_type)
 {
     return {
@@ -11,6 +13,9 @@ export function addLayout(layout_type)
     }
 }
 
+
+// this action handles adding of heading/sub-heading/paragraph to a layout
+// (goes to reducer_items)
 export function addItemToLayout(data,layout_id,position,type)
 {
     return {
@@ -25,6 +30,8 @@ export function addItemToLayout(data,layout_id,position,type)
     }
 }
 
+// this action handles adding of HR to a layout
+// (goes to reducer_items)
 export function addHrToLayout(layout_id,position)
 {
     return {
@@ -37,6 +44,8 @@ export function addHrToLayout(layout_id,position)
     }
 }
 
+// this action handles adding of image to a layout
+// (goes to reducer_items)
 export function addImageToLayout(src,layout_id,position)
 {
     return {
@@ -50,6 +59,8 @@ export function addImageToLayout(src,layout_id,position)
     }
 }
 
+// this action handles adding of button to a layout
+// (goes to reducer_items)
 export function addButtonToLayout(layout_id,position)
 {
     return {
@@ -62,6 +73,8 @@ export function addButtonToLayout(layout_id,position)
     }
 }
 
+// this action handles adding of HTML component to a layout
+// (goes to reducer_items)
 export function addHTMLToLayout(html,layout_id,position)
 {
     return {
@@ -75,6 +88,8 @@ export function addHTMLToLayout(html,layout_id,position)
     }
 }
 
+// this action handles adding of social-media-icons to a layout
+// (goes to reducer_items)
 export function addIconsToLayout(layout_id,position)
 {
     return {
@@ -87,6 +102,8 @@ export function addIconsToLayout(layout_id,position)
     }
 }
 
+// this action handles adding of video to a layout
+// (goes to reducer_items)
 export function addVideoToLayout(layout_id,position)
 {
     return {
@@ -99,6 +116,8 @@ export function addVideoToLayout(layout_id,position)
     }
 }
 
+// update action to update the whole app so as to implement live reload functionality
+// (goes to reducer_update)
 export function update()
 {
     return {

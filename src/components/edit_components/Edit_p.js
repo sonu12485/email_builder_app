@@ -1,3 +1,5 @@
+// edit menu for paragraphs
+
 import React, { Component } from 'react';
 
 import { Button, Input } from 'reactstrap';
@@ -21,6 +23,7 @@ class Edit_p extends Component
             this.props.edit_layout();
         }
 
+        // extract the data of paragraph to be edited and store it in states
         let x;
         const selectedItemArray = this.props.items.map( item => {
             if(item.id === this.props.data.layout_id)
@@ -64,6 +67,7 @@ class Edit_p extends Component
     {
         const { id, layout_id, position } = this.props.data;
         
+        // call action to delete
         this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_p();
@@ -76,6 +80,7 @@ class Edit_p extends Component
         this.setState({
             data: event.target.value
         },
+        // call action that edits data
         () => {
             this.props.edit_p_data(
                 id,
@@ -83,6 +88,7 @@ class Edit_p extends Component
                 layout_id,
                 position
             );
+            // update action call for live reload
             this.props.update();
         }
         );
@@ -90,6 +96,7 @@ class Edit_p extends Component
 
     onItemDuplicate = () =>
     {
+        // call action to duplicate
         this.props.duplicate_item(
             this.props.data.id,
             this.props.data.layout_id,

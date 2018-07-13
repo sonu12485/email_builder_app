@@ -1,3 +1,5 @@
+// renders all the layouts that can be draged and dropped
+
 import React, { Component } from 'react';
 
 import Layout_1_1 from './layouts_items/Layout_1_1';

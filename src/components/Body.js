@@ -1,3 +1,5 @@
+// edit menu for body 
+
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
@@ -20,6 +22,7 @@ class Body extends Component
                     <Input type="select" 
                         value={this.props.body.width}
                         onChange = { (event) => {
+                            // call action that edits body width
                             this.props.edit_body_width(Number(event.target.value));
                         } }
                     >
@@ -47,6 +50,7 @@ class Body extends Component
                     <Input type="color" style={{height: 40}}
                         value={this.props.body.background}
                         onChange = { (event) => {
+                            // call action that edits body background
                             this.props.edit_body_background(event.target.value);
                         } } 
                     />
@@ -60,6 +64,7 @@ class Body extends Component
                         <Input type="number" 
                             value={this.props.body.paddingTop} 
                             onChange = { (event) => {
+                                // call action that edits body padding
                                 this.props.edit_body_padding({
                                     width: this.props.body.width,
                                     background : this.props.body.background,
@@ -76,6 +81,7 @@ class Body extends Component
                         <Input type="number" 
                             value={this.props.body.paddingBottom} 
                             onChange = { (event) => {
+                                // call action that edits body padding
                                 this.props.edit_body_padding({
                                     width: this.props.body.width,
                                     background : this.props.body.background,
@@ -92,6 +98,7 @@ class Body extends Component
                         <Input type="number" 
                             value={this.props.body.paddingLeft} 
                             onChange = { (event) => {
+                                // call action that edits body padding
                                 this.props.edit_body_padding({
                                     width: this.props.body.width,
                                     background : this.props.body.background,
@@ -108,6 +115,7 @@ class Body extends Component
                         <Input type="number" 
                             value={this.props.body.paddingRight} 
                             onChange = { (event) => {
+                                // call action that edits body padding
                                 this.props.edit_body_padding({
                                     width: this.props.body.width,
                                     background : this.props.body.background,

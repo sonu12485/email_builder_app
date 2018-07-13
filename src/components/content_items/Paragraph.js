@@ -1,3 +1,5 @@
+// A component when drap and dropped adds a paragraph to a layout
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -20,7 +22,7 @@ const spec = {
             mollit fugiat aliquip sit Lorem. Do fugiat in laborum enim 
             duis veniam reprehenderit. Nulla velit quis excepteur proiden
             t exercitation.`;
-            //call a action 
+            // On drop call a action to add paragraph to layout
             if(monitor.getDropResult().layout_id && monitor.getDropResult().location)
             {
                 props.addItemToLayout(

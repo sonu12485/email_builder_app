@@ -38,17 +38,21 @@ class App extends Component
 
   componentDidMount()
   {
+      // checks if user logged in or not
       if( !checkToken() )
       {
-          //this.props.history.push('/');
+          this.props.history.push('/');
       }
   }
 
+  // update function that calls update action to be passed to edit components
   update = () =>
   {
     this.props.update_action();
   }
 
+
+  // this renders sidebar depending upon which component is to be edited or not
   renderSideBar = () =>
   {
     if(this.props.is_h1_edit)
@@ -113,10 +117,12 @@ class App extends Component
     }
     else
     {
+      // renders sidebar is nothing is to be edited 
       return this.renderMenu()
     }
   }
 
+  // renders sidebar according to the tab selected like conent/layouts/body
   renderItemsOrLayouts = () => 
   {
     if(this.state.tabs_flag === 0)
@@ -133,6 +139,7 @@ class App extends Component
     }
   }
 
+  // renders sidebar is nothing is to be edited 
   renderMenu = () =>
   {
     if(this.state.tabs_flag === 0)
@@ -248,6 +255,7 @@ class App extends Component
     }
   }
 
+  // whole screen is split into two one for side bar and another for preview screen
   render() {
     return (
       <div className="conatiner" >

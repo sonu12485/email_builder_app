@@ -1,3 +1,5 @@
+// login page of the app
+
 import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
@@ -26,6 +28,7 @@ class Login extends Component
 
     componentDidMount()
     {
+        // checks if user logged in or not
         if( checkToken() )
         {
             this.props.history.push('/home');
@@ -46,6 +49,7 @@ class Login extends Component
     {
         event.preventDefault();
         console.log(this.state);
+        // call action to login
         this.props.login(
             this.state.email,
             this.state.password

@@ -1,3 +1,5 @@
+// register page of the app
+
 import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
@@ -25,6 +27,7 @@ class Register extends Component
 
     componentDidMount()
     {
+        // checks if user logged in or not
         if( checkToken() )
         {
             this.props.history.push('/home');
@@ -45,6 +48,7 @@ class Register extends Component
     {
         event.preventDefault();
         console.log(this.state);
+        // call action to register
         this.props.register(
             this.state.username,
             this.state.email,

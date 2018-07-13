@@ -1,6 +1,9 @@
+// these actions handle all the auth stuff like register and login 
+
 import axios from 'axios';
 import _ from 'lodash';
 
+// this action handles registration of a user 
 export function register(username, email, password)
 {
     return dispatch => {
@@ -27,6 +30,7 @@ export function register(username, email, password)
     }
 }
 
+// this action handles login of a user
 export function login(email, password)
 {
     return dispatch => {

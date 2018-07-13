@@ -1,3 +1,5 @@
+// edit menu for social-media-icons
+
 import React, { Component } from 'react';
 
 import { 
@@ -21,6 +23,7 @@ class Edit_icons extends Component
             this.props.edit_layout();
         }
 
+        // extract the data of social-media-icons to be edited and store it in states
         let x;
         const selectedItemArray = this.props.items.map( item => {
             if(item.id === this.props.data.layout_id)
@@ -66,6 +69,7 @@ class Edit_icons extends Component
     {
         const { id, layout_id, position } = this.props.data;
         
+        // call action to delete
         this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_icons();
@@ -234,6 +238,7 @@ class Edit_icons extends Component
                         }
                     }
                 },
+                // call action that edits data
                 () => {
                     this.props.edit_icons_data(
                         id,
@@ -241,6 +246,7 @@ class Edit_icons extends Component
                         layout_id,
                         position
                     );
+                    // update action call for live reload
                     this.props.update();
                 }
                 )
@@ -265,6 +271,7 @@ class Edit_icons extends Component
 
     onItemDuplicate = () =>
     {
+        // call action to duplicate
         this.props.duplicate_item(
             this.props.data.id,
             this.props.data.layout_id,

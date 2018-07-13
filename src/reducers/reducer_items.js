@@ -1,3 +1,6 @@
+// this reducer stores all the component data that you DnD and add to the page
+
+// these are the initial styles for heading, sub-heading, paragraph components
 const initStyle = {
     fontSize: '',
     color: '#000000',
@@ -13,6 +16,7 @@ const initStyle = {
     paddingRight: 0
 };
 
+// these are the initial styles for image component
 const initImageStyle = {
     textAlign: 'center',
     paddingTop: 10,
@@ -22,6 +26,7 @@ const initImageStyle = {
     fullWidth: false
 }
 
+// these are the initial styles for layout container
 const initLayoutStyles = {
     backgroundColor: '#ffffff',
     paddingTop: 10,
@@ -30,6 +35,7 @@ const initLayoutStyles = {
     paddingRight: 10
 }
 
+// these are the initial data for btn component
 const btnData = {
     name: 'Button',
     url: '#',
@@ -46,6 +52,7 @@ const btnData = {
     }
 }
 
+// these are the initial data for social-media-icons component
 const socialMediaIconsData = {
     icons: [ 
         "facebook", "twitter", "linkedin", "youtube", "google", "github", "instagram" 
@@ -78,11 +85,12 @@ const socialMediaIconsData = {
 
 export default function( state=[], action )
 {
-    console.log(action);
+    //console.log(action);
     let x;
 
     switch (action.type) {
 
+        // this edits the data of any given heading component
         case "EDIT_H1_DATA":
             
             state.forEach( item => {
@@ -120,6 +128,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this edits the data of any given sub-heading component
         case "EDIT_H3_DATA":
             
             state.forEach( item => {
@@ -157,6 +166,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this edits the data of any given paragraph component
         case "EDIT_P_DATA":
             
             state.forEach( item => {
@@ -194,6 +204,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this edits the src of any given image component
         case "EDIT_IMG_SRC":
 
             state.forEach( item => {
@@ -231,6 +242,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this edits the link of any given image component    
         case "EDIT_IMG_LINK":
 
             state.forEach( item => {
@@ -268,6 +280,7 @@ export default function( state=[], action )
 
             return state;
 
+        // handles image rotation    
         case "IMAGE_ROTATE":
 
             state.forEach( item => {
@@ -305,6 +318,7 @@ export default function( state=[], action )
 
             return state;
 
+        // handles deleting of any given component
         case "DELETE":
 
             state.forEach( item => {
@@ -339,6 +353,8 @@ export default function( state=[], action )
 
             return state;
 
+        // this edits the styles of any given component 
+        //like heading, sub-heading, paragraph   
         case "EDIT_STYLES":
 
             state.forEach( item => {
@@ -376,6 +392,7 @@ export default function( state=[], action )
 
             return state;
 
+        // not used    
         /*
         case "SLIDE_ITEM_UP":
             
@@ -409,6 +426,7 @@ export default function( state=[], action )
             return state;
         */
 
+        // add a layout container to the items array
         case "LAYOUT_ADDED":
             
             if(action.payload.layout_type === 0)
@@ -455,6 +473,7 @@ export default function( state=[], action )
                 }]);
             }
 
+        // adds heading or sub-heading or paragraph to a layout in the items array   
         case "ITEM_ADDED_TO_LAYOUT":
 
             let initialStyle = {
@@ -515,6 +534,7 @@ export default function( state=[], action )
 
             return state;
 
+        // adds HR to a layout in the items array   
         case "HR_ADDED_TO_LAYOUT":
 
             state.forEach( item => {
@@ -555,6 +575,7 @@ export default function( state=[], action )
 
             return state;
 
+        // adds image to a layout in the items array
         case "IMAGE_ADDED_TO_LAYOUT":
             
             state.forEach( item => {
@@ -604,6 +625,7 @@ export default function( state=[], action )
 
             return state;
 
+        // adds HTML component to a layout in the items array    
         case "HTML_ADDED_TO_LAYOUT":
 
             state.forEach( item => {
@@ -644,6 +666,8 @@ export default function( state=[], action )
 
             return state;
 
+        // every layout has its HTML equivalent for all its center, left and right columns
+        // this edits the HTML equivalent of a column of a given layout    
         case "EDIT_LAYOUT_HTML":
             
             state.forEach( item => {
@@ -666,12 +690,14 @@ export default function( state=[], action )
 
             return state;
 
+        // handles deleting of any given layout
         case 'DELETE_LAYOUT':
             
             return state.filter( item => {
                 return item.id !== action.payload.id
             });
 
+        // this edits the styles of a given layout    
         case 'EDIT_LAYOUT_STYLES':
 
             state.forEach( item => {
@@ -683,6 +709,7 @@ export default function( state=[], action )
 
             return state;
 
+        // adds button to a layout in the items array  
         case "BUTTON_ADDED_TO_LAYOUT":
 
             state.forEach( item => {
@@ -723,6 +750,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this edits the data of a given button     
         case "EDIT_BTN_DATA":
 
             state.forEach( item => {
@@ -760,6 +788,7 @@ export default function( state=[], action )
 
             return state;
 
+        // handles drag and drop of components from one layout/postion to another layout/postion    
         case 'DnD_ITEMS':
             
             const {
@@ -769,7 +798,7 @@ export default function( state=[], action )
                 drag_position,
                 drop_layout_id,
                 drop_position,
-                movement
+                movement 
             } = action.payload;
 
             if(drag_layout_id === drop_layout_id && drag_position === drop_position)
@@ -1052,6 +1081,7 @@ export default function( state=[], action )
                 return state;
             }
             
+        // this edits the data of a given HTML component
         case "EDIT_HTML_DATA":
             
             state.forEach( item => {
@@ -1089,6 +1119,7 @@ export default function( state=[], action )
 
             return state;
 
+        // adds social-media-icons to a layout in the items array 
         case "ICONS_ADDED_TO_LAYOUT":
 
             state.forEach( item => {
@@ -1129,6 +1160,7 @@ export default function( state=[], action )
 
             return state;
 
+        // edits data of a given social-media-icons component    
         case "EDIT_ICONS_DATA":
             
             state.forEach( item => {
@@ -1166,6 +1198,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this handles duplicating components    
         case "DUPLICATE_ITEM": 
 
             state.forEach( item => {
@@ -1227,6 +1260,7 @@ export default function( state=[], action )
 
             return state;
 
+        // this handles duplicating layouts
         case "DUPLICATE_LAYOUT": 
 
             const layout_to_be_dublicated = state.find( layout => {
@@ -1305,10 +1339,12 @@ export default function( state=[], action )
 
             return state;
 
+        // this assigns the whole items array when a template is selected    
         case "ASSIGN_TEMPLATE":
 
             return action.payload.data;
 
+        // adds video component to a layout in the items array
         case "VIDEO_ADDED_TO_LAYOUT":
 
             state.forEach( item => {
@@ -1355,6 +1391,7 @@ export default function( state=[], action )
 
             return state;
 
+        // edits url of a given video component    
         case "EDIT_VIDEO_URL":
             
             state.forEach( item => {

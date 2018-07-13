@@ -1,3 +1,5 @@
+// edit menu for HR
+
 import React, { Component } from 'react';
 
 import { Button } from 'reactstrap';
@@ -24,6 +26,7 @@ class Edit_hr extends Component
     {
         const { id, layout_id, position } = this.props.data;
         
+        // call action to delete
         this.props.delete_item(id,layout_id,position);
         this.props.update();
         this.props.edit_hr();
@@ -31,6 +34,7 @@ class Edit_hr extends Component
 
     onItemDuplicate = () =>
     {
+        // call action to duplicate
         this.props.duplicate_item(
             this.props.data.id,
             this.props.data.layout_id,

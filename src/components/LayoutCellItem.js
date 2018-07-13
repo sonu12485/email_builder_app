@@ -1,3 +1,6 @@
+// this renders each single component passed to it from LayoutCell
+// and also adds drag and drop feature to it
+
 import React, { Component } from 'react';
 
 import { Button } from 'reactstrap';
@@ -119,10 +122,11 @@ const cardTarget = {
         
 		// Dragging downwards
 		if (hoverClientY < hoverMiddleY) {
-            console.log("up");
-            console.log("drop");
-            console.log(dragItem,hoverItem);
+            //console.log("up");
+            //console.log("drop");
+            //console.log(dragItem,hoverItem);
 
+            // on drop call action to DnD components
             props.dnd_items(dragIndex, 
                 hoverIndex,
                 dragItem.layout_id,
@@ -134,10 +138,11 @@ const cardTarget = {
 
 		// Dragging upwards
 		if (hoverClientY > hoverMiddleY) {
-            console.log("down");
-            console.log("drop");
-            console.log(dragItem,hoverItem);
+            //console.log("down");
+            //console.log("drop");
+            //console.log(dragItem,hoverItem);
 
+            // on drop call action to DnD components
             props.dnd_items(dragIndex, 
                 hoverIndex, 
                 dragItem.layout_id,
@@ -153,6 +158,7 @@ const cardTarget = {
 
 class LayoutCellItem extends Component {
 
+    // renders each component as passed to it
     renderItem = () =>
     {
         if(this.props.type === 'h1')

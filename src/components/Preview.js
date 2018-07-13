@@ -1,3 +1,5 @@
+// the preview component of the app
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -34,11 +36,13 @@ function collect(connect, monitor)
     }
 }
 
+// in this component all the layouts and components present in the items array will be rendered
 class Preview extends Component 
 {
+    // renders all the layouts that are present in the items array
     renderItems = () => 
     {
-        console.log(this.props.items);
+        //console.log(this.props.items);
         return this.props.items.map( item => {
                 if(item.layout_type === 0)
                 {
@@ -48,6 +52,7 @@ class Preview extends Component
 
                     let passedStyles = {};
 
+                    // sets styles for each layout
                     Object.entries(item.styles).forEach(
                         ([key, value]) => {
                             if(value)
@@ -66,6 +71,7 @@ class Preview extends Component
                         <tbody>
                             
                             <tr className="primary_row" >
+                                {/* All the components in a column of layout will be rendered inside LayoutCell component */}
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -87,6 +93,7 @@ class Preview extends Component
 
                     let passedStyles = {};
 
+                    // sets styles for each layout
                     Object.entries(item.styles).forEach(
                         ([key, value]) => {
                             if(value)
@@ -105,6 +112,8 @@ class Preview extends Component
                         <tbody>
 
                             <tr className="primary_row" >
+                                {/* All the components in a column of layout will be rendered inside LayoutCell component */}
+                                {/* One LayoutCell for each column */}
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -133,6 +142,7 @@ class Preview extends Component
 
                     let passedStyles = {};                    
 
+                    // sets styles for each layout
                     Object.entries(item.styles).forEach(
                         ([key, value]) => {
                             if(value)
@@ -151,6 +161,8 @@ class Preview extends Component
                         <tbody>
 
                             <tr className="primary_row" >
+                                {/* All the components in a column of layout will be rendered inside LayoutCell component */}
+                                {/* One LayoutCell for each column */}
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -186,6 +198,7 @@ class Preview extends Component
 
                     let passedStyles = {};
 
+                    // sets styles for each layout
                     Object.entries(item.styles).forEach(
                         ([key, value]) => {
                             if(value)
@@ -204,6 +217,8 @@ class Preview extends Component
                         <tbody>
 
                             <tr className="primary_row" >
+                                {/* All the components in a column of layout will be rendered inside LayoutCell component */}
+                                {/* One LayoutCell for each column */}
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -233,6 +248,7 @@ class Preview extends Component
 
                     let passedStyles = {};
 
+                    // sets styles for each layout
                     Object.entries(item.styles).forEach(
                         ([key, value]) => {
                             if(value)
@@ -251,6 +267,8 @@ class Preview extends Component
                         <tbody>
 
                             <tr className="primary_row" >
+                                {/* All the components in a column of layout will be rendered inside LayoutCell component */}
+                                {/* One LayoutCell for each column */}
                                 <LayoutCell 
                                     {...this.props}
                                     layout_id={item.id} 
@@ -315,6 +333,7 @@ class FullPreview extends Component
         };
     }
 
+    // this renderItems() renders all the layouts with thier equivalent column HTML for the final download
     renderItems = () =>
     {
         return this.props.items.map( item => {
@@ -326,6 +345,7 @@ class FullPreview extends Component
 
                 let insideStyle = {};
 
+                // sets styles for each layout
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -340,6 +360,7 @@ class FullPreview extends Component
                     <tbody>
                         <tr>
                             <td style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.centerHTML }}
                             />
                         </tr>
@@ -355,6 +376,7 @@ class FullPreview extends Component
 
                 let insideStyle = {};                
 
+                // sets styles for each layout
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -373,9 +395,11 @@ class FullPreview extends Component
                     <tbody>
                         <tr>
                             <td  style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
                             <td  style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -391,6 +415,7 @@ class FullPreview extends Component
 
                 let insideStyle = {};
 
+                // sets styles for each layout
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -409,12 +434,15 @@ class FullPreview extends Component
                     <tbody>
                         <tr>
                             <td style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
                             <td style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.centerHTML }}
                             />
                             <td style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -430,6 +458,7 @@ class FullPreview extends Component
 
                 let insideStyle = {};
 
+                // sets styles for each layout
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -448,9 +477,11 @@ class FullPreview extends Component
                     <tbody>
                         <tr>
                             <td colSpan="2" style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
                             <td style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -466,6 +497,7 @@ class FullPreview extends Component
 
                 let insideStyle = {};
 
+                // sets styles for each layout
                 Object.entries(item.styles).forEach(
                     ([key, value]) => {
                         if(value)
@@ -484,9 +516,11 @@ class FullPreview extends Component
                     <tbody>
                         <tr>
                             <td style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.leftHTML }}
                             />
                             <td colSpan="2" style={insideStyle}
+                                // assigning equivalent HTML to the corresponding layout columns 
                                 dangerouslySetInnerHTML={{ __html: item.rightHTML }}
                             />
                         </tr>
@@ -497,6 +531,7 @@ class FullPreview extends Component
     });
     }
 
+    // this renders the complete static page/email that can be downloaded
     renderStaticPage = () =>
     {
         const style= { ...this.props.body };
@@ -517,6 +552,7 @@ class FullPreview extends Component
         );
     }
     
+    // this downloads the static page/email created as "email.html"
     download()
     {
         var element = document.createElement('a');
@@ -533,6 +569,7 @@ class FullPreview extends Component
         document.body.removeChild(element);
     }
 
+    // this renders desktop & mobile viewing options
     renderViewOptions = () =>
     {
         if(this.state.DesktopView)
@@ -584,6 +621,8 @@ class FullPreview extends Component
             );
         }
     }
+
+    // renders the complete preview
     renderPreview = () =>
     {
         if(this.state.DesktopView)
@@ -621,6 +660,7 @@ class FullPreview extends Component
 
     renderSaveBtn = () => 
     {
+        // check if name of template is empty or not
         if(this.state.name === '')
         {
             return (
@@ -634,6 +674,7 @@ class FullPreview extends Component
             return (
                 <Button color="primary"
                     onClick = { () => {
+                        //call action to save current preview as a template
                         this.props.saveTemplate(
                             this.state.name,
                             JSON.stringify(this.props.items),
@@ -650,7 +691,7 @@ class FullPreview extends Component
     {
         return (
             <div>
-                
+                {/* Modal to enter name of the template to be saved */}
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                 <ModalHeader toggle={this.toggle}>Save as Template</ModalHeader>
                 <ModalBody style={{padding: 30}} >
