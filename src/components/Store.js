@@ -23,7 +23,7 @@ class Store extends Component
         // checks if user logged in or not
         if( !checkToken() )
         {
-            this.props.history.push('/');
+            //this.props.history.push('/');
         }
     }
 
@@ -71,12 +71,12 @@ class Store extends Component
                     <CardBody>
                         <CardTitle>{image.name}</CardTitle>
                         {this.renderUploadBtn(image.url)}
-                        <Button color="danger" className="btn-sm"
+                        {/*<Button color="danger" className="btn-sm"
                             onClick={ () => {
                                 // call action to delete image for store
                                 this.props.delete_image_from_store(image.id);
                             }}
-                        >DELETE</Button>
+                        >DELETE</Button>*/}
                     </CardBody>
                 </Card>
             );
@@ -94,7 +94,7 @@ class Store extends Component
                     </div>
                     <div className="col-md-4" >
                         <Button color="primary"
-                            onClick={ () => {this.props.history.push("/")}} className="btn-sm float-right"
+                            onClick={ () => {this.props.history.push("/new")}} className="btn-sm float-right"
                         >BACK</Button>
                     </div>
                     </div>
@@ -103,13 +103,6 @@ class Store extends Component
                 <div className="store_content" >
                     <div className="store_content_image_container" >
                         {this.renderImages()}
-                    </div>
-                    <div className="store_content_upload" >
-                        <div>
-                            <Button color="primary"
-                                onClick={ () => {}}
-                            >UPLOAD IMAGE TO STORE</Button>
-                        </div>
                     </div>
                 </div>
                 <br />

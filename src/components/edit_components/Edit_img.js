@@ -294,16 +294,6 @@ class Edit_img extends Component
                     <h4 style={{textAlign: "center"}} >OR</h4>
                 </div>
 
-                <div className="image_drop_conatiner" >
-                <div className="image_drop" >
-                    <h5>Drop an Image Here.</h5>
-                </div>
-                </div>
-
-                <div>
-                    <h4 style={{textAlign: "center"}} >OR</h4>
-                </div>
-
                 <div className="btn_container form-group" >
                     <Button color="primary" 
                         onClick={ () => {this.props.history.push("/store")} }

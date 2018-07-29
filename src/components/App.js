@@ -41,7 +41,7 @@ class App extends Component
       // checks if user logged in or not
       if( !checkToken() )
       {
-          this.props.history.push('/');
+          //this.props.history.push('/');
       }
   }
 
