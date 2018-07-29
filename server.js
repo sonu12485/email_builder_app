@@ -12,14 +12,14 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 
 // port and secret_key(for access tokens) is declared
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const SECRET = "secret_key_for_auth_tokens";
 
 const { default_data, default_body } = require('./default_template_data');
 
 //Connected to mongoDB instance
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/email_builder');
+mongoose.connect('mongodb://admin:password12@ds263408.mlab.com:63408/emailbuilderappdb');
 
 mongoose.connection
   .once( 'open', () => console.log("mongoDB connected") )
